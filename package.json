@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "A homebrewed game engine written in typescript",
   "main": "index.js",
+  "homepage": "http://ashleycheung.com/tsgame/",
   "license": "MIT",
   "scripts": {
-    "build": "tsc && typedoc --excludePrivate true --entryPointStrategy expand ./src"
+    "build": "tsc && typedoc --plugin typedoc-plugin-markdown --excludePrivate true --entryPointStrategy expand ./src"
   },
   "dependencies": {
     "matter-js": "^0.18.0"
@@ -13,6 +14,7 @@
   "devDependencies": {
     "@types/matter-js": "^0.17.7",
     "typedoc": "^0.23.2",
+    "typedoc-plugin-markdown": "^3.13.0",
     "typescript": "^4.7.4"
   }
 }
