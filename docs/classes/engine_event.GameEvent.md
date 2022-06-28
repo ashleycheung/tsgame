@@ -48,4 +48,4 @@ Event name
 
 #### Defined in
 
-[engine/event.ts:60](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/event.ts#L60)
+[engine/event.ts:60](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/event.ts#L60)

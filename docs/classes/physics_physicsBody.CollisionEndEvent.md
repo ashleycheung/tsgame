@@ -30,11 +30,19 @@ body
 
 • **new CollisionEndEvent**(`targetBody`)
 
+```typescript
+const obj = new RectangleBody(new Vector(3,3))
+obj.event.addEventListener("collisionEnd", (e: Event) => {
+ // Logs whatever the body collides with
+ console.log(e.targetBody)
+})
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `targetBody` | [`PhysicsBody`](physics_physicsBody.PhysicsBody.md) | ```typescript const obj = new RectangleBody(new Vector(3,3)) obj.event.addEventListener("collisionEnd", (e: Event) => {  // Logs whatever the body collides with  console.log(e.targetBody) }) ``` |
+| Name | Type |
+| :------ | :------ |
+| `targetBody` | [`PhysicsBody`](physics_physicsBody.PhysicsBody.md) |
 
 #### Overrides
 
@@ -54,7 +62,7 @@ Event name
 
 #### Defined in
 
-[physics/physicsBody.ts:220](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/physics/physicsBody.ts#L220)
+[physics/physicsBody.ts:217](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L217)
 
 ___
 
@@ -64,4 +72,4 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:222](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/physics/physicsBody.ts#L222)
+[physics/physicsBody.ts:219](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L219)

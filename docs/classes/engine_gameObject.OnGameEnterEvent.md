@@ -21,13 +21,14 @@ Called when entering the game
 ### Properties
 
 - [game](engine_gameObject.OnGameEnterEvent.md#game)
+- [id](engine_gameObject.OnGameEnterEvent.md#id)
 - [name](engine_gameObject.OnGameEnterEvent.md#name)
 
 ## Constructors
 
 ### constructor
 
-• **new OnGameEnterEvent**(`game`)
+• **new OnGameEnterEvent**(`game`, `id`)
 
 ```typescript
 const obj = new GameObject()
@@ -44,6 +45,7 @@ obj.event.addEventListener("onGameEnter", (e: Event) => {
 | Name | Type |
 | :------ | :------ |
 | `game` | [`Game`](engine_game.Game.md) |
+| `id` | `string` |
 
 #### Overrides
 
@@ -57,7 +59,17 @@ obj.event.addEventListener("onGameEnter", (e: Event) => {
 
 #### Defined in
 
-[engine/gameObject.ts:133](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L133)
+[engine/gameObject.ts:254](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L254)
+
+___
+
+### id
+
+• **id**: `string`
+
+#### Defined in
+
+[engine/gameObject.ts:256](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L256)
 
 ___
 
@@ -73,4 +85,4 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:131](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L131)
+[engine/gameObject.ts:252](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L252)

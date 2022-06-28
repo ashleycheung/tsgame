@@ -13,6 +13,7 @@
 - [engine/timer](modules/engine_timer.md)
 - [physics/physics](modules/physics_physics.md)
 - [physics/physicsBody](modules/physics_physicsBody.md)
+- [physics/physicsShape](modules/physics_physicsShape.md)
 - [physics/vector](modules/physics_vector.md)
 - [utils/controller](modules/utils_controller.md)
 - [utils/utils](modules/utils_utils.md)

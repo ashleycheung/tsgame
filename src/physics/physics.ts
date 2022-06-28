@@ -2,6 +2,7 @@ import Matter from "matter-js";
 import { CollisionEndEvent, CollisionStartEvent, PhysicsBody } from "./physicsBody";
 import { GameEvent } from "../engine/event";
 
+
 export class Physics {
   
   /**
@@ -25,13 +26,13 @@ export class Physics {
   
   addBody (b: PhysicsBody): void {
     this._bodies.add(b);
-    this._matterToBody.set(b._matterBody, b);
-    Matter.Composite.add(this._engine.world, b._matterBody);
+    this._matterToBody.set(b._shape._matterBody, b);
+    Matter.Composite.add(this._engine.world, b._shape._matterBody);
   }
   
   removeBody (b: PhysicsBody): boolean {
-    Matter.Composite.remove(this._engine.world, b._matterBody);
-    this._matterToBody.delete(b._matterBody)
+    Matter.Composite.remove(this._engine.world, b._shape._matterBody);
+    this._matterToBody.delete(b._shape._matterBody)
     return this._bodies.delete(b);
   }
   

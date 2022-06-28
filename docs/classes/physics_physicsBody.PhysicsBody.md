@@ -13,9 +13,7 @@ the physics engine is abstracted away
 
   ↳ **`PhysicsBody`**
 
-  ↳↳ [`RectangleBody`](physics_physicsBody.RectangleBody.md)
-
-  ↳↳ [`CircleBody`](physics_physicsBody.CircleBody.md)
+  ↳↳ [`TilemapWallCell`](engine_tilemap.TilemapWallCell.md)
 
 ## Table of contents
 
@@ -25,6 +23,7 @@ the physics engine is abstracted away
 
 ### Properties
 
+- [\_shape](physics_physicsBody.PhysicsBody.md#_shape)
 - [event](physics_physicsBody.PhysicsBody.md#event)
 - [game](physics_physicsBody.PhysicsBody.md#game)
 - [offset](physics_physicsBody.PhysicsBody.md#offset)
@@ -37,6 +36,8 @@ the physics engine is abstracted away
 - [collisionCategory](physics_physicsBody.PhysicsBody.md#collisioncategory)
 - [collisionMask](physics_physicsBody.PhysicsBody.md#collisionmask)
 - [friction](physics_physicsBody.PhysicsBody.md#friction)
+- [groups](physics_physicsBody.PhysicsBody.md#groups)
+- [id](physics_physicsBody.PhysicsBody.md#id)
 - [isSensor](physics_physicsBody.PhysicsBody.md#issensor)
 - [parent](physics_physicsBody.PhysicsBody.md#parent)
 - [position](physics_physicsBody.PhysicsBody.md#position)
@@ -47,7 +48,11 @@ the physics engine is abstracted away
 
 - [\_step](physics_physicsBody.PhysicsBody.md#_step)
 - [addChild](physics_physicsBody.PhysicsBody.md#addchild)
+- [addToGroup](physics_physicsBody.PhysicsBody.md#addtogroup)
+- [isInGroup](physics_physicsBody.PhysicsBody.md#isingroup)
 - [removeChild](physics_physicsBody.PhysicsBody.md#removechild)
+- [removeFromGroup](physics_physicsBody.PhysicsBody.md#removefromgroup)
+- [root](physics_physicsBody.PhysicsBody.md#root)
 - [step](physics_physicsBody.PhysicsBody.md#step)
 - [translate](physics_physicsBody.PhysicsBody.md#translate)
 
@@ -55,19 +60,29 @@ the physics engine is abstracted away
 
 ### constructor
 
-• **new PhysicsBody**(`body`)
+• **new PhysicsBody**(`shape`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `body` | `Body` |
+| `shape` | [`PhysicsShape`](physics_physicsShape.PhysicsShape.md) |
 
 #### Overrides
 
 [GameObject](engine_gameObject.GameObject.md).[constructor](engine_gameObject.GameObject.md#constructor)
 
 ## Properties
+
+### \_shape
+
+• `Readonly` **\_shape**: [`PhysicsShape`](physics_physicsShape.PhysicsShape.md)
+
+#### Defined in
+
+[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L14)
+
+___
 
 ### event
 
@@ -79,7 +94,7 @@ the physics engine is abstracted away
 
 #### Defined in
 
-[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L8)
+[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L8)
 
 ___
 
@@ -87,13 +102,16 @@ ___
 
 • **game**: ``null`` \| [`Game`](engine_game.Game.md) = `null`
 
+The game instance that the game object is currently in.
+This is set to null if the game object is not in a game
+
 #### Inherited from
 
 [GameObject](engine_gameObject.GameObject.md).[game](engine_gameObject.GameObject.md#game)
 
 #### Defined in
 
-[engine/gameObject.ts:14](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L14)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
 
 ___
 
@@ -103,7 +121,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:20](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/physics/physicsBody.ts#L20)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L18)
 
 ## Accessors
 
@@ -153,11 +171,13 @@ ___
 
 ### children
 
-• `get` **children**(): `Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+• `get` **children**(): [`GameObject`](engine_gameObject.GameObject.md)[]
+
+Returns all the children of this game object
 
 #### Returns
 
-`Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+[`GameObject`](engine_gameObject.GameObject.md)[]
 
 #### Inherited from
 
@@ -239,6 +259,40 @@ ___
 
 ___
 
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+GameObject.groups
+
+___
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+GameObject.id
+
+___
+
 ### isSensor
 
 • `get` **isSensor**(): `boolean`
@@ -264,6 +318,8 @@ ___
 ### parent
 
 • `get` **parent**(): ``null`` \| [`GameObject`](engine_gameObject.GameObject.md)
+
+Gets the immediate parent of this game object
 
 #### Returns
 
@@ -351,6 +407,16 @@ ___
 
 To be overwritten by children classes
 
+```typescript
+class MyObject extends GameObject {
+
+   override _step(delta: number): void {
+     super._step(delta);
+     // Add subclass functionality here
+   }
+}
+```
+
 #### Parameters
 
 | Name | Type |
@@ -375,11 +441,24 @@ Adds a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -391,6 +470,62 @@ the parent is removed
 
 ___
 
+### addToGroup
+
+▸ **addToGroup**(`group`): `void`
+
+Adds this game object to a group
+
+```typescript
+const player = new GameObject();
+const game = new Game();
+game.addGameObject(player);
+
+o.addToGroup("player");
+
+// Returns [player]
+console.log(game.getGameObjectsInGroup("player"));
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](engine_gameObject.GameObject.md).[addToGroup](engine_gameObject.GameObject.md#addtogroup)
+
+___
+
+### isInGroup
+
+▸ **isInGroup**(`group`): `boolean`
+
+Returns whether the game object is
+a part of the given group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[GameObject](engine_gameObject.GameObject.md).[isInGroup](engine_gameObject.GameObject.md#isingroup)
+
+___
+
 ### removeChild
 
 ▸ **removeChild**(`child`): `void`
@@ -399,11 +534,24 @@ Removes a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -412,6 +560,56 @@ the parent is removed
 #### Inherited from
 
 [GameObject](engine_gameObject.GameObject.md).[removeChild](engine_gameObject.GameObject.md#removechild)
+
+___
+
+### removeFromGroup
+
+▸ **removeFromGroup**(`group`): `void`
+
+Removes this game object from a group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](engine_gameObject.GameObject.md).[removeFromGroup](engine_gameObject.GameObject.md#removefromgroup)
+
+___
+
+### root
+
+▸ **root**(): [`GameObject`](engine_gameObject.GameObject.md)
+
+Recusively searches parents until
+a root parent is found
+
+```typescript
+const root = new GameObject();
+const parent = new GameObject();
+const child = new GameObject();
+root.addChild(parent);
+parent.addChild(child);
+
+// Returns root
+console.log(child.root());
+```
+
+#### Returns
+
+[`GameObject`](engine_gameObject.GameObject.md)
+
+#### Inherited from
+
+[GameObject](engine_gameObject.GameObject.md).[root](engine_gameObject.GameObject.md#root)
 
 ___
 

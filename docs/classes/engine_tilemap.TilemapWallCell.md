@@ -9,7 +9,7 @@ the physics engine is abstracted away
 
 ## Hierarchy
 
-- [`RectangleBody`](physics_physicsBody.RectangleBody.md)
+- [`PhysicsBody`](physics_physicsBody.PhysicsBody.md)
 
   ↳ **`TilemapWallCell`**
 
@@ -21,6 +21,7 @@ the physics engine is abstracted away
 
 ### Properties
 
+- [\_shape](engine_tilemap.TilemapWallCell.md#_shape)
 - [event](engine_tilemap.TilemapWallCell.md#event)
 - [game](engine_tilemap.TilemapWallCell.md#game)
 - [offset](engine_tilemap.TilemapWallCell.md#offset)
@@ -33,10 +34,11 @@ the physics engine is abstracted away
 - [collisionCategory](engine_tilemap.TilemapWallCell.md#collisioncategory)
 - [collisionMask](engine_tilemap.TilemapWallCell.md#collisionmask)
 - [friction](engine_tilemap.TilemapWallCell.md#friction)
+- [groups](engine_tilemap.TilemapWallCell.md#groups)
+- [id](engine_tilemap.TilemapWallCell.md#id)
 - [isSensor](engine_tilemap.TilemapWallCell.md#issensor)
 - [parent](engine_tilemap.TilemapWallCell.md#parent)
 - [position](engine_tilemap.TilemapWallCell.md#position)
-- [size](engine_tilemap.TilemapWallCell.md#size)
 - [static](engine_tilemap.TilemapWallCell.md#static)
 - [velocity](engine_tilemap.TilemapWallCell.md#velocity)
 
@@ -44,7 +46,11 @@ the physics engine is abstracted away
 
 - [\_step](engine_tilemap.TilemapWallCell.md#_step)
 - [addChild](engine_tilemap.TilemapWallCell.md#addchild)
+- [addToGroup](engine_tilemap.TilemapWallCell.md#addtogroup)
+- [isInGroup](engine_tilemap.TilemapWallCell.md#isingroup)
 - [removeChild](engine_tilemap.TilemapWallCell.md#removechild)
+- [removeFromGroup](engine_tilemap.TilemapWallCell.md#removefromgroup)
+- [root](engine_tilemap.TilemapWallCell.md#root)
 - [step](engine_tilemap.TilemapWallCell.md#step)
 - [translate](engine_tilemap.TilemapWallCell.md#translate)
 
@@ -63,9 +69,23 @@ the physics engine is abstracted away
 
 #### Overrides
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[constructor](physics_physicsBody.RectangleBody.md#constructor)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[constructor](physics_physicsBody.PhysicsBody.md#constructor)
 
 ## Properties
+
+### \_shape
+
+• `Readonly` **\_shape**: [`PhysicsShape`](physics_physicsShape.PhysicsShape.md)
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[_shape](physics_physicsBody.PhysicsBody.md#_shape)
+
+#### Defined in
+
+[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L14)
+
+___
 
 ### event
 
@@ -73,11 +93,11 @@ the physics engine is abstracted away
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[event](physics_physicsBody.RectangleBody.md#event)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[event](physics_physicsBody.PhysicsBody.md#event)
 
 #### Defined in
 
-[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L8)
+[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L8)
 
 ___
 
@@ -85,13 +105,16 @@ ___
 
 • **game**: ``null`` \| [`Game`](engine_game.Game.md) = `null`
 
+The game instance that the game object is currently in.
+This is set to null if the game object is not in a game
+
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[game](physics_physicsBody.RectangleBody.md#game)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[game](physics_physicsBody.PhysicsBody.md#game)
 
 #### Defined in
 
-[engine/gameObject.ts:14](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/gameObject.ts#L14)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
 
 ___
 
@@ -101,11 +124,11 @@ ___
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[offset](physics_physicsBody.RectangleBody.md#offset)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[offset](physics_physicsBody.PhysicsBody.md#offset)
 
 #### Defined in
 
-[physics/physicsBody.ts:20](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/physics/physicsBody.ts#L20)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L18)
 
 ## Accessors
 
@@ -119,7 +142,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.airResistance
+PhysicsBody.airResistance
 
 • `set` **airResistance**(`ar`): `void`
 
@@ -135,7 +158,7 @@ RectangleBody.airResistance
 
 #### Inherited from
 
-RectangleBody.airResistance
+PhysicsBody.airResistance
 
 ___
 
@@ -149,7 +172,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.angle
+PhysicsBody.angle
 
 • `set` **angle**(`a`): `void`
 
@@ -165,21 +188,23 @@ RectangleBody.angle
 
 #### Inherited from
 
-RectangleBody.angle
+PhysicsBody.angle
 
 ___
 
 ### children
 
-• `get` **children**(): `Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+• `get` **children**(): [`GameObject`](engine_gameObject.GameObject.md)[]
+
+Returns all the children of this game object
 
 #### Returns
 
-`Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+[`GameObject`](engine_gameObject.GameObject.md)[]
 
 #### Inherited from
 
-RectangleBody.children
+PhysicsBody.children
 
 ___
 
@@ -195,7 +220,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionCategory
+PhysicsBody.collisionCategory
 
 • `set` **collisionCategory**(`v`): `void`
 
@@ -213,7 +238,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionCategory
+PhysicsBody.collisionCategory
 
 ___
 
@@ -229,7 +254,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionMask
+PhysicsBody.collisionMask
 
 • `set` **collisionMask**(`v`): `void`
 
@@ -247,7 +272,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionMask
+PhysicsBody.collisionMask
 
 ___
 
@@ -261,7 +286,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.friction
+PhysicsBody.friction
 
 • `set` **friction**(`f`): `void`
 
@@ -277,7 +302,41 @@ RectangleBody.friction
 
 #### Inherited from
 
-RectangleBody.friction
+PhysicsBody.friction
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+PhysicsBody.groups
+
+___
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+PhysicsBody.id
 
 ___
 
@@ -291,7 +350,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.isSensor
+PhysicsBody.isSensor
 
 • `set` **isSensor**(`v`): `void`
 
@@ -307,7 +366,7 @@ RectangleBody.isSensor
 
 #### Inherited from
 
-RectangleBody.isSensor
+PhysicsBody.isSensor
 
 ___
 
@@ -315,13 +374,15 @@ ___
 
 • `get` **parent**(): ``null`` \| [`GameObject`](engine_gameObject.GameObject.md)
 
+Gets the immediate parent of this game object
+
 #### Returns
 
 ``null`` \| [`GameObject`](engine_gameObject.GameObject.md)
 
 #### Inherited from
 
-RectangleBody.parent
+PhysicsBody.parent
 
 ___
 
@@ -337,7 +398,7 @@ Position is 0 by default
 
 #### Inherited from
 
-RectangleBody.position
+PhysicsBody.position
 
 • `set` **position**(`p`): `void`
 
@@ -355,21 +416,7 @@ Position is 0 by default
 
 #### Inherited from
 
-RectangleBody.position
-
-___
-
-### size
-
-• `get` **size**(): [`Vector2D`](physics_vector.Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](physics_vector.Vector2D.md)
-
-#### Inherited from
-
-RectangleBody.size
+PhysicsBody.position
 
 ___
 
@@ -383,7 +430,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.static
+PhysicsBody.static
 
 • `set` **static**(`v`): `void`
 
@@ -399,7 +446,7 @@ RectangleBody.static
 
 #### Inherited from
 
-RectangleBody.static
+PhysicsBody.static
 
 ___
 
@@ -413,7 +460,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.velocity
+PhysicsBody.velocity
 
 • `set` **velocity**(`p`): `void`
 
@@ -429,7 +476,7 @@ RectangleBody.velocity
 
 #### Inherited from
 
-RectangleBody.velocity
+PhysicsBody.velocity
 
 ## Methods
 
@@ -438,6 +485,16 @@ RectangleBody.velocity
 ▸ **_step**(`delta`): `void`
 
 To be overwritten by children classes
+
+```typescript
+class MyObject extends GameObject {
+
+   override _step(delta: number): void {
+     super._step(delta);
+     // Add subclass functionality here
+   }
+}
+```
 
 #### Parameters
 
@@ -451,7 +508,7 @@ To be overwritten by children classes
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[_step](physics_physicsBody.RectangleBody.md#_step)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[_step](physics_physicsBody.PhysicsBody.md#_step)
 
 ___
 
@@ -463,11 +520,24 @@ Adds a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -475,7 +545,63 @@ the parent is removed
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[addChild](physics_physicsBody.RectangleBody.md#addchild)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[addChild](physics_physicsBody.PhysicsBody.md#addchild)
+
+___
+
+### addToGroup
+
+▸ **addToGroup**(`group`): `void`
+
+Adds this game object to a group
+
+```typescript
+const player = new GameObject();
+const game = new Game();
+game.addGameObject(player);
+
+o.addToGroup("player");
+
+// Returns [player]
+console.log(game.getGameObjectsInGroup("player"));
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[addToGroup](physics_physicsBody.PhysicsBody.md#addtogroup)
+
+___
+
+### isInGroup
+
+▸ **isInGroup**(`group`): `boolean`
+
+Returns whether the game object is
+a part of the given group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[isInGroup](physics_physicsBody.PhysicsBody.md#isingroup)
 
 ___
 
@@ -487,11 +613,24 @@ Removes a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -499,7 +638,57 @@ the parent is removed
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[removeChild](physics_physicsBody.RectangleBody.md#removechild)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[removeChild](physics_physicsBody.PhysicsBody.md#removechild)
+
+___
+
+### removeFromGroup
+
+▸ **removeFromGroup**(`group`): `void`
+
+Removes this game object from a group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[removeFromGroup](physics_physicsBody.PhysicsBody.md#removefromgroup)
+
+___
+
+### root
+
+▸ **root**(): [`GameObject`](engine_gameObject.GameObject.md)
+
+Recusively searches parents until
+a root parent is found
+
+```typescript
+const root = new GameObject();
+const parent = new GameObject();
+const child = new GameObject();
+root.addChild(parent);
+parent.addChild(child);
+
+// Returns root
+console.log(child.root());
+```
+
+#### Returns
+
+[`GameObject`](engine_gameObject.GameObject.md)
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[root](physics_physicsBody.PhysicsBody.md#root)
 
 ___
 
@@ -525,7 +714,7 @@ the _step method
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[step](physics_physicsBody.RectangleBody.md#step)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[step](physics_physicsBody.PhysicsBody.md#step)
 
 ___
 
@@ -545,4 +734,4 @@ ___
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[translate](physics_physicsBody.RectangleBody.md#translate)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[translate](physics_physicsBody.PhysicsBody.md#translate)

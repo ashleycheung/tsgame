@@ -11,7 +11,6 @@
 ### Functions
 
 - [bit32ToSet](utils_utils.md#bit32toset)
-- [renderPhysics](utils_utils.md#renderphysics)
 - [rotate2DArray](utils_utils.md#rotate2darray)
 - [setToBit32](utils_utils.md#settobit32)
 
@@ -30,24 +29,6 @@
 #### Returns
 
 `Set`<`number`\>
-
-___
-
-### renderPhysics
-
-▸ **renderPhysics**(`canvas`, `ctx`, `bodies`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `canvas` | `HTMLCanvasElement` |
-| `ctx` | `CanvasRenderingContext2D` |
-| `bodies` | `Body`[] |
-
-#### Returns
-
-`void`
 
 ___
 

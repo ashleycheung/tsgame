@@ -47,4 +47,4 @@ Event name
 
 #### Defined in
 
-[engine/game.ts:87](https://github.com/ashleycheung/tsgame/blob/d3a4e72/src/engine/game.ts#L87)
+[engine/game.ts:243](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/game.ts#L243)

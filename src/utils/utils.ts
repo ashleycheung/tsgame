@@ -1,26 +1,6 @@
 import Matter from "matter-js";
 import { Game } from "../engine/game";
-import { CircleBody, PhysicsBody, RectangleBody } from "../physics/physicsBody";
-
-export const renderPhysics = (
-  canvas: HTMLCanvasElement,
-  ctx: CanvasRenderingContext2D,
-  bodies: Array<Body>
-) => {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  // Draw body
-  for (const b of bodies) {
-    if (b instanceof CircleBody) {
-      ctx.beginPath();
-      ctx.arc(b.position.x, b.position.y, b.radius, 0, 2 * Math.PI)
-      ctx.fillStyle = "red"
-      ctx.fill()
-    } else if (b instanceof RectangleBody) {
-      const rectTopLeft = b.position.subtract(b.size.scale(0.5))
-      ctx.fillRect(rectTopLeft.x, rectTopLeft.y, b.size.x, b.size.y)
-    }
-  }
-}
+import { PhysicsBody } from "../physics/physicsBody";
 
 export class PhysicsRender {
   

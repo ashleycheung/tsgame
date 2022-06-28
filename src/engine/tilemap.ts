@@ -1,4 +1,5 @@
-import { RectangleBody } from "../physics/physicsBody";
+import { PhysicsBody } from "../physics/physicsBody";
+import { PhysicsRectangle } from "../physics/physicsShape";
 import { Vector2D } from "../physics/vector";
 import { rotate2DArray } from "../utils/utils";
 import { GameEvent } from "./event";
@@ -13,7 +14,7 @@ export class Tilemap extends GameObject {
   // ie: _cells[x][y]
   private _cells: Array<Array<number>>
   
-  private _bodies: Array<RectangleBody> = [];
+  private _bodies: Array<PhysicsBody> = [];
   
   private _cellSize: Vector2D;
   
@@ -22,7 +23,7 @@ export class Tilemap extends GameObject {
   private _code: TilemapCode;
   
   // Number is equal to y * width + x
-  private _posToCell: Map<number, RectangleBody> = new Map();
+  private _posToCell: Map<number, PhysicsBody> = new Map();
   
   /**
    * Creates an empty tilemap of the given size
@@ -141,9 +142,9 @@ export class Tilemap extends GameObject {
 }
 
 
-export class TilemapWallCell extends RectangleBody {
+export class TilemapWallCell extends PhysicsBody {
   constructor (size: Vector2D, code: TilemapCode) {
-    super(size);
+    super(new PhysicsRectangle(size));
     this.static = true;
     this.collisionCategory = new Set(code.wall.collision);
     this.collisionMask = new Set(code.wall.collision);

@@ -3,28 +3,26 @@ import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "../engine/gameObj
 import { bit32ToSet, setToBit32 } from "../utils/utils";
 import { GameEvent } from "../engine/event";
 import { Vector2D } from "./vector";
+import { PhysicsShape } from "./physicsShape";
 
 /**
  * A physics body
  * the physics engine is abstracted away
  */
-export abstract class PhysicsBody extends GameObject {
+export class PhysicsBody extends GameObject {
   
-  /**
-    @ignore
-  */
-  readonly _matterBody: Matter.Body
-
+  readonly _shape: PhysicsShape;
+  
   // Stores the desired relative position to
   // the parent
   offset: Vector2D = Vector2D.zero();
   
-  constructor (body: Matter.Body) {
+  constructor (shape: PhysicsShape) {
     super();
-    this._matterBody = body; 
+    this._shape = shape;
     // Bodies should collide based off mask
     // and category by default
-    Matter.Body.set(this._matterBody, { 
+    Matter.Body.set(this._shape._matterBody, { 
       colisionFilter: {
         group: 0, // setting group to 0 ensure it reads the mask
       }
@@ -66,11 +64,11 @@ export abstract class PhysicsBody extends GameObject {
     Position is 0 by default
   */
   get position (): Vector2D {
-    return Vector2D.toVector2D(this._matterBody.position)
+    return Vector2D.toVector2D(this._shape._matterBody.position)
   }
   
   set position (p: Vector2D) {
-    Matter.Body.setPosition(this._matterBody, p.toMatterVector())
+    Matter.Body.setPosition(this._shape._matterBody, p.toMatterVector())
   }
   
   get angle (): number {
@@ -78,7 +76,7 @@ export abstract class PhysicsBody extends GameObject {
     // In matterjs, the angle is measured relative
     // to the positive y axis
     // but for us it is relative to the positive x axis
-    return this._matterBody.angle - Math.PI / 2;
+    return this._shape._matterBody.angle - Math.PI / 2;
   }
   
   set angle (a: number) {
@@ -86,49 +84,49 @@ export abstract class PhysicsBody extends GameObject {
     // In matterjs, the angle is measured relative
     // to the positive y axis
     // but for us it is relative to the positive x axis
-    Matter.Body.setAngle(this._matterBody, a + Math.PI / 2);
+    Matter.Body.setAngle(this._shape._matterBody, a + Math.PI / 2);
   }
   
   get friction (): number {
-    return this._matterBody.friction;
+    return this._shape._matterBody.friction;
   }
   
   set friction (f: number) {
-    Matter.Body.set(this._matterBody, { friction: f });
+    Matter.Body.set(this._shape._matterBody, { friction: f });
   }
   
   get airResistance (): number {
-    return this._matterBody.frictionAir;
+    return this._shape._matterBody.frictionAir;
   }
   
   set airResistance (ar: number) {
-    Matter.Body.set(this._matterBody, { frictionAir: ar });
+    Matter.Body.set(this._shape._matterBody, { frictionAir: ar });
   }
   
   get velocity (): Vector2D {
-    return Vector2D.toVector2D(this._matterBody.velocity)
+    return Vector2D.toVector2D(this._shape._matterBody.velocity)
   }
   
   set velocity (p: Vector2D) {
     if (this.parent !== null && this.parent instanceof PhysicsBody) {
       throw new Error("Cannot set velocity of a child body")
     }
-    Matter.Body.setVelocity(this._matterBody, p.toMatterVector())
+    Matter.Body.setVelocity(this._shape._matterBody, p.toMatterVector())
   }
   
   // The body doesnt move if it is static
   get static (): boolean {
-    return this._matterBody.isStatic
+    return this._shape._matterBody.isStatic
   }
   
   set static (v: boolean) {
-    Matter.Body.setStatic(this._matterBody, v)
+    Matter.Body.setStatic(this._shape._matterBody, v)
   }
   
   // A set of all the categories this
   // body is a part of
   get collisionCategory (): Set<number> {
-    const currBitCategory = this._matterBody.collisionFilter.category!;
+    const currBitCategory = this._shape._matterBody.collisionFilter.category!;
     return bit32ToSet(currBitCategory);
   }
   
@@ -136,14 +134,14 @@ export abstract class PhysicsBody extends GameObject {
     https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
   */
   set collisionCategory (v: Set<number>) {
-    this._matterBody.collisionFilter.category = setToBit32(v)
+    this._shape._matterBody.collisionFilter.category = setToBit32(v)
   }
   
   // A set of all the categories this
   // body collides with
   // Groups go from 0 - 31
   get collisionMask (): Set<number> {
-    const currBitMask = this._matterBody.collisionFilter.mask!;
+    const currBitMask = this._shape._matterBody.collisionFilter.mask!;
     return bit32ToSet(currBitMask);
   }
   
@@ -153,25 +151,25 @@ export abstract class PhysicsBody extends GameObject {
   set collisionMask (v: Set<number>) {
     // Matter.Body.set doesnt seem to work so we have
     // to set it manually ourselves
-    this._matterBody.collisionFilter.mask = setToBit32(v)
+    this._shape._matterBody.collisionFilter.mask = setToBit32(v)
   }
   
   // If set to true, it doesnt collide and passes through
   // but still detects collisions
   get isSensor (): boolean {
-    return this._matterBody.isSensor;
+    return this._shape._matterBody.isSensor;
   }
   
   set isSensor (v: boolean) {
     if (this.parent !== null && this.parent instanceof PhysicsBody) {
       throw new Error("A child physics body must be a sensor")
     }
-    Matter.Body.set(this._matterBody, { isSensor: v })
+    Matter.Body.set(this._shape._matterBody, { isSensor: v })
   }
   
   // Translates the body in a given direction
   protected translate (v: Vector2D): void {
-    Matter.Body.translate(this._matterBody, v.toMatterVector())
+    Matter.Body.translate(this._shape._matterBody, v.toMatterVector())
   }
   
   override _step(delta: number): void {
@@ -193,8 +191,6 @@ export class CollisionStartEvent extends GameEvent {
   targetBody: PhysicsBody
   
   /**
-   * 
-   * @param targetBody
    * ```typescript
    * const obj = new RectangleBody(new Vector(3,3))
    * obj.event.addEventListener("collisionStart", (e: Event) => {
@@ -202,6 +198,7 @@ export class CollisionStartEvent extends GameEvent {
    *  console.log(e.targetBody)
    * })
    * ```
+   * @param targetBody
    */
   constructor (targetBody: PhysicsBody) {
     super();
@@ -221,8 +218,6 @@ export class CollisionEndEvent extends GameEvent {
   
   targetBody: PhysicsBody
   /**
-   * 
-   * @param targetBody
    * ```typescript
    * const obj = new RectangleBody(new Vector(3,3))
    * obj.event.addEventListener("collisionEnd", (e: Event) => {
@@ -230,6 +225,7 @@ export class CollisionEndEvent extends GameEvent {
    *  console.log(e.targetBody)
    * })
    * ```
+   * @param targetBody
    */
   constructor (targetBody: PhysicsBody) {
     super();
@@ -237,33 +233,3 @@ export class CollisionEndEvent extends GameEvent {
   }
 }
 
-
-export class RectangleBody extends PhysicsBody {
-
-  private _size: Vector2D
-  
-  constructor (size: Vector2D) {
-    super(Matter.Bodies.rectangle(0,0, size.x, size.y))
-    this._size = size;
-  }
-  
-  // Size cant be changed once set
-  get size (): Vector2D {
-    return this._size
-  }
-}
-
-
-export class CircleBody extends PhysicsBody {
-  
-  private _radius: number
-  
-  constructor (radius: number) {
-    super(Matter.Bodies.circle(0, 0, radius))
-    this._radius = radius;
-  }
-  
-  get radius(): number {
-    return this._radius
-  }
-}
