@@ -1,0 +1,18 @@
+{
+  "name": "tsgame",
+  "version": "1.0.0",
+  "description": "A homebrewed game engine written in typescript",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc && typedoc --excludePrivate true --entryPointStrategy expand ./src"
+  },
+  "dependencies": {
+    "matter-js": "^0.18.0"
+  },
+  "devDependencies": {
+    "@types/matter-js": "^0.17.7",
+    "typedoc": "^0.23.2",
+    "typescript": "^4.7.4"
+  }
+}
