@@ -57,7 +57,7 @@ obj.event.addEventListener("onGameEnter", (e: Event) => {
 
 #### Defined in
 
-[engine/gameObject.ts:133](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L133)
+[engine/gameObject.ts:183](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L183)
 
 ___
 
@@ -73,4 +73,4 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:131](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L131)
+[engine/gameObject.ts:181](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L181)

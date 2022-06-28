@@ -45,6 +45,7 @@ the physics engine is abstracted away
 - [\_step](physics_physicsBody.CircleBody.md#_step)
 - [addChild](physics_physicsBody.CircleBody.md#addchild)
 - [removeChild](physics_physicsBody.CircleBody.md#removechild)
+- [root](physics_physicsBody.CircleBody.md#root)
 - [step](physics_physicsBody.CircleBody.md#step)
 - [translate](physics_physicsBody.CircleBody.md#translate)
 
@@ -84,13 +85,16 @@ ___
 
 • **game**: ``null`` \| [`Game`](engine_game.Game.md) = `null`
 
+The game instance that the game object is currently in.
+This is set to null if the game object is not in a game
+
 #### Inherited from
 
 [PhysicsBody](physics_physicsBody.PhysicsBody.md).[game](physics_physicsBody.PhysicsBody.md#game)
 
 #### Defined in
 
-[engine/gameObject.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L14)
+[engine/gameObject.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L18)
 
 ___
 
@@ -171,6 +175,8 @@ ___
 ### children
 
 • `get` **children**(): `Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+
+Returns all the children of this game object
 
 #### Returns
 
@@ -314,6 +320,8 @@ ___
 
 • `get` **parent**(): ``null`` \| [`GameObject`](engine_gameObject.GameObject.md)
 
+Gets the immediate parent of this game object
+
 #### Returns
 
 ``null`` \| [`GameObject`](engine_gameObject.GameObject.md)
@@ -434,6 +442,16 @@ PhysicsBody.velocity
 
 To be overwritten by children classes
 
+```typescript
+class MyObject extends GameObject {
+
+   override _step(delta: number): void {
+     super._step(delta);
+     // Add subclass functionality here
+   }
+}
+```
+
 #### Parameters
 
 | Name | Type |
@@ -458,11 +476,24 @@ Adds a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -482,11 +513,24 @@ Removes a game object as a child
 children objects are removed when
 the parent is removed
 
+```typescript
+const game = new Game();
+const parent = new GameObject();
+const child = new GameObject();
+parent.addChild(child);
+
+// Child is also added to game
+game.addGameObject(parent);
+
+// Child is also removed from game
+game.removeGameObject(parent);
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `child` | [`GameObject`](engine_gameObject.GameObject.md) | ```typescript const game = new Game(); const parent = new GameObject(); const child = new GameObject(); parent.addChild(child);  // Child is also added to game game.addGameObject(parent);  // Child is also removed from game game.removeGameObject(parent); ``` |
+| Name | Type |
+| :------ | :------ |
+| `child` | [`GameObject`](engine_gameObject.GameObject.md) |
 
 #### Returns
 
@@ -495,6 +539,34 @@ the parent is removed
 #### Inherited from
 
 [PhysicsBody](physics_physicsBody.PhysicsBody.md).[removeChild](physics_physicsBody.PhysicsBody.md#removechild)
+
+___
+
+### root
+
+▸ **root**(): [`GameObject`](engine_gameObject.GameObject.md)
+
+Recusively searches parents until
+a root parent is found
+
+```typescript
+const root = new GameObject();
+const parent = new GameObject();
+const child = new GameObject();
+root.addChild(parent);
+parent.addChild(child);
+
+// Returns root
+console.log(child.root());
+```
+
+#### Returns
+
+[`GameObject`](engine_gameObject.GameObject.md)
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[root](physics_physicsBody.PhysicsBody.md#root)
 
 ___
 

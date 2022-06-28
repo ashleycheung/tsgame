@@ -29,6 +29,17 @@ Called when exiting the game
 
 • **new OnGameExitEvent**(`game`)
 
+```typescript
+const obj = new GameObject()
+obj.event.addEventListener("onGameExit", (e: Event) => {
+ // e.game contains the Game class
+ console.log(e.game)
+})
+(new Game()).addGameObject(obj)
+// Event called here
+(new Game()).removeGameObject(obj)
+```
+
 #### Parameters
 
 | Name | Type |
@@ -47,7 +58,7 @@ Called when exiting the game
 
 #### Defined in
 
-[engine/gameObject.ts:162](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L162)
+[engine/gameObject.ts:212](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L212)
 
 ___
 
@@ -63,4 +74,4 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:160](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L160)
+[engine/gameObject.ts:210](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L210)

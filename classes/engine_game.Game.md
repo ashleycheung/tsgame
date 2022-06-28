@@ -67,6 +67,18 @@ ___
 
 ▸ **addGameObject**(`o`): `void`
 
+Adds a game object to the game
+
+```typescript
+const game = new Game();
+const obj = new GameObject();
+
+// Child is also added to game
+game.addGameObject(obj);
+// Updates all game objects
+game.step(1000);
+```
+
 #### Parameters
 
 | Name | Type |
@@ -83,6 +95,24 @@ ___
 
 ▸ **getAllGameObjects**(): [`GameObject`](engine_gameObject.GameObject.md)[]
 
+Returns an array of all the game objects in the game including children
+
+```typescript
+const game = new Game();
+const obj1 = new GameObject();
+const obj2 = new GameObject();
+const obj3 = new GameObject();
+const obj4 = new GameObject();
+obj2.addChild(obj3);
+
+// Add object
+game.addGameObject(obj1);
+game.addGameObject(obj2);
+game.addGameObject(obj5);
+// Returns [obj1, obj2, obj3, obj4]
+game.getAllGameObjects();
+```
+
 #### Returns
 
 [`GameObject`](engine_gameObject.GameObject.md)[]
@@ -95,6 +125,18 @@ ___
 
 Queues a game object to be removed at the end
 of the step
+
+```typescript
+const game = new Game();
+const obj = new GameObject();
+
+// Child is also added to game
+game.addGameObject(obj);
+// Queues the removeal of the object
+game.queueRemoveGameObject(obj);
+// Game object removed here at the end of step
+game.step(1000);
+```
 
 #### Parameters
 
@@ -115,6 +157,17 @@ ___
 Removes a game object
 sometimes queueRemoveGameObject needs to be
 called instead to prevent syncronisation bugs
+```typescript
+const game = new Game();
+const obj = new GameObject();
+
+// Child is also added to game
+game.addGameObject(obj);
+// Updates all game objects
+game.step(1000);
+// Removes the object
+game.removeGameObject(obj);
+```
 
 #### Parameters
 
@@ -131,6 +184,16 @@ ___
 ### step
 
 ▸ **step**(`delta`): `void`
+
+Runs a game step for the game
+
+```typescript
+const game = new Game();
+const obj = new GameObject();
+// Add object
+game.addGameObject(obj);
+game.step(1000);
+```
 
 #### Parameters
 
