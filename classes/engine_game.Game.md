@@ -31,6 +31,7 @@ Represents a game instance
 
 - [addGameObject](engine_game.Game.md#addgameobject)
 - [getAllGameObjects](engine_game.Game.md#getallgameobjects)
+- [getGameObjectsInGroup](engine_game.Game.md#getgameobjectsingroup)
 - [queueRemoveGameObject](engine_game.Game.md#queueremovegameobject)
 - [removeGameObject](engine_game.Game.md#removegameobject)
 - [step](engine_game.Game.md#step)
@@ -49,7 +50,7 @@ Represents a game instance
 
 #### Defined in
 
-[engine/game.ts:23](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/game.ts#L23)
+[engine/game.ts:27](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/game.ts#L27)
 
 ___
 
@@ -59,7 +60,7 @@ ___
 
 #### Defined in
 
-[engine/game.ts:25](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/game.ts#L25)
+[engine/game.ts:29](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/game.ts#L29)
 
 ## Methods
 
@@ -112,6 +113,36 @@ game.addGameObject(obj5);
 // Returns [obj1, obj2, obj3, obj4]
 game.getAllGameObjects();
 ```
+
+#### Returns
+
+[`GameObject`](engine_gameObject.GameObject.md)[]
+
+___
+
+### getGameObjectsInGroup
+
+▸ **getGameObjectsInGroup**(`group`): [`GameObject`](engine_gameObject.GameObject.md)[]
+
+Returns all the game objects in the game that belong to
+the given group
+
+```typescript
+const player = new GameObject();
+const game = new Game();
+game.addGameObject(player);
+
+o.addToGroup("player");
+
+// Returns [player]
+console.log(game.getGameObjectsInGroup("player"));
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
 
 #### Returns
 

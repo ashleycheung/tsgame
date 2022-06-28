@@ -30,13 +30,18 @@ A base class that represents a game object
 ### Accessors
 
 - [children](engine_gameObject.GameObject.md#children)
+- [groups](engine_gameObject.GameObject.md#groups)
+- [id](engine_gameObject.GameObject.md#id)
 - [parent](engine_gameObject.GameObject.md#parent)
 
 ### Methods
 
 - [\_step](engine_gameObject.GameObject.md#_step)
 - [addChild](engine_gameObject.GameObject.md#addchild)
+- [addToGroup](engine_gameObject.GameObject.md#addtogroup)
+- [isInGroup](engine_gameObject.GameObject.md#isingroup)
 - [removeChild](engine_gameObject.GameObject.md#removechild)
+- [removeFromGroup](engine_gameObject.GameObject.md#removefromgroup)
 - [root](engine_gameObject.GameObject.md#root)
 - [step](engine_gameObject.GameObject.md#step)
 
@@ -67,19 +72,45 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L18)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
 
 ## Accessors
 
 ### children
 
-• `get` **children**(): `Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+• `get` **children**(): [`GameObject`](engine_gameObject.GameObject.md)[]
 
 Returns all the children of this game object
 
 #### Returns
 
-`Set`<[`GameObject`](engine_gameObject.GameObject.md)\>
+[`GameObject`](engine_gameObject.GameObject.md)[]
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+___
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
 
 ___
 
@@ -156,6 +187,54 @@ game.removeGameObject(parent);
 
 ___
 
+### addToGroup
+
+▸ **addToGroup**(`group`): `void`
+
+Adds this game object to a group
+
+```typescript
+const player = new GameObject();
+const game = new Game();
+game.addGameObject(player);
+
+o.addToGroup("player");
+
+// Returns [player]
+console.log(game.getGameObjectsInGroup("player"));
+```
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`void`
+
+___
+
+### isInGroup
+
+▸ **isInGroup**(`group`): `boolean`
+
+Returns whether the game object is
+a part of the given group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
+
+#### Returns
+
+`boolean`
+
+___
+
 ### removeChild
 
 ▸ **removeChild**(`child`): `void`
@@ -182,6 +261,24 @@ game.removeGameObject(parent);
 | Name | Type |
 | :------ | :------ |
 | `child` | [`GameObject`](engine_gameObject.GameObject.md) |
+
+#### Returns
+
+`void`
+
+___
+
+### removeFromGroup
+
+▸ **removeFromGroup**(`group`): `void`
+
+Removes this game object from a group
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `group` | `string` |
 
 #### Returns
 
