@@ -54,7 +54,7 @@ Event name
 
 #### Defined in
 
-[physics/physicsBody.ts:191](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L191)
+[physics/physicsBody.ts:189](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L189)
 
 ___
 
@@ -64,4 +64,4 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:193](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L193)
+[physics/physicsBody.ts:191](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L191)

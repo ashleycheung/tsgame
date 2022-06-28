@@ -9,7 +9,7 @@ the physics engine is abstracted away
 
 ## Hierarchy
 
-- [`RectangleBody`](physics_physicsBody.RectangleBody.md)
+- [`PhysicsBody`](physics_physicsBody.PhysicsBody.md)
 
   ↳ **`TilemapWallCell`**
 
@@ -21,6 +21,7 @@ the physics engine is abstracted away
 
 ### Properties
 
+- [\_shape](engine_tilemap.TilemapWallCell.md#_shape)
 - [event](engine_tilemap.TilemapWallCell.md#event)
 - [game](engine_tilemap.TilemapWallCell.md#game)
 - [offset](engine_tilemap.TilemapWallCell.md#offset)
@@ -36,7 +37,6 @@ the physics engine is abstracted away
 - [isSensor](engine_tilemap.TilemapWallCell.md#issensor)
 - [parent](engine_tilemap.TilemapWallCell.md#parent)
 - [position](engine_tilemap.TilemapWallCell.md#position)
-- [size](engine_tilemap.TilemapWallCell.md#size)
 - [static](engine_tilemap.TilemapWallCell.md#static)
 - [velocity](engine_tilemap.TilemapWallCell.md#velocity)
 
@@ -64,9 +64,23 @@ the physics engine is abstracted away
 
 #### Overrides
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[constructor](physics_physicsBody.RectangleBody.md#constructor)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[constructor](physics_physicsBody.PhysicsBody.md#constructor)
 
 ## Properties
+
+### \_shape
+
+• `Readonly` **\_shape**: [`PhysicsShape`](physics_physicsShape.PhysicsShape.md)
+
+#### Inherited from
+
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[_shape](physics_physicsBody.PhysicsBody.md#_shape)
+
+#### Defined in
+
+[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L14)
+
+___
 
 ### event
 
@@ -74,7 +88,7 @@ the physics engine is abstracted away
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[event](physics_physicsBody.RectangleBody.md#event)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[event](physics_physicsBody.PhysicsBody.md#event)
 
 #### Defined in
 
@@ -91,7 +105,7 @@ This is set to null if the game object is not in a game
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[game](physics_physicsBody.RectangleBody.md#game)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[game](physics_physicsBody.PhysicsBody.md#game)
 
 #### Defined in
 
@@ -105,11 +119,11 @@ ___
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[offset](physics_physicsBody.RectangleBody.md#offset)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[offset](physics_physicsBody.PhysicsBody.md#offset)
 
 #### Defined in
 
-[physics/physicsBody.ts:20](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L20)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L18)
 
 ## Accessors
 
@@ -123,7 +137,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.airResistance
+PhysicsBody.airResistance
 
 • `set` **airResistance**(`ar`): `void`
 
@@ -139,7 +153,7 @@ RectangleBody.airResistance
 
 #### Inherited from
 
-RectangleBody.airResistance
+PhysicsBody.airResistance
 
 ___
 
@@ -153,7 +167,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.angle
+PhysicsBody.angle
 
 • `set` **angle**(`a`): `void`
 
@@ -169,7 +183,7 @@ RectangleBody.angle
 
 #### Inherited from
 
-RectangleBody.angle
+PhysicsBody.angle
 
 ___
 
@@ -185,7 +199,7 @@ Returns all the children of this game object
 
 #### Inherited from
 
-RectangleBody.children
+PhysicsBody.children
 
 ___
 
@@ -201,7 +215,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionCategory
+PhysicsBody.collisionCategory
 
 • `set` **collisionCategory**(`v`): `void`
 
@@ -219,7 +233,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionCategory
+PhysicsBody.collisionCategory
 
 ___
 
@@ -235,7 +249,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionMask
+PhysicsBody.collisionMask
 
 • `set` **collisionMask**(`v`): `void`
 
@@ -253,7 +267,7 @@ https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.categor
 
 #### Inherited from
 
-RectangleBody.collisionMask
+PhysicsBody.collisionMask
 
 ___
 
@@ -267,7 +281,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.friction
+PhysicsBody.friction
 
 • `set` **friction**(`f`): `void`
 
@@ -283,7 +297,7 @@ RectangleBody.friction
 
 #### Inherited from
 
-RectangleBody.friction
+PhysicsBody.friction
 
 ___
 
@@ -297,7 +311,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.isSensor
+PhysicsBody.isSensor
 
 • `set` **isSensor**(`v`): `void`
 
@@ -313,7 +327,7 @@ RectangleBody.isSensor
 
 #### Inherited from
 
-RectangleBody.isSensor
+PhysicsBody.isSensor
 
 ___
 
@@ -329,7 +343,7 @@ Gets the immediate parent of this game object
 
 #### Inherited from
 
-RectangleBody.parent
+PhysicsBody.parent
 
 ___
 
@@ -345,7 +359,7 @@ Position is 0 by default
 
 #### Inherited from
 
-RectangleBody.position
+PhysicsBody.position
 
 • `set` **position**(`p`): `void`
 
@@ -363,21 +377,7 @@ Position is 0 by default
 
 #### Inherited from
 
-RectangleBody.position
-
-___
-
-### size
-
-• `get` **size**(): [`Vector2D`](physics_vector.Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](physics_vector.Vector2D.md)
-
-#### Inherited from
-
-RectangleBody.size
+PhysicsBody.position
 
 ___
 
@@ -391,7 +391,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.static
+PhysicsBody.static
 
 • `set` **static**(`v`): `void`
 
@@ -407,7 +407,7 @@ RectangleBody.static
 
 #### Inherited from
 
-RectangleBody.static
+PhysicsBody.static
 
 ___
 
@@ -421,7 +421,7 @@ ___
 
 #### Inherited from
 
-RectangleBody.velocity
+PhysicsBody.velocity
 
 • `set` **velocity**(`p`): `void`
 
@@ -437,7 +437,7 @@ RectangleBody.velocity
 
 #### Inherited from
 
-RectangleBody.velocity
+PhysicsBody.velocity
 
 ## Methods
 
@@ -469,7 +469,7 @@ class MyObject extends GameObject {
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[_step](physics_physicsBody.RectangleBody.md#_step)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[_step](physics_physicsBody.PhysicsBody.md#_step)
 
 ___
 
@@ -506,7 +506,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[addChild](physics_physicsBody.RectangleBody.md#addchild)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[addChild](physics_physicsBody.PhysicsBody.md#addchild)
 
 ___
 
@@ -543,7 +543,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[removeChild](physics_physicsBody.RectangleBody.md#removechild)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[removeChild](physics_physicsBody.PhysicsBody.md#removechild)
 
 ___
 
@@ -571,7 +571,7 @@ console.log(child.root());
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[root](physics_physicsBody.RectangleBody.md#root)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[root](physics_physicsBody.PhysicsBody.md#root)
 
 ___
 
@@ -597,7 +597,7 @@ the _step method
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[step](physics_physicsBody.RectangleBody.md#step)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[step](physics_physicsBody.PhysicsBody.md#step)
 
 ___
 
@@ -617,4 +617,4 @@ ___
 
 #### Inherited from
 
-[RectangleBody](physics_physicsBody.RectangleBody.md).[translate](physics_physicsBody.RectangleBody.md#translate)
+[PhysicsBody](physics_physicsBody.PhysicsBody.md).[translate](physics_physicsBody.PhysicsBody.md#translate)

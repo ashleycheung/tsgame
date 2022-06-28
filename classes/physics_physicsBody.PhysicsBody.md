@@ -13,9 +13,7 @@ the physics engine is abstracted away
 
   ↳ **`PhysicsBody`**
 
-  ↳↳ [`RectangleBody`](physics_physicsBody.RectangleBody.md)
-
-  ↳↳ [`CircleBody`](physics_physicsBody.CircleBody.md)
+  ↳↳ [`TilemapWallCell`](engine_tilemap.TilemapWallCell.md)
 
 ## Table of contents
 
@@ -25,6 +23,7 @@ the physics engine is abstracted away
 
 ### Properties
 
+- [\_shape](physics_physicsBody.PhysicsBody.md#_shape)
 - [event](physics_physicsBody.PhysicsBody.md#event)
 - [game](physics_physicsBody.PhysicsBody.md#game)
 - [offset](physics_physicsBody.PhysicsBody.md#offset)
@@ -56,19 +55,29 @@ the physics engine is abstracted away
 
 ### constructor
 
-• **new PhysicsBody**(`body`)
+• **new PhysicsBody**(`shape`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `body` | `Body` |
+| `shape` | [`PhysicsShape`](physics_physicsShape.PhysicsShape.md) |
 
 #### Overrides
 
 [GameObject](engine_gameObject.GameObject.md).[constructor](engine_gameObject.GameObject.md#constructor)
 
 ## Properties
+
+### \_shape
+
+• `Readonly` **\_shape**: [`PhysicsShape`](physics_physicsShape.PhysicsShape.md)
+
+#### Defined in
+
+[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L14)
+
+___
 
 ### event
 
@@ -107,7 +116,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:20](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L20)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L18)
 
 ## Accessors
 
