@@ -30,11 +30,19 @@ body
 
 • **new CollisionStartEvent**(`targetBody`)
 
+```typescript
+const obj = new RectangleBody(new Vector(3,3))
+obj.event.addEventListener("collisionStart", (e: Event) => {
+ // Logs whatever the body collides with
+ console.log(e.targetBody)
+})
+```
+
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `targetBody` | [`PhysicsBody`](physics_physicsBody.PhysicsBody.md) | ```typescript const obj = new RectangleBody(new Vector(3,3)) obj.event.addEventListener("collisionStart", (e: Event) => {  // Logs whatever the body collides with  console.log(e.targetBody) }) ``` |
+| Name | Type |
+| :------ | :------ |
+| `targetBody` | [`PhysicsBody`](physics_physicsBody.PhysicsBody.md) |
 
 #### Overrides
 
