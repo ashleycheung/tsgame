@@ -36,7 +36,7 @@ Creates a rectangle physics shape
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `size` | [`Vector2D`](physics_vector.Vector2D.md) | the size of the rectangle where x is width and y is height |
+| `size` | [`Vector2D`](physics_vector2d.Vector2D.md) | the size of the rectangle where x is width and y is height |
 
 #### Overrides
 
@@ -54,16 +54,16 @@ PhysicsShape.constructor
 
 #### Defined in
 
-physics/physicsShape.ts:6
+[physics/physicsShape.ts:6](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsShape.ts#L6)
 
 ## Accessors
 
 ### size
 
-• `get` **size**(): [`Vector2D`](physics_vector.Vector2D.md)
+• `get` **size**(): [`Vector2D`](physics_vector2d.Vector2D.md)
 
 Returns the size of the rectangle
 
 #### Returns
 
-[`Vector2D`](physics_vector.Vector2D.md)
+[`Vector2D`](physics_vector2d.Vector2D.md)

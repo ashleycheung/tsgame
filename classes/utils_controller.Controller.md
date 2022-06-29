@@ -26,21 +26,21 @@
 
 ### getMovementDirection
 
-▸ **getMovementDirection**(): [`Vector2D`](physics_vector.Vector2D.md)
+▸ **getMovementDirection**(): [`Vector2D`](physics_vector2d.Vector2D.md)
 
 #### Returns
 
-[`Vector2D`](physics_vector.Vector2D.md)
+[`Vector2D`](physics_vector2d.Vector2D.md)
 
 ___
 
 ### getShootDirection
 
-▸ **getShootDirection**(): ``null`` \| [`Vector2D`](physics_vector.Vector2D.md)
+▸ **getShootDirection**(): ``null`` \| [`Vector2D`](physics_vector2d.Vector2D.md)
 
 #### Returns
 
-``null`` \| [`Vector2D`](physics_vector.Vector2D.md)
+``null`` \| [`Vector2D`](physics_vector2d.Vector2D.md)
 
 ___
 

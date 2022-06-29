@@ -55,8 +55,8 @@ Creates an empty tilemap of the given size
 | Name | Type | Default value | Description |
 | :------ | :------ | :------ | :------ |
 | `cells` | `number`[][] | `undefined` | x represents the width, y represents the height |
-| `cellSize` | [`Vector2D`](physics_vector.Vector2D.md) | `undefined` | the size of a cell in the tilemap |
-| `origin` | [`Vector2D`](physics_vector.Vector2D.md) | `undefined` | the position of the top left corner of the tilemap |
+| `cellSize` | [`Vector2D`](physics_vector2d.Vector2D.md) | `undefined` | the size of a cell in the tilemap |
+| `origin` | [`Vector2D`](physics_vector2d.Vector2D.md) | `undefined` | the position of the top left corner of the tilemap |
 | `code` | `TilemapCode` | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
 
 #### Overrides
@@ -75,7 +75,7 @@ Creates an empty tilemap of the given size
 
 #### Defined in
 
-[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L8)
+[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L8)
 
 ___
 
@@ -92,7 +92,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L24)
 
 ## Accessors
 
@@ -376,7 +376,7 @@ ___
 
 ### size
 
-▸ **size**(): [`Vector2D`](physics_vector.Vector2D.md)
+▸ **size**(): [`Vector2D`](physics_vector2d.Vector2D.md)
 
 Returns the size of the tilemap
 ```typescript
@@ -399,7 +399,7 @@ tilemap.size();
 
 #### Returns
 
-[`Vector2D`](physics_vector.Vector2D.md)
+[`Vector2D`](physics_vector2d.Vector2D.md)
 
 ___
 

@@ -59,7 +59,7 @@ A base class that represents a game object
 
 #### Defined in
 
-[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L8)
+[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L8)
 
 ___
 
@@ -72,7 +72,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L24)
 
 ## Accessors
 

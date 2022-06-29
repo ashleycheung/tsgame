@@ -80,7 +80,7 @@ the physics engine is abstracted away
 
 #### Defined in
 
-[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L14)
+[physics/physicsBody.ts:14](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L14)
 
 ___
 
@@ -94,7 +94,7 @@ ___
 
 #### Defined in
 
-[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L8)
+[engine/gameObject.ts:8](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L8)
 
 ___
 
@@ -111,17 +111,17 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L24)
+[engine/gameObject.ts:24](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L24)
 
 ___
 
 ### offset
 
-• **offset**: [`Vector2D`](physics_vector.Vector2D.md)
+• **offset**: [`Vector2D`](physics_vector2d.Vector2D.md)
 
 #### Defined in
 
-[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L18)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L18)
 
 ## Accessors
 
@@ -333,13 +333,13 @@ ___
 
 ### position
 
-• `get` **position**(): [`Vector2D`](physics_vector.Vector2D.md)
+• `get` **position**(): [`Vector2D`](physics_vector2d.Vector2D.md)
 
 Position is 0 by default
 
 #### Returns
 
-[`Vector2D`](physics_vector.Vector2D.md)
+[`Vector2D`](physics_vector2d.Vector2D.md)
 
 • `set` **position**(`p`): `void`
 
@@ -349,7 +349,7 @@ Position is 0 by default
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Vector2D`](physics_vector.Vector2D.md) |
+| `p` | [`Vector2D`](physics_vector2d.Vector2D.md) |
 
 #### Returns
 
@@ -381,11 +381,11 @@ ___
 
 ### velocity
 
-• `get` **velocity**(): [`Vector2D`](physics_vector.Vector2D.md)
+• `get` **velocity**(): [`Vector2D`](physics_vector2d.Vector2D.md)
 
 #### Returns
 
-[`Vector2D`](physics_vector.Vector2D.md)
+[`Vector2D`](physics_vector2d.Vector2D.md)
 
 • `set` **velocity**(`p`): `void`
 
@@ -393,7 +393,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Vector2D`](physics_vector.Vector2D.md) |
+| `p` | [`Vector2D`](physics_vector2d.Vector2D.md) |
 
 #### Returns
 
@@ -647,7 +647,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `v` | [`Vector2D`](physics_vector.Vector2D.md) |
+| `v` | [`Vector2D`](physics_vector2d.Vector2D.md) |
 
 #### Returns
 

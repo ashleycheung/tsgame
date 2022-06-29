@@ -62,7 +62,7 @@ Event name
 
 #### Defined in
 
-[physics/physicsBody.ts:217](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L217)
+[physics/physicsBody.ts:217](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L217)
 
 ___
 
@@ -72,4 +72,4 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:219](https://github.com/ashleycheung/tsgame/blob/f970211/src/physics/physicsBody.ts#L219)
+[physics/physicsBody.ts:219](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L219)

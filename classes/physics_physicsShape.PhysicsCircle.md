@@ -54,7 +54,7 @@ PhysicsShape.constructor
 
 #### Defined in
 
-physics/physicsShape.ts:6
+[physics/physicsShape.ts:6](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsShape.ts#L6)
 
 ## Accessors
 

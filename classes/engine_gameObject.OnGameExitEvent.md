@@ -58,7 +58,7 @@ obj.event.addEventListener("onGameExit", (e: Event) => {
 
 #### Defined in
 
-[engine/gameObject.ts:286](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L286)
+[engine/gameObject.ts:286](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L286)
 
 ___
 
@@ -74,4 +74,4 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:284](https://github.com/ashleycheung/tsgame/blob/f970211/src/engine/gameObject.ts#L284)
+[engine/gameObject.ts:284](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L284)

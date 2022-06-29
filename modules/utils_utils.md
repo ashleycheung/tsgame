@@ -13,6 +13,7 @@
 - [bit32ToSet](utils_utils.md#bit32toset)
 - [rotate2DArray](utils_utils.md#rotate2darray)
 - [setToBit32](utils_utils.md#settobit32)
+- [toFixed](utils_utils.md#tofixed)
 
 ## Functions
 
@@ -57,6 +58,23 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `set` | `Set`<`number`\> |
+
+#### Returns
+
+`number`
+
+___
+
+### toFixed
+
+▸ **toFixed**(`n`, `digits`): `number`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `n` | `number` |
+| `digits` | `number` |
 
 #### Returns
 
