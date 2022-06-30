@@ -10,7 +10,7 @@
  *    console.log("Collision occured")
  *  })
  * ```
- *
+ * @group Engine 
  */
 export class EventManager {
   
@@ -52,6 +52,7 @@ export class EventManager {
 
 /**
  * The base class that represents a game event
+ * @event
  */
 export abstract class GameEvent {
   /**

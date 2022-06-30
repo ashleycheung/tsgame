@@ -1,0 +1,9 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src"],
+  "sort": ["source-order"],
+  "exclude": ["src/index.ts"],
+  "plugin": ["typedoc-plugin-markdown"],
+  "excludePrivate": true,
+  "githubPages": false
+}

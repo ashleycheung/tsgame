@@ -3,6 +3,7 @@ import { GameObject } from "./gameObject";
 
 /**
  * A class that acts as a timer
+ * @group Engine
  */
 export class Timer extends GameObject {
   

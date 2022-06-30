@@ -15,6 +15,8 @@ import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "./gameObject";
     // Runs the game forward by 1 sec
     game.step(1000)
   ```
+  
+  @group Engine
 */
 export class Game {
   
@@ -237,6 +239,7 @@ export class Game {
 /**
  * This is called after the physics step
  * in the game loop
+ * @group Engine
  * @event
  */
 export class PostPhysicsStepEvent extends GameEvent {

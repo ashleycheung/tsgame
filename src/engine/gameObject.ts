@@ -3,6 +3,7 @@ import { Game } from "./game";
 
 /**
  * A base class that represents a game object
+ * @group Engine
  */
 export class GameObject {
   readonly event: EventManager = new EventManager();
@@ -245,6 +246,7 @@ export class GameObject {
 
 /**
  * Called when entering the game
+ * @group Engine
  * @event
  *
  */
@@ -278,6 +280,7 @@ export class OnGameEnterEvent extends GameEvent {
 
 /**
  * Called when exiting the game
+ * @group Engine
  * @event
  */
  export class OnGameExitEvent extends GameEvent {

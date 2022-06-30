@@ -1,10 +1,14 @@
 import { PhysicsBody } from "../physics/physicsBody";
 import { PhysicsRectangle } from "../physics/physicsShape";
-import { Vector2D } from "../physics/vector";
+import { Vector2D } from "../physics/vector2d";
 import { rotate2DArray } from "../utils/utils";
 import { GameEvent } from "./event";
 import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "./gameObject";
 
+/**
+ * Represents a tilemap
+ * @group Engine
+ */
 export class Tilemap extends GameObject {
   
   // 2d array representing the cells
@@ -142,6 +146,10 @@ export class Tilemap extends GameObject {
 }
 
 
+/**
+ * A specific cell in the tilemap
+ * @group Engine
+ */
 export class TilemapWallCell extends PhysicsBody {
   constructor (size: Vector2D, code: TilemapCode) {
     super(new PhysicsRectangle(size));
@@ -156,12 +164,12 @@ export class TilemapWallCell extends PhysicsBody {
  * Maps the tilemap cells to its
  * code id
  */
-type TilemapCode = {
+export type TilemapCode = {
   empty: TileMapCellCode,
   wall: TileMapCellCode,
 }
 
-type TileMapCellCode = {
+export type TileMapCellCode = {
   code: number,
   // The collision layers to collide with
   collision: Array<number>

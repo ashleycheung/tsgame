@@ -75,3 +75,7 @@ export const rotate2DArray = (array: Array<Array<any>>): Array<Array<any>> => {
   }
   return out;
 }
+
+export const toFixed = (n: number, digits: number): number => {
+  return Number.parseFloat(n.toFixed(digits))
+}

@@ -3,6 +3,10 @@ import { CollisionEndEvent, CollisionStartEvent, PhysicsBody } from "./physicsBo
 import { GameEvent } from "../engine/event";
 
 
+/**
+ * Responsible for the games physics
+ * @group Physics
+ */
 export class Physics {
   
   /**

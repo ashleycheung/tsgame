@@ -1,4 +1,4 @@
-import { Vector2D } from "../physics/vector";
+import { Vector2D } from "../physics/vector2d";
 
 export class Controller {
   

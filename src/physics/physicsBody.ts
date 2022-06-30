@@ -2,12 +2,13 @@ import Matter from "matter-js";
 import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "../engine/gameObject";
 import { bit32ToSet, setToBit32 } from "../utils/utils";
 import { GameEvent } from "../engine/event";
-import { Vector2D } from "./vector";
+import { Vector2D } from "./vector2d";
 import { PhysicsShape } from "./physicsShape";
 
 /**
  * A physics body
  * the physics engine is abstracted away
+ * @group Physics
  */
 export class PhysicsBody extends GameObject {
   

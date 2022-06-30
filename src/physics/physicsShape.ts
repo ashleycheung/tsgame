@@ -1,7 +1,12 @@
 import Matter from "matter-js";
 import { PhysicsBody } from "./physicsBody";
-import { Vector2D } from "./vector";
+import { Vector2D } from "./vector2d";
 
+/**
+ * Abstract class representing a physics
+ * body shape
+ * @group Physics
+ */
 export abstract class PhysicsShape {
   body: PhysicsBody | null = null;
   
@@ -23,6 +28,7 @@ export abstract class PhysicsShape {
 
 /**
  * Creates a rectangle physics shape
+ * @group Physics
  */
 export class PhysicsRectangle extends PhysicsShape {
   
@@ -48,6 +54,7 @@ export class PhysicsRectangle extends PhysicsShape {
 
 /**
  * Creates a circle physics shape
+ * @group Physics
  */
 export class PhysicsCircle extends PhysicsShape {
   
