@@ -4,20 +4,156 @@
 
 ## Table of contents
 
-### Modules
+### Engine
 
-- [engine/event](modules/engine_event.md)
-- [engine/game](modules/engine_game.md)
-- [engine/gameObject](modules/engine_gameObject.md)
-- [engine/tilemap](modules/engine_tilemap.md)
-- [engine/timer](modules/engine_timer.md)
-- [physics/matrix2x2](modules/physics_matrix2x2.md)
-- [physics/matrix3x3](modules/physics_matrix3x3.md)
-- [physics/matrix4x4](modules/physics_matrix4x4.md)
-- [physics/physics](modules/physics_physics.md)
-- [physics/physicsBody](modules/physics_physicsBody.md)
-- [physics/physicsShape](modules/physics_physicsShape.md)
-- [physics/vector2d](modules/physics_vector2d.md)
-- [physics/vector3d](modules/physics_vector3d.md)
-- [utils/controller](modules/utils_controller.md)
-- [utils/utils](modules/utils_utils.md)
+- [EventManager](classes/EventManager.md)
+- [Game](classes/Game.md)
+- [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [GameObject](classes/GameObject.md)
+- [OnGameEnterEvent](classes/OnGameEnterEvent.md)
+- [OnGameExitEvent](classes/OnGameExitEvent.md)
+- [Tilemap](classes/Tilemap.md)
+- [TilemapWallCell](classes/TilemapWallCell.md)
+- [Timer](classes/Timer.md)
+
+### Events
+
+- [GameEvent](classes/GameEvent.md)
+- [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [OnGameEnterEvent](classes/OnGameEnterEvent.md)
+- [OnGameExitEvent](classes/OnGameExitEvent.md)
+- [TimerEndEvent](classes/TimerEndEvent.md)
+- [CollisionStartEvent](classes/CollisionStartEvent.md)
+- [CollisionEndEvent](classes/CollisionEndEvent.md)
+
+### Type Aliases
+
+- [TilemapCode](modules.md#tilemapcode)
+- [TileMapCellCode](modules.md#tilemapcellcode)
+
+### Classes
+
+- [Matrix2x2](classes/Matrix2x2.md)
+- [Matrix3x3](classes/Matrix3x3.md)
+- [Matrix4x4](classes/Matrix4x4.md)
+- [Vector3D](classes/Vector3D.md)
+- [Controller](classes/Controller.md)
+- [PhysicsRender](classes/PhysicsRender.md)
+
+### Physics
+
+- [Physics](classes/Physics.md)
+- [PhysicsBody](classes/PhysicsBody.md)
+- [PhysicsShape](classes/PhysicsShape.md)
+- [PhysicsRectangle](classes/PhysicsRectangle.md)
+- [PhysicsCircle](classes/PhysicsCircle.md)
+- [Vector2D](classes/Vector2D.md)
+
+### Functions
+
+- [bit32ToSet](modules.md#bit32toset)
+- [setToBit32](modules.md#settobit32)
+- [rotate2DArray](modules.md#rotate2darray)
+- [toFixed](modules.md#tofixed)
+
+## Type Aliases
+
+### TilemapCode
+
+Ƭ **TilemapCode**: `Object`
+
+Maps the tilemap cells to its
+code id
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `empty` | [`TileMapCellCode`](modules.md#tilemapcellcode) |
+| `wall` | [`TileMapCellCode`](modules.md#tilemapcellcode) |
+
+#### Defined in
+
+[engine/tilemap.ts:167](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/tilemap.ts#L167)
+
+___
+
+### TileMapCellCode
+
+Ƭ **TileMapCellCode**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `code` | `number` |
+| `collision` | `number`[] |
+
+#### Defined in
+
+[engine/tilemap.ts:172](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/tilemap.ts#L172)
+
+## Functions
+
+### bit32ToSet
+
+▸ **bit32ToSet**(`bit`): `Set`<`number`\>
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `bit` | `number` |
+
+#### Returns
+
+`Set`<`number`\>
+
+___
+
+### setToBit32
+
+▸ **setToBit32**(`set`): `number`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `set` | `Set`<`number`\> |
+
+#### Returns
+
+`number`
+
+___
+
+### rotate2DArray
+
+▸ **rotate2DArray**(`array`): `any`[][]
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `array` | `any`[][] |
+
+#### Returns
+
+`any`[][]
+
+___
+
+### toFixed
+
+▸ **toFixed**(`n`, `digits`): `number`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `n` | `number` |
+| `digits` | `number` |
+
+#### Returns
+
+`number`
