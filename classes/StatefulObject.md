@@ -1,45 +1,58 @@
-[tsgame](../README.md) / [Exports](../modules.md) / Timer
+[tsgame](../README.md) / [Exports](../modules.md) / StatefulObject
 
-# Class: Timer
+# Class: StatefulObject<T\>
 
-A class that acts as a timer
+An object that has a state needed by the renderer to render
+
+## Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
 - [`GameObject`](GameObject.md)
 
-  ↳ **`Timer`**
+  ↳ **`StatefulObject`**
+
+  ↳↳ [`PhysicsBody`](PhysicsBody.md)
+
+  ↳↳ [`Sprite`](Sprite.md)
 
 ## Table of contents
 
 ### Properties
 
-- [event](Timer.md#event)
-- [game](Timer.md#game)
+- [event](StatefulObject.md#event)
+- [game](StatefulObject.md#game)
+- [type](StatefulObject.md#type)
 
 ### Accessors
 
-- [id](Timer.md#id)
-- [parent](Timer.md#parent)
-- [children](Timer.md#children)
-- [groups](Timer.md#groups)
-- [active](Timer.md#active)
+- [id](StatefulObject.md#id)
+- [parent](StatefulObject.md#parent)
+- [children](StatefulObject.md#children)
+- [groups](StatefulObject.md#groups)
 
 ### Methods
 
-- [addToGroup](Timer.md#addtogroup)
-- [removeFromGroup](Timer.md#removefromgroup)
-- [isInGroup](Timer.md#isingroup)
-- [root](Timer.md#root)
-- [addChild](Timer.md#addchild)
-- [removeChild](Timer.md#removechild)
-- [step](Timer.md#step)
-- [start](Timer.md#start)
-- [\_step](Timer.md#_step)
+- [addToGroup](StatefulObject.md#addtogroup)
+- [removeFromGroup](StatefulObject.md#removefromgroup)
+- [isInGroup](StatefulObject.md#isingroup)
+- [root](StatefulObject.md#root)
+- [addChild](StatefulObject.md#addchild)
+- [removeChild](StatefulObject.md#removechild)
+- [step](StatefulObject.md#step)
+- [\_step](StatefulObject.md#_step)
+- [storeLastState](StatefulObject.md#storelaststate)
+- [getObjectState](StatefulObject.md#getobjectstate)
+- [getState](StatefulObject.md#getstate)
+- [getUpdate](StatefulObject.md#getupdate)
 
 ### Constructors
 
-- [constructor](Timer.md#constructor)
+- [constructor](StatefulObject.md#constructor)
 
 ## Properties
 
@@ -71,6 +84,16 @@ This is set to null if the game object is not in a game
 #### Defined in
 
 [engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+
+___
+
+### type
+
+• `Readonly` `Abstract` **type**: `string`
+
+#### Defined in
+
+[state/statefulObject.ts:15](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L15)
 
 ## Accessors
 
@@ -137,16 +160,6 @@ Returns all the groups this game object is in.
 #### Inherited from
 
 GameObject.groups
-
-___
-
-### active
-
-• `get` **active**(): `boolean`
-
-#### Returns
-
-`boolean`
 
 ## Methods
 
@@ -356,25 +369,9 @@ the _step method
 
 ___
 
-### start
-
-▸ **start**(): `void`
-
-Starts a timer
-```typescript
-const timer = new Timer(1000);
-timer.start();
-```
-
-#### Returns
-
-`void`
-
-___
-
 ### \_step
 
-▸ **_step**(`delta`): `void`
+▸ `Protected` **_step**(`delta`): `void`
 
 To be overwritten by children classes
 
@@ -398,24 +395,75 @@ class MyObject extends GameObject {
 
 `void`
 
-#### Overrides
+#### Inherited from
 
 [GameObject](GameObject.md).[_step](GameObject.md#_step)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+___
+
+### getObjectState
+
+▸ `Abstract` **getObjectState**(): `T`
+
+Returns the state object of the given state
+
+#### Returns
+
+`T`
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
 
 ## Constructors
 
 ### constructor
 
-• **new Timer**(`duration`)
+• **new StatefulObject**<`T`\>()
 
-Creates a timer object of the given
-duration
+#### Type parameters
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `duration` | `number` | duration in milliseconds ```typescript const timer = new Timer(1000); timer.start(); ``` |
+| Name |
+| :------ |
+| `T` |
 
 #### Overrides
 

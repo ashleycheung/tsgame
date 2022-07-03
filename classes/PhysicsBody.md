@@ -7,7 +7,7 @@ the physics engine is abstracted away
 
 ## Hierarchy
 
-- [`GameObject`](GameObject.md)
+- [`StatefulObject`](StatefulObject.md)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
 
   ↳ **`PhysicsBody`**
 
@@ -20,6 +20,7 @@ the physics engine is abstracted away
 - [event](PhysicsBody.md#event)
 - [game](PhysicsBody.md#game)
 - [\_shape](PhysicsBody.md#_shape)
+- [type](PhysicsBody.md#type)
 - [offset](PhysicsBody.md#offset)
 
 ### Accessors
@@ -47,8 +48,12 @@ the physics engine is abstracted away
 - [addChild](PhysicsBody.md#addchild)
 - [removeChild](PhysicsBody.md#removechild)
 - [step](PhysicsBody.md#step)
+- [getObjectState](PhysicsBody.md#getobjectstate)
 - [translate](PhysicsBody.md#translate)
 - [\_step](PhysicsBody.md#_step)
+- [storeLastState](PhysicsBody.md#storelaststate)
+- [getState](PhysicsBody.md#getstate)
+- [getUpdate](PhysicsBody.md#getupdate)
 
 ### Constructors
 
@@ -62,11 +67,11 @@ the physics engine is abstracted away
 
 #### Inherited from
 
-[GameObject](GameObject.md).[event](GameObject.md#event)
+[StatefulObject](StatefulObject.md).[event](StatefulObject.md#event)
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -79,11 +84,11 @@ This is set to null if the game object is not in a game
 
 #### Inherited from
 
-[GameObject](GameObject.md).[game](GameObject.md#game)
+[StatefulObject](StatefulObject.md).[game](StatefulObject.md#game)
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -93,7 +98,21 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:15](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L15)
+[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L16)
+
+___
+
+### type
+
+• `Readonly` **type**: `string` = `"PhysicsBody"`
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[type](StatefulObject.md#type)
+
+#### Defined in
+
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L18)
 
 ___
 
@@ -103,7 +122,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:19](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L19)
+[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L22)
 
 ## Accessors
 
@@ -121,7 +140,7 @@ in the game
 
 #### Inherited from
 
-GameObject.id
+StatefulObject.id
 
 ___
 
@@ -137,7 +156,7 @@ Gets the immediate parent of this game object
 
 #### Inherited from
 
-GameObject.parent
+StatefulObject.parent
 
 ___
 
@@ -153,7 +172,7 @@ Returns all the children of this game object
 
 #### Inherited from
 
-GameObject.children
+StatefulObject.children
 
 ___
 
@@ -169,7 +188,7 @@ Returns all the groups this game object is in.
 
 #### Inherited from
 
-GameObject.groups
+StatefulObject.groups
 
 ___
 
@@ -412,7 +431,7 @@ console.log(game.getGameObjectsInGroup("player"));
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addToGroup](GameObject.md#addtogroup)
+[StatefulObject](StatefulObject.md).[addToGroup](StatefulObject.md#addtogroup)
 
 ___
 
@@ -434,7 +453,7 @@ Removes this game object from a group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeFromGroup](GameObject.md#removefromgroup)
+[StatefulObject](StatefulObject.md).[removeFromGroup](StatefulObject.md#removefromgroup)
 
 ___
 
@@ -457,7 +476,7 @@ a part of the given group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[isInGroup](GameObject.md#isingroup)
+[StatefulObject](StatefulObject.md).[isInGroup](StatefulObject.md#isingroup)
 
 ___
 
@@ -485,7 +504,7 @@ console.log(child.root());
 
 #### Inherited from
 
-[GameObject](GameObject.md).[root](GameObject.md#root)
+[StatefulObject](StatefulObject.md).[root](StatefulObject.md#root)
 
 ___
 
@@ -522,7 +541,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addChild](GameObject.md#addchild)
+[StatefulObject](StatefulObject.md).[addChild](StatefulObject.md#addchild)
 
 ___
 
@@ -559,7 +578,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeChild](GameObject.md#removechild)
+[StatefulObject](StatefulObject.md).[removeChild](StatefulObject.md#removechild)
 
 ___
 
@@ -585,7 +604,23 @@ the _step method
 
 #### Inherited from
 
-[GameObject](GameObject.md).[step](GameObject.md#step)
+[StatefulObject](StatefulObject.md).[step](StatefulObject.md#step)
+
+___
+
+### getObjectState
+
+▸ **getObjectState**(): [`PhysicsBodyState`](../modules.md#physicsbodystate)
+
+Returns the state object of the given state
+
+#### Returns
+
+[`PhysicsBodyState`](../modules.md#physicsbodystate)
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[getObjectState](StatefulObject.md#getobjectstate)
 
 ___
 
@@ -633,7 +668,61 @@ class MyObject extends GameObject {
 
 #### Overrides
 
-[GameObject](GameObject.md).[_step](GameObject.md#_step)
+[StatefulObject](StatefulObject.md).[_step](StatefulObject.md#_step)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[storeLastState](StatefulObject.md#storelaststate)
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[getState](StatefulObject.md#getstate)
+
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[getUpdate](StatefulObject.md#getupdate)
 
 ## Constructors
 
@@ -649,4 +738,4 @@ class MyObject extends GameObject {
 
 #### Overrides
 
-[GameObject](GameObject.md).[constructor](GameObject.md#constructor)
+[StatefulObject](StatefulObject.md).[constructor](StatefulObject.md#constructor)

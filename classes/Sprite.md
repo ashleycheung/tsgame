@@ -1,45 +1,50 @@
-[tsgame](../README.md) / [Exports](../modules.md) / Timer
+[tsgame](../README.md) / [Exports](../modules.md) / Sprite
 
-# Class: Timer
+# Class: Sprite
 
-A class that acts as a timer
+Represents a 2d sprite
 
 ## Hierarchy
 
-- [`GameObject`](GameObject.md)
+- [`StatefulObject`](StatefulObject.md)<[`SpriteState`](../modules.md#spritestate)\>
 
-  ↳ **`Timer`**
+  ↳ **`Sprite`**
 
 ## Table of contents
 
 ### Properties
 
-- [event](Timer.md#event)
-- [game](Timer.md#game)
+- [event](Sprite.md#event)
+- [game](Sprite.md#game)
+- [type](Sprite.md#type)
 
 ### Accessors
 
-- [id](Timer.md#id)
-- [parent](Timer.md#parent)
-- [children](Timer.md#children)
-- [groups](Timer.md#groups)
-- [active](Timer.md#active)
+- [id](Sprite.md#id)
+- [parent](Sprite.md#parent)
+- [children](Sprite.md#children)
+- [groups](Sprite.md#groups)
+- [position](Sprite.md#position)
+- [localPosition](Sprite.md#localposition)
 
 ### Methods
 
-- [addToGroup](Timer.md#addtogroup)
-- [removeFromGroup](Timer.md#removefromgroup)
-- [isInGroup](Timer.md#isingroup)
-- [root](Timer.md#root)
-- [addChild](Timer.md#addchild)
-- [removeChild](Timer.md#removechild)
-- [step](Timer.md#step)
-- [start](Timer.md#start)
-- [\_step](Timer.md#_step)
+- [addToGroup](Sprite.md#addtogroup)
+- [removeFromGroup](Sprite.md#removefromgroup)
+- [isInGroup](Sprite.md#isingroup)
+- [root](Sprite.md#root)
+- [addChild](Sprite.md#addchild)
+- [removeChild](Sprite.md#removechild)
+- [step](Sprite.md#step)
+- [\_step](Sprite.md#_step)
+- [getObjectState](Sprite.md#getobjectstate)
+- [storeLastState](Sprite.md#storelaststate)
+- [getState](Sprite.md#getstate)
+- [getUpdate](Sprite.md#getupdate)
 
 ### Constructors
 
-- [constructor](Timer.md#constructor)
+- [constructor](Sprite.md#constructor)
 
 ## Properties
 
@@ -49,7 +54,7 @@ A class that acts as a timer
 
 #### Inherited from
 
-[GameObject](GameObject.md).[event](GameObject.md#event)
+[StatefulObject](StatefulObject.md).[event](StatefulObject.md#event)
 
 #### Defined in
 
@@ -66,11 +71,25 @@ This is set to null if the game object is not in a game
 
 #### Inherited from
 
-[GameObject](GameObject.md).[game](GameObject.md#game)
+[StatefulObject](StatefulObject.md).[game](StatefulObject.md#game)
 
 #### Defined in
 
 [engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+
+___
+
+### type
+
+• **type**: `string` = `"Sprite"`
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[type](StatefulObject.md#type)
+
+#### Defined in
+
+[state/sprite.ts:33](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L33)
 
 ## Accessors
 
@@ -88,7 +107,7 @@ in the game
 
 #### Inherited from
 
-GameObject.id
+StatefulObject.id
 
 ___
 
@@ -104,7 +123,7 @@ Gets the immediate parent of this game object
 
 #### Inherited from
 
-GameObject.parent
+StatefulObject.parent
 
 ___
 
@@ -120,7 +139,7 @@ Returns all the children of this game object
 
 #### Inherited from
 
-GameObject.children
+StatefulObject.children
 
 ___
 
@@ -136,17 +155,39 @@ Returns all the groups this game object is in.
 
 #### Inherited from
 
-GameObject.groups
+StatefulObject.groups
 
 ___
 
-### active
+### position
 
-• `get` **active**(): `boolean`
+• `get` **position**(): [`Vector2D`](Vector2D.md)
 
 #### Returns
 
-`boolean`
+[`Vector2D`](Vector2D.md)
+
+___
+
+### localPosition
+
+• `get` **localPosition**(): [`Vector2D`](Vector2D.md)
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+• `set` **localPosition**(`v`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | [`Vector2D`](Vector2D.md) |
+
+#### Returns
+
+`void`
 
 ## Methods
 
@@ -179,7 +220,7 @@ console.log(game.getGameObjectsInGroup("player"));
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addToGroup](GameObject.md#addtogroup)
+[StatefulObject](StatefulObject.md).[addToGroup](StatefulObject.md#addtogroup)
 
 ___
 
@@ -201,7 +242,7 @@ Removes this game object from a group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeFromGroup](GameObject.md#removefromgroup)
+[StatefulObject](StatefulObject.md).[removeFromGroup](StatefulObject.md#removefromgroup)
 
 ___
 
@@ -224,7 +265,7 @@ a part of the given group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[isInGroup](GameObject.md#isingroup)
+[StatefulObject](StatefulObject.md).[isInGroup](StatefulObject.md#isingroup)
 
 ___
 
@@ -252,7 +293,7 @@ console.log(child.root());
 
 #### Inherited from
 
-[GameObject](GameObject.md).[root](GameObject.md#root)
+[StatefulObject](StatefulObject.md).[root](StatefulObject.md#root)
 
 ___
 
@@ -289,7 +330,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addChild](GameObject.md#addchild)
+[StatefulObject](StatefulObject.md).[addChild](StatefulObject.md#addchild)
 
 ___
 
@@ -326,7 +367,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeChild](GameObject.md#removechild)
+[StatefulObject](StatefulObject.md).[removeChild](StatefulObject.md#removechild)
 
 ___
 
@@ -352,29 +393,13 @@ the _step method
 
 #### Inherited from
 
-[GameObject](GameObject.md).[step](GameObject.md#step)
-
-___
-
-### start
-
-▸ **start**(): `void`
-
-Starts a timer
-```typescript
-const timer = new Timer(1000);
-timer.start();
-```
-
-#### Returns
-
-`void`
+[StatefulObject](StatefulObject.md).[step](StatefulObject.md#step)
 
 ___
 
 ### \_step
 
-▸ **_step**(`delta`): `void`
+▸ `Protected` **_step**(`delta`): `void`
 
 To be overwritten by children classes
 
@@ -398,25 +423,92 @@ class MyObject extends GameObject {
 
 `void`
 
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[_step](StatefulObject.md#_step)
+
+___
+
+### getObjectState
+
+▸ **getObjectState**(): [`SpriteState`](../modules.md#spritestate)
+
+Returns the state object of the given state
+
+#### Returns
+
+[`SpriteState`](../modules.md#spritestate)
+
 #### Overrides
 
-[GameObject](GameObject.md).[_step](GameObject.md#_step)
+[StatefulObject](StatefulObject.md).[getObjectState](StatefulObject.md#getobjectstate)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[storeLastState](StatefulObject.md#storelaststate)
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[getState](StatefulObject.md#getstate)
+
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[getUpdate](StatefulObject.md#getupdate)
 
 ## Constructors
 
 ### constructor
 
-• **new Timer**(`duration`)
-
-Creates a timer object of the given
-duration
+• **new Sprite**(`texturePath`)
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `duration` | `number` | duration in milliseconds ```typescript const timer = new Timer(1000); timer.start(); ``` |
+| Name | Type |
+| :------ | :------ |
+| `texturePath` | `string` |
 
 #### Overrides
 
-[GameObject](GameObject.md).[constructor](GameObject.md#constructor)
+[StatefulObject](StatefulObject.md).[constructor](StatefulObject.md#constructor)

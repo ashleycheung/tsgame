@@ -46,7 +46,7 @@ Represents a 2d vector
 
 #### Defined in
 
-physics/vector2d.ts:10
+[physics/vector2d.ts:10](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/vector2d.ts#L10)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-physics/vector2d.ts:11
+[physics/vector2d.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/vector2d.ts#L11)
 
 ## Constructors
 

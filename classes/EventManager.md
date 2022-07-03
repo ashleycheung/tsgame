@@ -34,14 +34,17 @@ Implements the observer pattern for events
 
 ### addEventlistener
 
-▸ **addEventlistener**(`eventName`, `callback`): `void`
+▸ **addEventlistener**(`eventName`, `callback`, `once?`): `void`
+
+Adds an event listener
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `eventName` | `string` |
-| `callback` | (`event`: [`GameEvent`](GameEvent.md)) => `void` |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `eventName` | `string` | `undefined` |  |
+| `callback` | (`event`: [`GameEvent`](GameEvent.md)) => `void` | `undefined` |  |
+| `once` | `boolean` | `false` | If set to true, the listener is automatically removed after being called once |
 
 #### Returns
 
