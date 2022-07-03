@@ -17,6 +17,7 @@ A specific cell in the tilemap
 - [event](TilemapWallCell.md#event)
 - [game](TilemapWallCell.md#game)
 - [\_shape](TilemapWallCell.md#_shape)
+- [type](TilemapWallCell.md#type)
 - [offset](TilemapWallCell.md#offset)
 
 ### Accessors
@@ -44,8 +45,12 @@ A specific cell in the tilemap
 - [addChild](TilemapWallCell.md#addchild)
 - [removeChild](TilemapWallCell.md#removechild)
 - [step](TilemapWallCell.md#step)
+- [getObjectState](TilemapWallCell.md#getobjectstate)
 - [translate](TilemapWallCell.md#translate)
 - [\_step](TilemapWallCell.md#_step)
+- [storeLastState](TilemapWallCell.md#storelaststate)
+- [getState](TilemapWallCell.md#getstate)
+- [getUpdate](TilemapWallCell.md#getupdate)
 
 ### Constructors
 
@@ -63,7 +68,7 @@ A specific cell in the tilemap
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -80,7 +85,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -94,7 +99,21 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:15](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L15)
+[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L16)
+
+___
+
+### type
+
+• `Readonly` **type**: `string` = `"PhysicsBody"`
+
+#### Inherited from
+
+[PhysicsBody](PhysicsBody.md).[type](PhysicsBody.md#type)
+
+#### Defined in
+
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L18)
 
 ___
 
@@ -108,7 +127,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:19](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L19)
+[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L22)
 
 ## Accessors
 
@@ -666,6 +685,22 @@ the _step method
 
 ___
 
+### getObjectState
+
+▸ **getObjectState**(): [`PhysicsBodyState`](../modules.md#physicsbodystate)
+
+Returns the state object of the given state
+
+#### Returns
+
+[`PhysicsBodyState`](../modules.md#physicsbodystate)
+
+#### Inherited from
+
+[PhysicsBody](PhysicsBody.md).[getObjectState](PhysicsBody.md#getobjectstate)
+
+___
+
 ### translate
 
 ▸ `Protected` **translate**(`v`): `void`
@@ -715,6 +750,60 @@ class MyObject extends GameObject {
 #### Inherited from
 
 [PhysicsBody](PhysicsBody.md).[_step](PhysicsBody.md#_step)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[PhysicsBody](PhysicsBody.md).[storeLastState](PhysicsBody.md#storelaststate)
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+#### Inherited from
+
+[PhysicsBody](PhysicsBody.md).[getState](PhysicsBody.md#getstate)
+
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+
+#### Inherited from
+
+[PhysicsBody](PhysicsBody.md).[getUpdate](PhysicsBody.md#getupdate)
 
 ## Constructors
 

@@ -1,6 +1,7 @@
 import Matter from "matter-js";
 import { Game } from "../engine/game";
 import { PhysicsBody } from "../physics/physicsBody";
+import { GameRenderState } from "../state/statefulObjectManager";
 
 export class PhysicsRender {
   
@@ -78,4 +79,45 @@ export const rotate2DArray = (array: Array<Array<any>>): Array<Array<any>> => {
 
 export const toFixed = (n: number, digits: number): number => {
   return Number.parseFloat(n.toFixed(digits))
+}
+
+
+/**
+ * Renders the state object to a div
+ * @param state 
+ */
+export const debugRenderState = (state: GameRenderState, elem: HTMLElement): void => {
+  elem.innerText = JSON.stringify(state, null, 2);
+  // Update style
+  elem.style.position = "fixed";
+  elem.style.left = "5%";
+  elem.style.top = "5%";
+  elem.style.backgroundColor = "white"
+  elem.style.opacity = "0.6"
+}
+
+
+/**
+ * Return all the updates in object2 compared to obj1
+ * @param obj1 
+ * @param obj2 
+ * @returns 
+ */
+export const getObjectUpdates = <T>(obj1: T, obj2: T): Partial<T> => {
+  // Loop through the properties of obj1
+  const diff: Partial<T> = {};
+  for (const prop of Object.keys(obj1)) {
+    const value1 = (obj1 as any)[prop];
+    const value2 = (obj2 as any)[prop];
+    // Recursively compare if object
+    if (typeof value1 === "object" && typeof value2 === "object") {
+      const updates = getObjectUpdates(value1, value2);
+      if (Object.keys(updates).length !== 0) {
+        (diff as any)[prop] = updates;
+      }
+    } else if (value1 !== value2) {
+      (diff as any)[prop] = value2;
+    }
+  }
+  return diff;
 }

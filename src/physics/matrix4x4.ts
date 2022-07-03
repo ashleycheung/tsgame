@@ -48,7 +48,7 @@
         // with the column of the target matrix
         let cellValue = 0;
         for (let i = 0; i < 4; i++) {
-          cellValue += this.get(i, col) + m.get(col, i)
+          cellValue += this.get(i, row) + m.get(col, i)
         }
         newValues.push(cellValue);
       }

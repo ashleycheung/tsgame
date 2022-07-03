@@ -24,6 +24,7 @@ Represents a game instance
 
 - [event](Game.md#event)
 - [physics](Game.md#physics)
+- [gameStateManager](Game.md#gamestatemanager)
 
 ### Methods
 
@@ -48,7 +49,7 @@ Represents a game instance
 
 #### Defined in
 
-[engine/game.ts:29](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/game.ts#L29)
+[engine/game.ts:30](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/game.ts#L30)
 
 ___
 
@@ -58,7 +59,17 @@ ___
 
 #### Defined in
 
-[engine/game.ts:31](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/game.ts#L31)
+[engine/game.ts:32](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/game.ts#L32)
+
+___
+
+### gameStateManager
+
+• **gameStateManager**: [`StatefulObjectManager`](StatefulObjectManager.md)
+
+#### Defined in
+
+[engine/game.ts:34](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/game.ts#L34)
 
 ## Methods
 

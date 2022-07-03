@@ -46,7 +46,7 @@ Represents a 3 by 3 rotational matrix
 
 #### Defined in
 
-physics/matrix3x3.ts:11
+[physics/matrix3x3.ts:11](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L11)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:12
+[physics/matrix3x3.ts:12](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L12)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:13
+[physics/matrix3x3.ts:13](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L13)
 
 ___
 
@@ -76,7 +76,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:14
+[physics/matrix3x3.ts:14](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L14)
 
 ___
 
@@ -86,7 +86,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:15
+[physics/matrix3x3.ts:15](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L15)
 
 ___
 
@@ -96,7 +96,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:16
+[physics/matrix3x3.ts:16](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L16)
 
 ___
 
@@ -106,7 +106,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:17
+[physics/matrix3x3.ts:17](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L17)
 
 ___
 
@@ -116,7 +116,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:18
+[physics/matrix3x3.ts:18](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L18)
 
 ___
 
@@ -126,7 +126,7 @@ ___
 
 #### Defined in
 
-physics/matrix3x3.ts:19
+[physics/matrix3x3.ts:19](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/matrix3x3.ts#L19)
 
 ## Constructors
 

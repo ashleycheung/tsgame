@@ -44,4 +44,4 @@ Event name
 
 #### Defined in
 
-[engine/timer.ts:65](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/timer.ts#L65)
+[engine/timer.ts:65](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/timer.ts#L65)

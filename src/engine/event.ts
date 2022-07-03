@@ -1,4 +1,5 @@
 
+
 /**
  * Implements the observer pattern for events
  *
@@ -14,26 +15,53 @@
  */
 export class EventManager {
   
-  // Maps the event name to its set of listeners
-  private _listeners: Map<string, Set<(event: GameEvent) => void>> = new Map();
+  // Maps the event name to a map of the listener
+  // to whether it is once or not
+  private _listeners: Map<string, 
+    Map<(event: GameEvent) => void, boolean>
+  > = new Map();
   
-  // Adds a listener
+  
+  
+  /**
+   * Adds an event listener
+   * @param eventName 
+   * @param callback 
+   * @param once - If set to true, the listener is automatically
+   * removed after being called once
+   */
   addEventlistener (
-    eventName: string, callback: (event: GameEvent) => void
+    eventName: string, callback: (event: GameEvent) => void,
+    once : boolean = false
   ): void {
     const listenerSet = this._listeners.get(eventName)
+    
+    // Event listener entry
+    const entry = {
+      callback: callback,
+      once: once
+    }
+    
+    // Add listener to the set
     if (listenerSet === undefined) {
-      this._listeners.set(eventName, new Set([callback]))
+      this._listeners.set(eventName, new Map([[callback, once]]));
     } else {
-      listenerSet.add(callback)
+      listenerSet.set(callback, once);
     }
   }
   
   // Calls the event
   callEvent (event: GameEvent): void {
-    const listenerSet = this._listeners.get(event.name)
-    if (listenerSet !== undefined) {
-      listenerSet.forEach(c => c(event))
+    const listenerMap = this._listeners.get(event.name)
+    if (listenerMap !== undefined) {
+      listenerMap.forEach((once, callback) => {
+        // Call the callback
+        callback(event);
+        // Remove from set if once
+        if (once) {
+          this.removeEventListener(event.name, callback);
+        }
+      })
     }
   }
   
@@ -41,13 +69,19 @@ export class EventManager {
   removeEventListener (
     eventName: string, callback: (event: GameEvent) => void
   ): void {
-    const listenerSet = this._listeners.get(eventName)
-    if (listenerSet !== undefined) {
-      listenerSet.delete(callback)
+    const listenerMap = this._listeners.get(eventName)
+    if (listenerMap !== undefined) {
+      listenerMap.delete(callback)
     }
   }
   
 }
+
+
+type EventListenerEntry = {
+  callback: (event: GameEvent) => void,
+  once: boolean
+};
 
 
 /**

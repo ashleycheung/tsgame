@@ -12,17 +12,22 @@ export abstract class PhysicsShape {
   
   /**
     Stores the matter body to be created
-    @ignore
+    @internal
   */
   readonly _matterBody: Matter.Body
   
   /**
    * 
-   * @ignore
+   * @internal
    */
   constructor(body: Matter.Body) {
     this._matterBody = body;
   }
+  
+  /**
+   * Returns the state of the physics object
+   */
+  abstract getState(): ShapeState<any>;
 }
 
 
@@ -49,6 +54,19 @@ export class PhysicsRectangle extends PhysicsShape {
   get size (): Vector2D {
     return this._size
   }
+  
+  /**
+   * Gets the shape state for the renderer debug
+   * @returns 
+   */
+  getState(): ShapeState<{ size: Vector2D }> {
+    return {
+      shape: "Rectangle",
+      properties: {
+        size: this.size
+      }
+    }
+  }
 }
 
 
@@ -73,4 +91,25 @@ export class PhysicsCircle extends PhysicsShape {
     return this._radius
   }
   
+  /**
+   * Gets the shape state for the renderer debug
+   * @returns 
+   */
+   getState(): ShapeState<{ radius: number }> {
+    return {
+      shape: "Circle",
+      properties: {
+        radius: this.radius
+      }
+    }
+  }
+}
+
+
+export type ShapeState<T> = {
+  /**
+   * Circle, Rectangle, etc
+   */
+  shape: string,
+  properties: T
 }

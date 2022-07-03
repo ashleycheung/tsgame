@@ -3,16 +3,19 @@ import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "../engine/gameObj
 import { bit32ToSet, setToBit32 } from "../utils/utils";
 import { GameEvent } from "../engine/event";
 import { Vector2D } from "./vector2d";
-import { PhysicsShape } from "./physicsShape";
+import { PhysicsShape, ShapeState } from "./physicsShape";
+import { StatefulObject } from "../state/statefulObject";
 
 /**
  * A physics body
  * the physics engine is abstracted away
  * @group Physics
  */
-export class PhysicsBody extends GameObject {
+export class PhysicsBody extends StatefulObject<PhysicsBodyState> {
   
   readonly _shape: PhysicsShape;
+  
+  readonly type: string = "PhysicsBody";
   
   // Stores the desired relative position to
   // the parent
@@ -38,6 +41,8 @@ export class PhysicsBody extends GameObject {
     
     // Remove on exit
     this.event.addEventlistener("onGameExit", this._onGameExit)
+    
+    this.storeLastState();
   }
   
   // Syncs this child body with the parent
@@ -168,6 +173,13 @@ export class PhysicsBody extends GameObject {
     Matter.Body.set(this._shape._matterBody, { isSensor: v })
   }
   
+  getObjectState(): PhysicsBodyState {
+    return {
+      position: this.position,
+      shape: this._shape.getState()
+    }
+  }
+  
   // Translates the body in a given direction
   protected translate (v: Vector2D): void {
     Matter.Body.translate(this._shape._matterBody, v.toMatterVector())
@@ -177,6 +189,12 @@ export class PhysicsBody extends GameObject {
     super._step(delta);
     this._syncWithParentPosition();
   }
+}
+
+
+export type PhysicsBodyState = {
+  position: Vector2D,
+  shape: ShapeState<any>
 }
 
 

@@ -10,6 +10,8 @@ The base class that represents a game event
 
   ↳ [`PostPhysicsStepEvent`](PostPhysicsStepEvent.md)
 
+  ↳ [`GameStepEndEvent`](GameStepEndEvent.md)
+
   ↳ [`OnGameEnterEvent`](OnGameEnterEvent.md)
 
   ↳ [`OnGameExitEvent`](OnGameExitEvent.md)
@@ -46,4 +48,4 @@ Event name
 
 #### Defined in
 
-[engine/event.ts:61](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/event.ts#L61)
+[engine/event.ts:95](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/event.ts#L95)

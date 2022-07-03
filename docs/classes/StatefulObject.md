@@ -1,53 +1,68 @@
-[tsgame](../README.md) / [Exports](../modules.md) / GameObject
+[tsgame](../README.md) / [Exports](../modules.md) / StatefulObject
 
-# Class: GameObject
+# Class: StatefulObject<T\>
 
-A base class that represents a game object
+An object that has a state needed by the renderer to render
+
+## Type parameters
+
+| Name |
+| :------ |
+| `T` |
 
 ## Hierarchy
 
-- **`GameObject`**
+- [`GameObject`](GameObject.md)
 
-  ↳ [`Tilemap`](Tilemap.md)
+  ↳ **`StatefulObject`**
 
-  ↳ [`Timer`](Timer.md)
+  ↳↳ [`PhysicsBody`](PhysicsBody.md)
 
-  ↳ [`StatefulObject`](StatefulObject.md)
+  ↳↳ [`Sprite`](Sprite.md)
 
 ## Table of contents
 
 ### Properties
 
-- [event](GameObject.md#event)
-- [game](GameObject.md#game)
-
-### Constructors
-
-- [constructor](GameObject.md#constructor)
+- [event](StatefulObject.md#event)
+- [game](StatefulObject.md#game)
+- [type](StatefulObject.md#type)
 
 ### Accessors
 
-- [id](GameObject.md#id)
-- [parent](GameObject.md#parent)
-- [children](GameObject.md#children)
-- [groups](GameObject.md#groups)
+- [id](StatefulObject.md#id)
+- [parent](StatefulObject.md#parent)
+- [children](StatefulObject.md#children)
+- [groups](StatefulObject.md#groups)
 
 ### Methods
 
-- [addToGroup](GameObject.md#addtogroup)
-- [removeFromGroup](GameObject.md#removefromgroup)
-- [isInGroup](GameObject.md#isingroup)
-- [root](GameObject.md#root)
-- [addChild](GameObject.md#addchild)
-- [removeChild](GameObject.md#removechild)
-- [step](GameObject.md#step)
-- [\_step](GameObject.md#_step)
+- [addToGroup](StatefulObject.md#addtogroup)
+- [removeFromGroup](StatefulObject.md#removefromgroup)
+- [isInGroup](StatefulObject.md#isingroup)
+- [root](StatefulObject.md#root)
+- [addChild](StatefulObject.md#addchild)
+- [removeChild](StatefulObject.md#removechild)
+- [step](StatefulObject.md#step)
+- [\_step](StatefulObject.md#_step)
+- [storeLastState](StatefulObject.md#storelaststate)
+- [getObjectState](StatefulObject.md#getobjectstate)
+- [getState](StatefulObject.md#getstate)
+- [getUpdate](StatefulObject.md#getupdate)
+
+### Constructors
+
+- [constructor](StatefulObject.md#constructor)
 
 ## Properties
 
 ### event
 
 • `Readonly` **event**: [`EventManager`](EventManager.md)
+
+#### Inherited from
+
+[GameObject](GameObject.md).[event](GameObject.md#event)
 
 #### Defined in
 
@@ -62,15 +77,23 @@ ___
 The game instance that the game object is currently in.
 This is set to null if the game object is not in a game
 
+#### Inherited from
+
+[GameObject](GameObject.md).[game](GameObject.md#game)
+
 #### Defined in
 
 [engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
 
-## Constructors
+___
 
-### constructor
+### type
 
-• **new GameObject**()
+• `Readonly` `Abstract` **type**: `string`
+
+#### Defined in
+
+state/statefulObject.ts:15
 
 ## Accessors
 
@@ -86,6 +109,10 @@ in the game
 
 ``null`` \| `string`
 
+#### Inherited from
+
+GameObject.id
+
 ___
 
 ### parent
@@ -97,6 +124,10 @@ Gets the immediate parent of this game object
 #### Returns
 
 ``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+GameObject.parent
 
 ___
 
@@ -110,6 +141,10 @@ Returns all the children of this game object
 
 [`GameObject`](GameObject.md)[]
 
+#### Inherited from
+
+GameObject.children
+
 ___
 
 ### groups
@@ -121,6 +156,10 @@ Returns all the groups this game object is in.
 #### Returns
 
 `string`[]
+
+#### Inherited from
+
+GameObject.groups
 
 ## Methods
 
@@ -151,6 +190,10 @@ console.log(game.getGameObjectsInGroup("player"));
 
 `void`
 
+#### Inherited from
+
+[GameObject](GameObject.md).[addToGroup](GameObject.md#addtogroup)
+
 ___
 
 ### removeFromGroup
@@ -168,6 +211,10 @@ Removes this game object from a group
 #### Returns
 
 `void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[removeFromGroup](GameObject.md#removefromgroup)
 
 ___
 
@@ -187,6 +234,10 @@ a part of the given group
 #### Returns
 
 `boolean`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[isInGroup](GameObject.md#isingroup)
 
 ___
 
@@ -211,6 +262,10 @@ console.log(child.root());
 #### Returns
 
 [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+[GameObject](GameObject.md).[root](GameObject.md#root)
 
 ___
 
@@ -245,6 +300,10 @@ game.removeGameObject(parent);
 
 `void`
 
+#### Inherited from
+
+[GameObject](GameObject.md).[addChild](GameObject.md#addchild)
+
 ___
 
 ### removeChild
@@ -278,6 +337,10 @@ game.removeGameObject(parent);
 
 `void`
 
+#### Inherited from
+
+[GameObject](GameObject.md).[removeChild](GameObject.md#removechild)
+
 ___
 
 ### step
@@ -299,6 +362,10 @@ the _step method
 #### Returns
 
 `void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[step](GameObject.md#step)
 
 ___
 
@@ -327,3 +394,77 @@ class MyObject extends GameObject {
 #### Returns
 
 `void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[_step](GameObject.md#_step)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+___
+
+### getObjectState
+
+▸ `Abstract` **getObjectState**(): `T`
+
+Returns the state object of the given state
+
+#### Returns
+
+`T`
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
+
+## Constructors
+
+### constructor
+
+• **new StatefulObject**<`T`\>()
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Overrides
+
+[GameObject](GameObject.md).[constructor](GameObject.md#constructor)

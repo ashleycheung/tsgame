@@ -1,44 +1,36 @@
-import { GameObject } from "../engine/gameObject";
-import * as PIXI from 'pixi.js';
 import { Vector2D } from "../physics/vector2d";
 import { PhysicsBody } from "../physics/physicsBody";
+import { StatefulObject } from "./statefulObject";
 
 
 /**
  * The state of a sprite
  * a sprite should be able to be created
  * from just the sprite state
+ * @group State
  */
 export type SpriteState = {
   
-  texturePath: string,
+  /**
+   * The alias name for the texture.
+   * The path for this texture is managed by the client
+   */
+  textureName: string,
   
   position: Vector2D
 }
 
 
-/**
- * Updates the sprites state
- */
-export type SpriteUpdate = {
-  
-  texturePath?: string,
-  
-  position?: Vector2D
-}
 
 /**
  * Represents a 2d sprite
+ * @group State
  */
-export class Sprite extends GameObject {
+export class Sprite extends StatefulObject<SpriteState> {
   
-  // Only exists when added to the game
-  private _pixiSprite: PIXI.Sprite | null = null;
+  private _textureName: string;
   
-  private _texturePath: string;
-  
-  // Stores all the values updated since the last get update
-  private _update: SpriteUpdate = {};
+  type = "Sprite"
   
   /**
     The position of the sprite relative to the origin
@@ -50,9 +42,9 @@ export class Sprite extends GameObject {
   
   constructor (texturePath: string) {
     super();
-    this._texturePath = texturePath;
-    
+    this._textureName = texturePath;
     // On game enter, create a sprite
+    this.storeLastState();
   }
   
   get position (): Vector2D {
@@ -68,21 +60,13 @@ export class Sprite extends GameObject {
   
   set localPosition (v: Vector2D) {
     this._localPosition = v;
-    // Update global position
-    this._update.position = this.position;
   }
   
-  getState(): SpriteState {
+  getObjectState(): SpriteState {
     return {
-      texturePath: this._texturePath,
+      textureName: this._textureName,
       position: this.position
     }
-  }
-  
-  getUpdate(): SpriteUpdate {
-    const lastUpdate = this._update;
-    this._update = {};
-    return lastUpdate;
   }
   
 }

@@ -10,7 +10,7 @@ import { GameEvent } from "../engine/event";
 export class Physics {
   
   /**
-    @ignore
+    @internal
   */
   readonly _engine: Matter.Engine;
   

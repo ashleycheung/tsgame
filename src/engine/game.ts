@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { Physics } from "../physics/physics";
+import { StatefulObjectManager } from "../state/statefulObjectManager";
 import { EventManager, GameEvent } from "./event";
 import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "./gameObject";
 
@@ -30,6 +31,8 @@ export class Game {
   
   physics: Physics = new Physics();
   
+  gameStateManager: StatefulObjectManager = new StatefulObjectManager(this);
+  
   private _removeSet: Set<GameObject> = new Set();
   
   /**
@@ -47,7 +50,7 @@ export class Game {
    *
    * @param o 
    */
-  addGameObject (o: GameObject): void {
+  addGameObject = (o: GameObject): void => {
     const id = this._generateId();
     this._gameObjects.set(id, o);
     o.game = this;
@@ -71,7 +74,7 @@ export class Game {
    * ```
    * @param o 
    */
-  removeGameObject (o: GameObject): void {
+  removeGameObject = (o: GameObject): void => {
     if (o.id === null) {
       throw new Error(`Game Object is already removed from game`)
     }
@@ -97,7 +100,7 @@ export class Game {
    * ```
    * @param o 
    */
-  queueRemoveGameObject (o: GameObject): void {
+  queueRemoveGameObject = (o: GameObject): void => {
     this._removeSet.add(o);
   }
   
@@ -119,7 +122,7 @@ export class Game {
    * @param group 
    * @returns 
    */
-  getGameObjectsInGroup (group: string): Array<GameObject> {
+  getGameObjectsInGroup = (group: string): Array<GameObject> => {
     const members = this._groupMembers.get(group);
     if (members === undefined) {
       return [];
@@ -131,9 +134,9 @@ export class Game {
    * Adds a game object to the group
    * This is used only by the game object
    * to add itself to games map of groups
-   * @ignore
+   * @internal
    */
-  addGameObjectToGroup (o: GameObject, group: string): void {
+  addGameObjectToGroup = (o: GameObject, group: string): void => {
     const idSet = this._groupMembers.get(group);
     if (o.id === null) {
       throw new Error(`Object id is null`)
@@ -149,9 +152,9 @@ export class Game {
    * Removes a game object from the group
    * This is used only by the game object
    * to remove itself from games map of groups
-   * @ignore
+   * @internal
    */
-  removeGameObjectFromGroup (o: GameObject, group: string): void {
+  removeGameObjectFromGroup = (o: GameObject, group: string): void => {
     const idSet = this._groupMembers.get(group);
     if (o.id === null) {
       throw new Error(`Object id is null`)
@@ -206,6 +209,8 @@ export class Game {
     // Remove queued game objects
     this._removeSet.forEach(o => this.removeGameObject(o));
     this._removeSet.clear();
+    // Called at the end of the game step
+    this.event.callEvent(new GameStepEndEvent());
   }
   
   /**
@@ -244,4 +249,13 @@ export class Game {
  */
 export class PostPhysicsStepEvent extends GameEvent {
   name = "postPhysicsStep"
+}
+
+/**
+ * This is called at the end of each game step
+ * @group Engine
+ * @event
+ */
+export class GameStepEndEvent extends GameEvent {
+  name = "gameStepEndEvent"
 }

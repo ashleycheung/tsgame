@@ -280,6 +280,8 @@ export class OnGameEnterEvent extends GameEvent {
 
 /**
  * Called when exiting the game
+ * @remarks - The game property and id property will still be valid
+ * when this event is called. It is only set to null after this event
  * @group Engine
  * @event
  */

@@ -6,7 +6,7 @@
   "homepage": "http://ashleycheung.com/tsgame/",
   "license": "MIT",
   "scripts": {
-    "start": "ts-node src/index.ts",
+    "start": "nodemon --ext 'ts' --watch ./src --exec 'yarn build'",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d docs",
     "build": "tsc && typedoc --options typedoc.json"
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/matter-js": "^0.17.7",
     "gh-pages": "^4.0.0",
+    "nodemon": "^2.0.18",
     "ts-node": "^10.8.1",
     "typedoc": "^0.23.2",
     "typedoc-plugin-markdown": "^3.13.0",

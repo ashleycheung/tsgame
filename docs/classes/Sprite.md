@@ -1,63 +1,50 @@
-[tsgame](../README.md) / [Exports](../modules.md) / PhysicsBody
+[tsgame](../README.md) / [Exports](../modules.md) / Sprite
 
-# Class: PhysicsBody
+# Class: Sprite
 
-A physics body
-the physics engine is abstracted away
+Represents a 2d sprite
 
 ## Hierarchy
 
-- [`StatefulObject`](StatefulObject.md)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+- [`StatefulObject`](StatefulObject.md)<[`SpriteState`](../modules.md#spritestate)\>
 
-  ↳ **`PhysicsBody`**
-
-  ↳↳ [`TilemapWallCell`](TilemapWallCell.md)
+  ↳ **`Sprite`**
 
 ## Table of contents
 
 ### Properties
 
-- [event](PhysicsBody.md#event)
-- [game](PhysicsBody.md#game)
-- [\_shape](PhysicsBody.md#_shape)
-- [type](PhysicsBody.md#type)
-- [offset](PhysicsBody.md#offset)
+- [event](Sprite.md#event)
+- [game](Sprite.md#game)
+- [type](Sprite.md#type)
 
 ### Accessors
 
-- [id](PhysicsBody.md#id)
-- [parent](PhysicsBody.md#parent)
-- [children](PhysicsBody.md#children)
-- [groups](PhysicsBody.md#groups)
-- [position](PhysicsBody.md#position)
-- [angle](PhysicsBody.md#angle)
-- [friction](PhysicsBody.md#friction)
-- [airResistance](PhysicsBody.md#airresistance)
-- [velocity](PhysicsBody.md#velocity)
-- [static](PhysicsBody.md#static)
-- [collisionCategory](PhysicsBody.md#collisioncategory)
-- [collisionMask](PhysicsBody.md#collisionmask)
-- [isSensor](PhysicsBody.md#issensor)
+- [id](Sprite.md#id)
+- [parent](Sprite.md#parent)
+- [children](Sprite.md#children)
+- [groups](Sprite.md#groups)
+- [position](Sprite.md#position)
+- [localPosition](Sprite.md#localposition)
 
 ### Methods
 
-- [addToGroup](PhysicsBody.md#addtogroup)
-- [removeFromGroup](PhysicsBody.md#removefromgroup)
-- [isInGroup](PhysicsBody.md#isingroup)
-- [root](PhysicsBody.md#root)
-- [addChild](PhysicsBody.md#addchild)
-- [removeChild](PhysicsBody.md#removechild)
-- [step](PhysicsBody.md#step)
-- [getObjectState](PhysicsBody.md#getobjectstate)
-- [translate](PhysicsBody.md#translate)
-- [\_step](PhysicsBody.md#_step)
-- [storeLastState](PhysicsBody.md#storelaststate)
-- [getState](PhysicsBody.md#getstate)
-- [getUpdate](PhysicsBody.md#getupdate)
+- [addToGroup](Sprite.md#addtogroup)
+- [removeFromGroup](Sprite.md#removefromgroup)
+- [isInGroup](Sprite.md#isingroup)
+- [root](Sprite.md#root)
+- [addChild](Sprite.md#addchild)
+- [removeChild](Sprite.md#removechild)
+- [step](Sprite.md#step)
+- [\_step](Sprite.md#_step)
+- [getObjectState](Sprite.md#getobjectstate)
+- [storeLastState](Sprite.md#storelaststate)
+- [getState](Sprite.md#getstate)
+- [getUpdate](Sprite.md#getupdate)
 
 ### Constructors
 
-- [constructor](PhysicsBody.md#constructor)
+- [constructor](Sprite.md#constructor)
 
 ## Properties
 
@@ -92,19 +79,9 @@ This is set to null if the game object is not in a game
 
 ___
 
-### \_shape
-
-• `Readonly` **\_shape**: [`PhysicsShape`](PhysicsShape.md)
-
-#### Defined in
-
-[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L16)
-
-___
-
 ### type
 
-• `Readonly` **type**: `string` = `"PhysicsBody"`
+• **type**: `string` = `"Sprite"`
 
 #### Overrides
 
@@ -112,17 +89,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L18)
-
-___
-
-### offset
-
-• **offset**: [`Vector2D`](Vector2D.md)
-
-#### Defined in
-
-[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L22)
+state/sprite.ts:33
 
 ## Accessors
 
@@ -196,205 +163,27 @@ ___
 
 • `get` **position**(): [`Vector2D`](Vector2D.md)
 
-Position is 0 by default
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+___
+
+### localPosition
+
+• `get` **localPosition**(): [`Vector2D`](Vector2D.md)
 
 #### Returns
 
 [`Vector2D`](Vector2D.md)
 
-• `set` **position**(`p`): `void`
-
-Position is 0 by default
+• `set` **localPosition**(`v`): `void`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `p` | [`Vector2D`](Vector2D.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### angle
-
-• `get` **angle**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **angle**(`a`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `a` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### friction
-
-• `get` **friction**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **friction**(`f`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `f` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### airResistance
-
-• `get` **airResistance**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **airResistance**(`ar`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `ar` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### velocity
-
-• `get` **velocity**(): [`Vector2D`](Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](Vector2D.md)
-
-• `set` **velocity**(`p`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `p` | [`Vector2D`](Vector2D.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### static
-
-• `get` **static**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-• `set` **static**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `boolean` |
-
-#### Returns
-
-`void`
-
-___
-
-### collisionCategory
-
-• `get` **collisionCategory**(): `Set`<`number`\>
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Returns
-
-`Set`<`number`\>
-
-• `set` **collisionCategory**(`v`): `void`
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `Set`<`number`\> |
-
-#### Returns
-
-`void`
-
-___
-
-### collisionMask
-
-• `get` **collisionMask**(): `Set`<`number`\>
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Returns
-
-`Set`<`number`\>
-
-• `set` **collisionMask**(`v`): `void`
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `Set`<`number`\> |
-
-#### Returns
-
-`void`
-
-___
-
-### isSensor
-
-• `get` **isSensor**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-• `set` **isSensor**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `boolean` |
+| `v` | [`Vector2D`](Vector2D.md) |
 
 #### Returns
 
@@ -608,41 +397,9 @@ the _step method
 
 ___
 
-### getObjectState
-
-▸ **getObjectState**(): [`PhysicsBodyState`](../modules.md#physicsbodystate)
-
-Returns the state object of the given state
-
-#### Returns
-
-[`PhysicsBodyState`](../modules.md#physicsbodystate)
-
-#### Overrides
-
-[StatefulObject](StatefulObject.md).[getObjectState](StatefulObject.md#getobjectstate)
-
-___
-
-### translate
-
-▸ `Protected` **translate**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | [`Vector2D`](Vector2D.md) |
-
-#### Returns
-
-`void`
-
-___
-
 ### \_step
 
-▸ **_step**(`delta`): `void`
+▸ `Protected` **_step**(`delta`): `void`
 
 To be overwritten by children classes
 
@@ -666,9 +423,25 @@ class MyObject extends GameObject {
 
 `void`
 
-#### Overrides
+#### Inherited from
 
 [StatefulObject](StatefulObject.md).[_step](StatefulObject.md#_step)
+
+___
+
+### getObjectState
+
+▸ **getObjectState**(): [`SpriteState`](../modules.md#spritestate)
+
+Returns the state object of the given state
+
+#### Returns
+
+[`SpriteState`](../modules.md#spritestate)
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[getObjectState](StatefulObject.md#getobjectstate)
 
 ___
 
@@ -690,7 +463,7 @@ ___
 
 ### getState
 
-▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
 
 Gets the whole state the object
 Returns null when the object isn't
@@ -698,7 +471,7 @@ in the game
 
 #### Returns
 
-``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
 
 #### Inherited from
 
@@ -708,7 +481,7 @@ ___
 
 ### getUpdate
 
-▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
 
 Gets all the updates to the state
 since the last getUpdate call AND
@@ -718,7 +491,7 @@ or if there is no update
 
 #### Returns
 
-``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
 
 #### Inherited from
 
@@ -728,13 +501,13 @@ or if there is no update
 
 ### constructor
 
-• **new PhysicsBody**(`shape`)
+• **new Sprite**(`texturePath`)
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `shape` | [`PhysicsShape`](PhysicsShape.md) |
+| `texturePath` | `string` |
 
 #### Overrides
 

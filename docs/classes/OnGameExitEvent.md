@@ -4,6 +4,9 @@
 
 Called when exiting the game
 
+**`remarks`** - The game property and id property will still be valid
+when this event is called. It is only set to null after this event
+
 ## Hierarchy
 
 - [`GameEvent`](GameEvent.md)
@@ -35,7 +38,7 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:287](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L287)
+[engine/gameObject.ts:289](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L289)
 
 ___
 
@@ -45,7 +48,7 @@ ___
 
 #### Defined in
 
-[engine/gameObject.ts:289](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/gameObject.ts#L289)
+[engine/gameObject.ts:291](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L291)
 
 ## Constructors
 

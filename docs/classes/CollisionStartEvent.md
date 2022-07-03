@@ -36,7 +36,7 @@ Event name
 
 #### Defined in
 
-[physics/physicsBody.ts:190](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L190)
+[physics/physicsBody.ts:208](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L208)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:192](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/physics/physicsBody.ts#L192)
+[physics/physicsBody.ts:210](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L210)
 
 ## Constructors
 

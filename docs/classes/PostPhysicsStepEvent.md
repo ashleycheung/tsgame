@@ -45,4 +45,4 @@ Event name
 
 #### Defined in
 
-[engine/game.ts:246](https://github.com/ashleycheung/tsgame/blob/d6f12cc/src/engine/game.ts#L246)
+[engine/game.ts:251](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/game.ts#L251)
