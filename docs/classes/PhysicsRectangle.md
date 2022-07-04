@@ -40,7 +40,7 @@ Creates a rectangle physics shape
 
 #### Defined in
 
-[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L11)
+[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsShape.ts#L11)
 
 ## Constructors
 
@@ -74,13 +74,13 @@ Returns the size of the rectangle
 
 ### getState
 
-▸ **getState**(): [`ShapeState`](../modules.md#shapestate)<{ `size`: [`Vector2D`](Vector2D.md)  }\>
+▸ **getState**(): [`ShapeState`](../interfaces/ShapeState.md)<{ `size`: [`Vector2D`](Vector2D.md)  }\>
 
 Gets the shape state for the renderer debug
 
 #### Returns
 
-[`ShapeState`](../modules.md#shapestate)<{ `size`: [`Vector2D`](Vector2D.md)  }\>
+[`ShapeState`](../interfaces/ShapeState.md)<{ `size`: [`Vector2D`](Vector2D.md)  }\>
 
 #### Overrides
 

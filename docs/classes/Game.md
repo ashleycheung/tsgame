@@ -50,7 +50,7 @@ Represents a game instance
 
 #### Defined in
 
-[engine/game.ts:30](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L30)
+[engine/game.ts:30](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/game.ts#L30)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[engine/game.ts:32](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L32)
+[engine/game.ts:32](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/game.ts#L32)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[engine/game.ts:34](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L34)
+[engine/game.ts:34](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/game.ts#L34)
 
 ## Methods
 

@@ -2,6 +2,8 @@ import * as PIXI from 'pixi.js';
 import { GameEvent } from '../engine/event';
 import { StatefulObjectState } from '../state/statefulObject';
 import { GameRenderState, GameRenderUpdate } from '../state/statefulObjectManager';
+import { AnimatedSpriteRenderObject } from './animatedSpriteRenderObject';
+import { AssetLoader } from './assets';
 import { GameRenderObject } from './gameRenderObject';
 import { PhysicsBodyRenderObject } from './physicsBodyRenderObject';
 import { SpriteRenderObject } from './spriteRenderObject';
@@ -14,10 +16,7 @@ export class GameRenderer {
   */
   readonly _pixiApp: PIXI.Application;
   
-  /**
-    @internal
-  */
-  readonly _loader: PIXI.Loader;
+  readonly loader: AssetLoader;
   
   /**
     Stores game render objects
@@ -30,30 +29,7 @@ export class GameRenderer {
       width: canvas.width,
       height: canvas.height
     });
-    this._loader = PIXI.Loader.shared;
-  }
-  
-  /**
-   * Loads an array of assets
-   * @param assets 
-   */
-  load (
-    assets: Array<[name: string, path: string]>
-  ): Promise<void> {
-    // Enqueue all the resources
-    assets.forEach(a => {
-      this._loader.add(a[0], a[1])
-    })
-    
-    return new Promise((resolve, _) => {
-      // On load resolve
-      const binding = this._loader.onComplete.add(() => {
-        this._loader.onComplete.detach(binding);
-        resolve()
-      });
-      // Load
-      this._loader.load();
-    })
+    this.loader = new AssetLoader(PIXI.Loader.shared);
   }
   
   /**
@@ -106,13 +82,18 @@ export class GameRenderer {
   private _createGameObject = (state: StatefulObjectState<any>): void => {
     switch (state.type) {
       case "Sprite": {
-        const spriteObj = new SpriteRenderObject(state, this);
-        this._addGameRenderObject(spriteObj);
+        const obj = SpriteRenderObject.create(state, this);
+        this._addGameRenderObject(obj);
         break;
       }
       case "PhysicsBody": {
-        const physObj = new PhysicsBodyRenderObject(state, this);
-        this._addGameRenderObject(physObj);
+        const obj = PhysicsBodyRenderObject.create(state, this);
+        this._addGameRenderObject(obj);
+        break;
+      }
+      case "AnimatedSprite": {
+        const obj = AnimatedSpriteRenderObject.create(state, this);
+        this._addGameRenderObject(obj);
         break;
       }
       // Do nothing
@@ -145,9 +126,10 @@ export class GameRenderer {
   
   /**
    * Renders the stage
+   * @param delta - time passed since last render
    */
-  render (): void {
-    
+  render (delta: number): void {
+    this._gameRenderObjects.forEach(o => o.render(delta));
     this._pixiApp.render();
   }
   

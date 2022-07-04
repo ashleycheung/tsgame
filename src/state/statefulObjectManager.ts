@@ -152,7 +152,7 @@ export class StatefulObjectManager {
  * of all the objects in the game
  * @group State
  */
-export type GameRenderState = {
+export interface GameRenderState {
   objects: Array<StatefulObjectState<any>>
 }
 
@@ -162,7 +162,7 @@ export type GameRenderState = {
  * renderer needs to update state
  * @group State
  */
-export type GameRenderUpdate = {
+export interface GameRenderUpdate {
   
   debug: Array<StatefulObjectState<any>>
   

@@ -164,12 +164,12 @@ export class TilemapWallCell extends PhysicsBody {
  * Maps the tilemap cells to its
  * code id
  */
-export type TilemapCode = {
+export interface TilemapCode {
   empty: TileMapCellCode,
   wall: TileMapCellCode,
 }
 
-export type TileMapCellCode = {
+export interface TileMapCellCode {
   code: number,
   // The collision layers to collide with
   collision: Array<number>

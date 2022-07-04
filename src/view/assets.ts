@@ -12,7 +12,12 @@ export interface Asset {
 export interface SpriteSheetAsset extends Asset {
   data: {
     frames: Vector2D
-  }
+  },
+  animations: {
+    // Array of frame indexes
+    // that make up the animation
+    [animName: string]: Array<number>
+  },
 }
 
 export class AssetLoader {
@@ -31,6 +36,8 @@ export class AssetLoader {
    * @param assets 
    */
   async load (assets: Array<Asset>): Promise<void> {
+    
+    PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
     
     const spriteSheetAssets: Array<SpriteSheetAsset> = [];
     
@@ -56,7 +63,7 @@ export class AssetLoader {
     
     // For each of the sprite sheets create a sprite sheet
     // object and wait for them to all load
-    await Promise.all(spriteSheetAssets.map(a => {
+    await Promise.all(spriteSheetAssets.map(async a => {
       // Get the loaded texture
       const texture = this._pixiLoader.resources[a.name].texture!;
       // Create a sprite sheet
@@ -66,11 +73,15 @@ export class AssetLoader {
           a.name,
           a.data.frames,
           new Vector2D(texture.width, texture.height),
-          1
+          1,
+          a.animations
         )
       )
       this._spriteSheets.set(a.name, sheet);
-      return sheet
+      
+      return new Promise<void>((resolve, _) => {
+        sheet.parse(() => resolve());
+      })
     }))
   }
   

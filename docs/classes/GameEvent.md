@@ -52,4 +52,4 @@ Event name
 
 #### Defined in
 
-[engine/event.ts:84](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/event.ts#L84)
+[engine/event.ts:84](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/event.ts#L84)

@@ -8,16 +8,13 @@ import { applyObjectUpdates } from "../utils/utils";
 
 
 export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> {
-
-  protected _pixiContainer: PIXI.Graphics;
   
-  constructor(
+  protected constructor(
     state: StatefulObjectState<PhysicsBodyState>,
     renderer: GameRenderer) 
   {
-    super(state, renderer);
-    
-    this._pixiContainer = new PIXI.Graphics();
+    super(state, renderer, new PIXI.Graphics());
+
     this.setState(state);
     
     /**
@@ -25,26 +22,42 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
       @remarks https://pixijs.io/guides/basics/graphics.html
     */
     this.event.addEventlistener("onRendererExit", e => {
-      this._pixiContainer.destroy();
+      this.getPixiContainer().destroy();
     })
   }
   
+  static create (
+    state: StatefulObjectState<PhysicsBodyState>,
+    renderer: GameRenderer
+  ): PhysicsBodyRenderObject {
+    const obj = new PhysicsBodyRenderObject(state, renderer);
+    obj.setState(state);
+    return obj;
+  }
+  
+  override getPixiContainer(): PIXI.Graphics {
+    return super.getPixiContainer() as PIXI.Graphics;
+  }
+  
   _setState(state: StatefulObjectState<PhysicsBodyState>): void {
+    
+    const graphics = this.getPixiContainer();
+    
     // Clear the graphics
-    this._pixiContainer.clear();
+    graphics.clear();
         
     const centerPos = state.state.position;
     
     // Color
     const alpha = 0.6;
-    this._pixiContainer.beginFill(0x0000ff, alpha);
+    graphics.beginFill(0x0000ff, alpha);
     
     // Create the shape
     this._drawShape(state.state.shape);
     
     // Set position
-    this._pixiContainer.x = centerPos.x;
-    this._pixiContainer.y = centerPos.y;
+    graphics.x = centerPos.x;
+    graphics.y = centerPos.y;
     
     // Set angle
     // Use "rotation" for PIXI.Container
@@ -53,7 +66,7 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
     // https://pixijs.download/dev/docs/PIXI.Graphics.html#rotation
     // 
     // Must add pi / 2 to convert to pixijs coordinates
-    this._pixiContainer.rotation = state.state.angle + Math.PI / 2;
+    graphics.rotation = state.state.angle + Math.PI / 2;
   }
   
   
@@ -62,16 +75,19 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
    * @param shape 
    */
   private _drawShape (shape: ShapeState<any>): void {
+  
+    const graphics = this.getPixiContainer();
+    
     switch (shape.shape) {
       case "Circle": {
         const radius = shape.properties.radius;
-        this._pixiContainer.drawCircle(0,0,radius);
+        graphics.drawCircle(0,0,radius);
         break;
       }
       case "Rectangle": {
         const size = shape.properties.size;
         // Draw rectangle
-        this._pixiContainer.drawRect(
+        graphics.drawRect(
           - size.x * 0.5,
           - size.y * 0.5,
           size.x,

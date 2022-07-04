@@ -106,7 +106,7 @@ export class PhysicsCircle extends PhysicsShape {
 }
 
 
-export type ShapeState<T> = {
+export interface ShapeState<T> {
   /**
    * Circle, Rectangle, etc
    */

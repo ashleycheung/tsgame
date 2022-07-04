@@ -69,7 +69,7 @@ A specific cell in the tilemap
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -86,7 +86,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -100,7 +100,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L16)
+[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L16)
 
 ___
 
@@ -114,7 +114,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L18)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L18)
 
 ___
 
@@ -128,7 +128,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L22)
+[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L22)
 
 ## Methods
 
@@ -357,13 +357,13 @@ ___
 
 ### getObjectState
 
-▸ **getObjectState**(): [`PhysicsBodyState`](../modules.md#physicsbodystate)
+▸ **getObjectState**(): [`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)
 
 Returns the state object of the given state
 
 #### Returns
 
-[`PhysicsBodyState`](../modules.md#physicsbodystate)
+[`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)
 
 #### Inherited from
 
@@ -441,7 +441,7 @@ ___
 
 ### getState
 
-▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)\>
 
 Gets the whole state the object
 Returns null when the object isn't
@@ -449,7 +449,7 @@ in the game
 
 #### Returns
 
-``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)\>
 
 #### Inherited from
 
@@ -459,7 +459,7 @@ ___
 
 ### getUpdate
 
-▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)\>
 
 Gets all the updates to the state
 since the last getUpdate call AND
@@ -469,7 +469,7 @@ or if there is no update
 
 #### Returns
 
-``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`PhysicsBodyState`](../modules.md#physicsbodystate)\>
+``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`PhysicsBodyState`](../interfaces/PhysicsBodyState.md)\>
 
 #### Inherited from
 
@@ -834,7 +834,7 @@ PhysicsBody.isSensor
 | Name | Type |
 | :------ | :------ |
 | `size` | [`Vector2D`](Vector2D.md) |
-| `code` | [`TilemapCode`](../modules.md#tilemapcode) |
+| `code` | [`TilemapCode`](../interfaces/TilemapCode.md) |
 
 #### Overrides
 

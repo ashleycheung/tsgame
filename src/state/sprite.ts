@@ -9,7 +9,7 @@ import { StatefulObject } from "./statefulObject";
  * from just the sprite state
  * @group State
  */
-export type SpriteState = {
+export interface SpriteState {
   
   /**
    * The alias name for the texture.
@@ -17,7 +17,9 @@ export type SpriteState = {
    */
   textureName: string,
   
-  position: Vector2D
+  position: Vector2D,
+  
+  scale: Vector2D,
 }
 
 
@@ -31,6 +33,8 @@ export class Sprite extends StatefulObject<SpriteState> {
   private _textureName: string;
   
   type = "Sprite"
+  
+  scale: Vector2D = new Vector2D(1, 1);
   
   /**
     The position of the sprite relative to the origin
@@ -65,7 +69,8 @@ export class Sprite extends StatefulObject<SpriteState> {
   getObjectState(): SpriteState {
     return {
       textureName: this._textureName,
-      position: this.position
+      position: this.position,
+      scale: this.scale
     }
   }
   

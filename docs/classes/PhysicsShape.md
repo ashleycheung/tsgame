@@ -31,16 +31,16 @@ body shape
 
 #### Defined in
 
-[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L11)
+[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsShape.ts#L11)
 
 ## Methods
 
 ### getState
 
-▸ `Abstract` **getState**(): [`ShapeState`](../modules.md#shapestate)<`any`\>
+▸ `Abstract` **getState**(): [`ShapeState`](../interfaces/ShapeState.md)<`any`\>
 
 Returns the state of the physics object
 
 #### Returns
 
-[`ShapeState`](../modules.md#shapestate)<`any`\>
+[`ShapeState`](../interfaces/ShapeState.md)<`any`\>

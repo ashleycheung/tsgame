@@ -13,6 +13,7 @@ export * from "./physics/vector2d";
 export * from "./physics/vector3d";
 export * from "./utils/utils";
 export * from "./utils/controller";
+export * from "./view/assets";
 export * from "./view/renderer";
 export * from "./state/statefulObject";
 export * from "./state/statefulObjectManager";

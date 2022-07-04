@@ -10,36 +10,63 @@ import { GameRenderer } from "./renderer";
  */
 export class SpriteRenderObject extends GameRenderObject<SpriteState> {
   
-  /**
-    @internal
-  */
-  protected _pixiContainer: PIXI.Sprite;
-  
-  constructor(
+  protected constructor(
     state: StatefulObjectState<SpriteState>,
-    renderer: GameRenderer)
+    // Renderer
+    renderer: GameRenderer,
+  )
   {
-    super(state, renderer);
-    
-    // Make pixi sprite
-    this._pixiContainer = new PIXI.Sprite(
-      this._renderer._loader.resources[state.state.textureName].texture
-    )
-    // Set state
-    this.setState(state);
+    super(state, renderer, new PIXI.Sprite(
+      renderer.loader.getSpriteTexture(state.state.textureName)
+    ));
   }
   
   
+  /**
+    Factory method to create the sprite render object
+  */
+  static create(
+    state: StatefulObjectState<SpriteState>,
+    // Renderer
+    renderer: GameRenderer,
+    // PIXI Sprite
+    sprite: PIXI.Sprite = new PIXI.Sprite(
+      renderer.loader.getSpriteTexture(state.state.textureName)
+    )
+  ):SpriteRenderObject {
+    const obj = new SpriteRenderObject(state, renderer);
+    obj.setState(state);
+    return obj
+  }
+  
+  override getPixiContainer(): PIXI.Sprite {
+    return super.getPixiContainer() as PIXI.Sprite
+  }
+  
   _setState(state: StatefulObjectState<SpriteState>): void {
-    this._pixiContainer.x = state.state.position.x;
-    this._pixiContainer.y = state.state.position.y;
+    this._update({
+      id: this.id,
+      update: state.state
+    })
   }
   
   _update(update: StatefulObjectUpdate<SpriteState>): void {
     const objUpdate = update.update;
+    
+    const sprite = this.getPixiContainer();
+    
     // Update position
     if (objUpdate.position !== undefined) {
       this.updatePosition(objUpdate.position);
+    }
+    
+    if (objUpdate.scale !== undefined) {
+      if (objUpdate.scale.x !== undefined) {
+        sprite.scale.x = objUpdate.scale.x;
+      }
+      if (objUpdate.scale.y !== undefined) {
+        sprite.scale.y = objUpdate.scale.y;
+      }
     }
   }
   

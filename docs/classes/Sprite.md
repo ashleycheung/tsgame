@@ -6,7 +6,7 @@ Represents a 2d sprite
 
 ## Hierarchy
 
-- [`StatefulObject`](StatefulObject.md)<[`SpriteState`](../modules.md#spritestate)\>
+- [`StatefulObject`](StatefulObject.md)<[`SpriteState`](../interfaces/SpriteState.md)\>
 
   ↳ **`Sprite`**
 
@@ -17,6 +17,7 @@ Represents a 2d sprite
 - [event](Sprite.md#event)
 - [game](Sprite.md#game)
 - [type](Sprite.md#type)
+- [scale](Sprite.md#scale)
 
 ### Methods
 
@@ -59,7 +60,7 @@ Represents a 2d sprite
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -76,7 +77,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -90,7 +91,17 @@ ___
 
 #### Defined in
 
-[state/sprite.ts:33](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L33)
+[state/sprite.ts:35](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/sprite.ts#L35)
+
+___
+
+### scale
+
+• **scale**: [`Vector2D`](Vector2D.md)
+
+#### Defined in
+
+[state/sprite.ts:37](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/sprite.ts#L37)
 
 ## Methods
 
@@ -351,13 +362,13 @@ ___
 
 ### getObjectState
 
-▸ **getObjectState**(): [`SpriteState`](../modules.md#spritestate)
+▸ **getObjectState**(): [`SpriteState`](../interfaces/SpriteState.md)
 
 Returns the state object of the given state
 
 #### Returns
 
-[`SpriteState`](../modules.md#spritestate)
+[`SpriteState`](../interfaces/SpriteState.md)
 
 #### Overrides
 
@@ -383,7 +394,7 @@ ___
 
 ### getState
 
-▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`SpriteState`](../interfaces/SpriteState.md)\>
 
 Gets the whole state the object
 Returns null when the object isn't
@@ -391,7 +402,7 @@ in the game
 
 #### Returns
 
-``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<[`SpriteState`](../modules.md#spritestate)\>
+``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`SpriteState`](../interfaces/SpriteState.md)\>
 
 #### Inherited from
 
@@ -401,7 +412,7 @@ ___
 
 ### getUpdate
 
-▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`SpriteState`](../interfaces/SpriteState.md)\>
 
 Gets all the updates to the state
 since the last getUpdate call AND
@@ -411,7 +422,7 @@ or if there is no update
 
 #### Returns
 
-``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<[`SpriteState`](../modules.md#spritestate)\>
+``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`SpriteState`](../interfaces/SpriteState.md)\>
 
 #### Inherited from
 

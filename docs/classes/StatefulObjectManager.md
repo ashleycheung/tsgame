@@ -32,19 +32,19 @@ render states in a game
 
 ### getState
 
-▸ **getState**(): [`GameRenderState`](../modules.md#gamerenderstate)
+▸ **getState**(): [`GameRenderState`](../interfaces/GameRenderState.md)
 
 Gets the whole render state of the game
 
 #### Returns
 
-[`GameRenderState`](../modules.md#gamerenderstate)
+[`GameRenderState`](../interfaces/GameRenderState.md)
 
 ___
 
 ### getUpdate
 
-▸ **getUpdate**(): ``null`` \| [`GameRenderUpdate`](../modules.md#gamerenderupdate)
+▸ **getUpdate**(): ``null`` \| [`GameRenderUpdate`](../interfaces/GameRenderUpdate.md)
 
 Gets a game update needed for the renderer
 to render the game. Returns null if there are
@@ -52,4 +52,4 @@ no updates
 
 #### Returns
 
-``null`` \| [`GameRenderUpdate`](../modules.md#gamerenderupdate)
+``null`` \| [`GameRenderUpdate`](../interfaces/GameRenderUpdate.md)

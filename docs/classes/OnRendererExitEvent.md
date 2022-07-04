@@ -44,4 +44,4 @@ Event name
 
 #### Defined in
 
-[view/renderer.ts:163](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/view/renderer.ts#L163)
+[view/renderer.ts:145](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/renderer.ts#L145)

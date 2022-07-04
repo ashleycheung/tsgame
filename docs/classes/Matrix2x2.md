@@ -29,7 +29,7 @@ Represents a 2 by 2 matrix
 
 #### Defined in
 
-[physics/matrix2x2.ts:7](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/matrix2x2.ts#L7)
+[physics/matrix2x2.ts:7](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/matrix2x2.ts#L7)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[physics/matrix2x2.ts:8](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/matrix2x2.ts#L8)
+[physics/matrix2x2.ts:8](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/matrix2x2.ts#L8)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[physics/matrix2x2.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/matrix2x2.ts#L9)
+[physics/matrix2x2.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/matrix2x2.ts#L9)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[physics/matrix2x2.ts:10](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/matrix2x2.ts#L10)
+[physics/matrix2x2.ts:10](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/matrix2x2.ts#L10)
 
 ## Constructors
 

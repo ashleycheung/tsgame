@@ -99,7 +99,7 @@ export abstract class StatefulObject<T> extends GameObject {
  * needed for the renderer to render from scratch
  * @group State
  */
-export type StatefulObjectState<T> = {
+export interface StatefulObjectState<T> {
   /**
    * The game object id
    */
@@ -122,7 +122,7 @@ export type StatefulObjectState<T> = {
  * render state
  * @group State
  */
-export type StatefulObjectUpdate<T> = {
+export interface StatefulObjectUpdate<T> {
   /**
    * The game object id
    */

@@ -53,7 +53,7 @@ Represents a tilemap
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -70,7 +70,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
 
 ## Methods
 
@@ -437,7 +437,7 @@ Creates an empty tilemap of the given size
 | `cells` | `number`[][] | `undefined` | x represents the width, y represents the height |
 | `cellSize` | [`Vector2D`](Vector2D.md) | `undefined` | the size of a cell in the tilemap |
 | `origin` | [`Vector2D`](Vector2D.md) | `undefined` | the position of the top left corner of the tilemap |
-| `code` | [`TilemapCode`](../modules.md#tilemapcode) | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
+| `code` | [`TilemapCode`](../interfaces/TilemapCode.md) | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
 
 #### Overrides
 

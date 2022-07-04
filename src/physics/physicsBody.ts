@@ -193,7 +193,7 @@ export class PhysicsBody extends StatefulObject<PhysicsBodyState> {
 }
 
 
-export type PhysicsBodyState = {
+export interface PhysicsBodyState {
   position: Vector2D,
   angle: number,
   shape: ShapeState<any>

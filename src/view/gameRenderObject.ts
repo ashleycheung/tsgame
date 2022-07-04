@@ -28,15 +28,25 @@ export abstract class GameRenderObject<T> {
   /**
     @internal
   */
-  protected abstract _pixiContainer: PIXI.Container;
+  private _pixiContainer: PIXI.Container;
   
   readonly event: EventManager = new EventManager();
   
-  constructor(state: StatefulObjectState<T>, renderer: GameRenderer) {
+  protected constructor(
+    state: StatefulObjectState<T>,
+    renderer: GameRenderer,
+    pixiContainer: PIXI.Container
+  ) {
     this.id = state.id;
     this.type = state.type;
     this._renderer = renderer;
     this._state = state.state;
+    this._pixiContainer = pixiContainer;
+  }
+
+  
+  getPixiContainer (): PIXI.Container {
+    return this._pixiContainer
   }
   
   /**
@@ -76,6 +86,12 @@ export abstract class GameRenderObject<T> {
     // Update local state
     this._state = applyObjectUpdates(this._state, update.update);
   }
+  
+  /**
+   * Template method called on each render
+   * @param delta 
+   */
+  render (delta: number): void {}
   
   /**
    * Template method of set state
