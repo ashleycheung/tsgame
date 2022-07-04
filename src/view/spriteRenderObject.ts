@@ -10,52 +10,37 @@ import { GameRenderer } from "./renderer";
  */
 export class SpriteRenderObject extends GameRenderObject<SpriteState> {
   
-  private _pixiSprite: PIXI.Sprite;
+  /**
+    @internal
+  */
+  protected _pixiContainer: PIXI.Sprite;
   
-  constructor(state: StatefulObjectState<SpriteState>, renderer: GameRenderer) {
+  constructor(
+    state: StatefulObjectState<SpriteState>,
+    renderer: GameRenderer)
+  {
     super(state, renderer);
     
     // Make pixi sprite
-    this._pixiSprite = new PIXI.Sprite(
+    this._pixiContainer = new PIXI.Sprite(
       this._renderer._loader.resources[state.state.textureName].texture
     )
     // Set state
     this.setState(state);
   }
   
-  /**
-   * @internal
-   * @param stage 
-   */
-  addToStage(stage: PIXI.Container): void {
-    stage.addChild(this._pixiSprite);
+  
+  _setState(state: StatefulObjectState<SpriteState>): void {
+    this._pixiContainer.x = state.state.position.x;
+    this._pixiContainer.y = state.state.position.y;
   }
   
-  /**
-   * @internal
-   * @param stage 
-   */
-  removeFromStage(stage: PIXI.Container): void {
-    stage.removeChild(this._pixiSprite);
-  }
-  
-  setState(state: StatefulObjectState<SpriteState>): void {
-    this._pixiSprite.x = state.state.position.x;
-    this._pixiSprite.y = state.state.position.y;
-  }
-  
-  update(update: StatefulObjectUpdate<SpriteState>): void {
+  _update(update: StatefulObjectUpdate<SpriteState>): void {
     const objUpdate = update.update;
     // Update position
     if (objUpdate.position !== undefined) {
-      if (objUpdate.position.x !== undefined) {
-        this._pixiSprite.x = objUpdate.position.x;
-      }
-      if (objUpdate.position.y !== undefined) {
-        this._pixiSprite.y = objUpdate.position.y;
-      }
+      this.updatePosition(objUpdate.position);
     }
-    
   }
   
 }

@@ -25,15 +25,9 @@ A base class that represents a game object
 
 - [constructor](GameObject.md#constructor)
 
-### Accessors
-
-- [id](GameObject.md#id)
-- [parent](GameObject.md#parent)
-- [children](GameObject.md#children)
-- [groups](GameObject.md#groups)
-
 ### Methods
 
+- [cleanup](GameObject.md#cleanup)
 - [addToGroup](GameObject.md#addtogroup)
 - [removeFromGroup](GameObject.md#removefromgroup)
 - [isInGroup](GameObject.md#isingroup)
@@ -43,6 +37,13 @@ A base class that represents a game object
 - [step](GameObject.md#step)
 - [\_step](GameObject.md#_step)
 
+### Accessors
+
+- [id](GameObject.md#id)
+- [parent](GameObject.md#parent)
+- [children](GameObject.md#children)
+- [groups](GameObject.md#groups)
+
 ## Properties
 
 ### event
@@ -51,7 +52,7 @@ A base class that represents a game object
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -64,7 +65,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
 
 ## Constructors
 
@@ -72,57 +73,20 @@ This is set to null if the game object is not in a game
 
 • **new GameObject**()
 
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+___
 
 ### addToGroup
 
@@ -327,3 +291,53 @@ class MyObject extends GameObject {
 #### Returns
 
 `void`
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]

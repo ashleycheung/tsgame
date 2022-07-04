@@ -79,9 +79,9 @@ export abstract class StatefulObject<T> extends GameObject {
       return null;
     }
     
-    // Update last state at the end of the game loop
+    // Update last state at the start of the next game loop
     if (this.game !== null) {
-      this.game.event.addEventlistener("gameStepEndEvent", e => {
+      this.game.event.addEventlistener("gameStepStartEvent", e => {
         this._lastState = this.getObjectState()
       }, true)
     }

@@ -10,6 +10,8 @@ The base class that represents a game event
 
   ↳ [`PostPhysicsStepEvent`](PostPhysicsStepEvent.md)
 
+  ↳ [`GameStepStartEvent`](GameStepStartEvent.md)
+
   ↳ [`GameStepEndEvent`](GameStepEndEvent.md)
 
   ↳ [`OnGameEnterEvent`](OnGameEnterEvent.md)
@@ -21,6 +23,8 @@ The base class that represents a game event
   ↳ [`CollisionStartEvent`](CollisionStartEvent.md)
 
   ↳ [`CollisionEndEvent`](CollisionEndEvent.md)
+
+  ↳ [`OnRendererExitEvent`](OnRendererExitEvent.md)
 
 ## Table of contents
 
@@ -48,4 +52,4 @@ Event name
 
 #### Defined in
 
-[engine/event.ts:95](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/event.ts#L95)
+[engine/event.ts:84](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/event.ts#L84)

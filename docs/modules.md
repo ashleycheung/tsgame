@@ -9,6 +9,7 @@
 - [EventManager](classes/EventManager.md)
 - [Game](classes/Game.md)
 - [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [GameStepStartEvent](classes/GameStepStartEvent.md)
 - [GameStepEndEvent](classes/GameStepEndEvent.md)
 - [GameObject](classes/GameObject.md)
 - [OnGameEnterEvent](classes/OnGameEnterEvent.md)
@@ -21,12 +22,14 @@
 
 - [GameEvent](classes/GameEvent.md)
 - [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [GameStepStartEvent](classes/GameStepStartEvent.md)
 - [GameStepEndEvent](classes/GameStepEndEvent.md)
 - [OnGameEnterEvent](classes/OnGameEnterEvent.md)
 - [OnGameExitEvent](classes/OnGameExitEvent.md)
 - [TimerEndEvent](classes/TimerEndEvent.md)
 - [CollisionStartEvent](classes/CollisionStartEvent.md)
 - [CollisionEndEvent](classes/CollisionEndEvent.md)
+- [OnRendererExitEvent](classes/OnRendererExitEvent.md)
 
 ### Type Aliases
 
@@ -73,6 +76,11 @@
 - [toFixed](modules.md#tofixed)
 - [debugRenderState](modules.md#debugrenderstate)
 - [getObjectUpdates](modules.md#getobjectupdates)
+- [applyObjectUpdates](modules.md#applyobjectupdates)
+
+### View
+
+- [OnRendererExitEvent](classes/OnRendererExitEvent.md)
 
 ## Type Aliases
 
@@ -92,7 +100,7 @@ code id
 
 #### Defined in
 
-[engine/tilemap.ts:167](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/tilemap.ts#L167)
+[engine/tilemap.ts:167](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/tilemap.ts#L167)
 
 ___
 
@@ -109,7 +117,7 @@ ___
 
 #### Defined in
 
-[engine/tilemap.ts:172](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/tilemap.ts#L172)
+[engine/tilemap.ts:172](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/tilemap.ts#L172)
 
 ___
 
@@ -122,11 +130,12 @@ ___
 | Name | Type |
 | :------ | :------ |
 | `position` | [`Vector2D`](classes/Vector2D.md) |
+| `angle` | `number` |
 | `shape` | [`ShapeState`](modules.md#shapestate)<`any`\> |
 
 #### Defined in
 
-[physics/physicsBody.ts:195](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L195)
+[physics/physicsBody.ts:196](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L196)
 
 ___
 
@@ -149,7 +158,7 @@ ___
 
 #### Defined in
 
-[physics/physicsShape.ts:109](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsShape.ts#L109)
+[physics/physicsShape.ts:109](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L109)
 
 ## State
 
@@ -170,7 +179,7 @@ from just the sprite state
 
 #### Defined in
 
-state/sprite.ts:12
+[state/sprite.ts:12](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L12)
 
 ___
 
@@ -180,7 +189,7 @@ Represents a 2d sprite
 
 #### Defined in
 
-state/sprite.ts:29
+[state/sprite.ts:29](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L29)
 
 • `Abstract` **StatefulObject**<`T`\>: `Object`
 
@@ -194,7 +203,7 @@ An object that has a state needed by the renderer to render
 
 #### Defined in
 
-state/statefulObject.ts:10
+[state/statefulObject.ts:10](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L10)
 
 ### StatefulObjectState
 
@@ -219,7 +228,7 @@ needed for the renderer to render from scratch
 
 #### Defined in
 
-state/statefulObject.ts:102
+[state/statefulObject.ts:102](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L102)
 
 ___
 
@@ -247,7 +256,7 @@ render state
 
 #### Defined in
 
-state/statefulObject.ts:125
+[state/statefulObject.ts:125](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L125)
 
 ___
 
@@ -258,7 +267,7 @@ render states in a game
 
 #### Defined in
 
-state/statefulObjectManager.ts:12
+[state/statefulObjectManager.ts:12](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L12)
 
 ### GameRenderState
 
@@ -275,7 +284,7 @@ of all the objects in the game
 
 #### Defined in
 
-state/statefulObjectManager.ts:149
+[state/statefulObjectManager.ts:155](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L155)
 
 ___
 
@@ -297,7 +306,7 @@ renderer needs to update state
 
 #### Defined in
 
-state/statefulObjectManager.ts:159
+[state/statefulObjectManager.ts:165](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L165)
 
 ## Functions
 
@@ -403,3 +412,26 @@ ___
 #### Returns
 
 `Partial`<`T`\>
+
+___
+
+### applyObjectUpdates
+
+▸ **applyObjectUpdates**<`T`\>(`obj`, `updates`): `T`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj` | `T` |
+| `updates` | `Partial`<`T`\> |
+
+#### Returns
+
+`T`

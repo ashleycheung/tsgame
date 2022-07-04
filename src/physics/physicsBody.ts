@@ -176,6 +176,7 @@ export class PhysicsBody extends StatefulObject<PhysicsBodyState> {
   getObjectState(): PhysicsBodyState {
     return {
       position: this.position,
+      angle: this.angle,
       shape: this._shape.getState()
     }
   }
@@ -194,6 +195,7 @@ export class PhysicsBody extends StatefulObject<PhysicsBodyState> {
 
 export type PhysicsBodyState = {
   position: Vector2D,
+  angle: number,
   shape: ShapeState<any>
 }
 

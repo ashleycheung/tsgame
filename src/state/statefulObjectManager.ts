@@ -49,9 +49,15 @@ export class StatefulObjectManager {
    */
   removeRenderState (renderStateObj: StatefulObject<any>): void {
     this._renderStateObjects.delete(renderStateObj);
+    
+    if (renderStateObj.id === null) {
+      throw new Error(`Rendeobject id is null. This is a bug in the game loop`);
+    }
+    
     // Add to removed objects id
     // Note: the id wont be set to null as it is readonly
-    this._removedStateObjectIds.add(renderStateObj.id!);
+    this._removedStateObjectIds.add(renderStateObj.id);
+    
     // Remove from new state objects
     // to deal with the edge case of inserting and
     // removing
@@ -117,10 +123,10 @@ export class StatefulObjectManager {
     const deletedIds = Array.from(this._removedStateObjectIds);
     
     /**
-      Clear at the end of game step
+      Clear at the start of the next game step
     */
     if (this._game !== null) {
-      this._game.event.addEventlistener("gameStepEndEvent", e => {
+      this._game.event.addEventlistener("gameStepStartEvent", e => {
         this._newStateObjects.clear();
         this._removedStateObjectIds.clear();
       }, true)

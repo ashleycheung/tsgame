@@ -95,7 +95,7 @@ export class PhysicsCircle extends PhysicsShape {
    * Gets the shape state for the renderer debug
    * @returns 
    */
-   getState(): ShapeState<{ radius: number }> {
+  getState(): ShapeState<{ radius: number }> {
     return {
       shape: "Circle",
       properties: {

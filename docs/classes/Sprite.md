@@ -18,17 +18,9 @@ Represents a 2d sprite
 - [game](Sprite.md#game)
 - [type](Sprite.md#type)
 
-### Accessors
-
-- [id](Sprite.md#id)
-- [parent](Sprite.md#parent)
-- [children](Sprite.md#children)
-- [groups](Sprite.md#groups)
-- [position](Sprite.md#position)
-- [localPosition](Sprite.md#localposition)
-
 ### Methods
 
+- [cleanup](Sprite.md#cleanup)
 - [addToGroup](Sprite.md#addtogroup)
 - [removeFromGroup](Sprite.md#removefromgroup)
 - [isInGroup](Sprite.md#isingroup)
@@ -41,6 +33,15 @@ Represents a 2d sprite
 - [storeLastState](Sprite.md#storelaststate)
 - [getState](Sprite.md#getstate)
 - [getUpdate](Sprite.md#getupdate)
+
+### Accessors
+
+- [id](Sprite.md#id)
+- [parent](Sprite.md#parent)
+- [children](Sprite.md#children)
+- [groups](Sprite.md#groups)
+- [position](Sprite.md#position)
+- [offset](Sprite.md#offset)
 
 ### Constructors
 
@@ -58,7 +59,7 @@ Represents a 2d sprite
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -75,7 +76,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -89,107 +90,26 @@ ___
 
 #### Defined in
 
-state/sprite.ts:33
+[state/sprite.ts:33](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L33)
 
-## Accessors
+## Methods
 
-### id
+### cleanup
 
-• `get` **id**(): ``null`` \| `string`
+▸ **cleanup**(): `void`
 
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-StatefulObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-StatefulObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-StatefulObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-StatefulObject.groups
-
-___
-
-### position
-
-• `get` **position**(): [`Vector2D`](Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](Vector2D.md)
-
-___
-
-### localPosition
-
-• `get` **localPosition**(): [`Vector2D`](Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](Vector2D.md)
-
-• `set` **localPosition**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | [`Vector2D`](Vector2D.md) |
+Fully cleans up the object.
+Nothing should be run after this
 
 #### Returns
 
 `void`
 
-## Methods
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[cleanup](StatefulObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -496,6 +416,104 @@ or if there is no update
 #### Inherited from
 
 [StatefulObject](StatefulObject.md).[getUpdate](StatefulObject.md#getupdate)
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+StatefulObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+StatefulObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+StatefulObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+StatefulObject.groups
+
+___
+
+### position
+
+• `get` **position**(): [`Vector2D`](Vector2D.md)
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+___
+
+### offset
+
+• `get` **offset**(): [`Vector2D`](Vector2D.md)
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+• `set` **offset**(`v`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | [`Vector2D`](Vector2D.md) |
+
+#### Returns
+
+`void`
 
 ## Constructors
 

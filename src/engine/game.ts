@@ -36,6 +36,12 @@ export class Game {
   private _removeSet: Set<GameObject> = new Set();
   
   /**
+    All the functions to run after the set up of the
+    game step
+  */
+  private _nextStepQueue: Array<() => void> = [];
+  
+  /**
    * Adds a game object to the game
    *
    * ```typescript
@@ -78,9 +84,11 @@ export class Game {
     if (o.id === null) {
       throw new Error(`Game Object is already removed from game`)
     }
+    
     this._gameObjects.delete(o.id);
     o.event.callEvent(new OnGameExitEvent(this));
-    o.game = null;
+    // Object id and game will be null after this
+    o.cleanup();
   }
   
   /**
@@ -182,6 +190,14 @@ export class Game {
   }
   
   /**
+   * Runs a method after the setup of the next game step
+   * @param callback 
+   */
+  runOnNextStep(callback: () => void) {
+    this._nextStepQueue.push(callback);
+  }
+  
+  /**
    * Runs a game step for the game
    *
    * ```typescript
@@ -194,6 +210,12 @@ export class Game {
    * @param delta 
    */
   step (delta: number): void {
+    this.event.callEvent(new GameStepStartEvent());
+    
+    // Run next step and clear
+    this._nextStepQueue.forEach(c => c());
+    this._nextStepQueue = [];
+    
     // Call step for all the game objects
     // which are root objects
     this._gameObjects.forEach(o => {
@@ -249,6 +271,15 @@ export class Game {
  */
 export class PostPhysicsStepEvent extends GameEvent {
   name = "postPhysicsStep"
+}
+
+/**
+ * Called at the start of each game step
+ * @group Engine
+ * @event
+ */
+export class GameStepStartEvent extends GameEvent {
+  name = "gameStepStartEvent";
 }
 
 /**

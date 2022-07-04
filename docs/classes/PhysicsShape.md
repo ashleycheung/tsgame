@@ -31,7 +31,7 @@ body shape
 
 #### Defined in
 
-[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsShape.ts#L11)
+[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L11)
 
 ## Methods
 

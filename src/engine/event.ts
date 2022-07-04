@@ -36,12 +36,6 @@ export class EventManager {
   ): void {
     const listenerSet = this._listeners.get(eventName)
     
-    // Event listener entry
-    const entry = {
-      callback: callback,
-      once: once
-    }
-    
     // Add listener to the set
     if (listenerSet === undefined) {
       this._listeners.set(eventName, new Map([[callback, once]]));
@@ -77,11 +71,6 @@ export class EventManager {
   
 }
 
-
-type EventListenerEntry = {
-  callback: (event: GameEvent) => void,
-  once: boolean
-};
 
 
 /**

@@ -17,15 +17,9 @@ Represents a tilemap
 - [event](Tilemap.md#event)
 - [game](Tilemap.md#game)
 
-### Accessors
-
-- [id](Tilemap.md#id)
-- [parent](Tilemap.md#parent)
-- [children](Tilemap.md#children)
-- [groups](Tilemap.md#groups)
-
 ### Methods
 
+- [cleanup](Tilemap.md#cleanup)
 - [addToGroup](Tilemap.md#addtogroup)
 - [removeFromGroup](Tilemap.md#removefromgroup)
 - [isInGroup](Tilemap.md#isingroup)
@@ -35,6 +29,13 @@ Represents a tilemap
 - [step](Tilemap.md#step)
 - [\_step](Tilemap.md#_step)
 - [size](Tilemap.md#size)
+
+### Accessors
+
+- [id](Tilemap.md#id)
+- [parent](Tilemap.md#parent)
+- [children](Tilemap.md#children)
+- [groups](Tilemap.md#groups)
 
 ### Constructors
 
@@ -52,7 +53,7 @@ Represents a tilemap
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -69,75 +70,26 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
-
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-GameObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-GameObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-GameObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-GameObject.groups
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
 
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[cleanup](GameObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -403,6 +355,72 @@ tilemap.size();
 #### Returns
 
 [`Vector2D`](Vector2D.md)
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+GameObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+GameObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+GameObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+GameObject.groups
 
 ## Constructors
 

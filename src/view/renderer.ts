@@ -1,7 +1,9 @@
 import * as PIXI from 'pixi.js';
+import { GameEvent } from '../engine/event';
 import { StatefulObjectState } from '../state/statefulObject';
 import { GameRenderState, GameRenderUpdate } from '../state/statefulObjectManager';
 import { GameRenderObject } from './gameRenderObject';
+import { PhysicsBodyRenderObject } from './physicsBodyRenderObject';
 import { SpriteRenderObject } from './spriteRenderObject';
 
 
@@ -89,6 +91,7 @@ export class GameRenderer {
   private _removeGameRenderObject = (id: string): void => {
     const obj = this._gameRenderObjects.get(id);
     if (obj !== undefined) {
+      obj.event.callEvent(new OnRendererExitEvent());
       // Remove object
       this._gameRenderObjects.delete(id);
       // Remove from stage
@@ -101,9 +104,21 @@ export class GameRenderer {
    * @param state 
    */
   private _createGameObject = (state: StatefulObjectState<any>): void => {
-    if (state.type === "Sprite") {
-      const spriteObj = new SpriteRenderObject(state, this);
-      this._addGameRenderObject(spriteObj);
+    switch (state.type) {
+      case "Sprite": {
+        const spriteObj = new SpriteRenderObject(state, this);
+        this._addGameRenderObject(spriteObj);
+        break;
+      }
+      case "PhysicsBody": {
+        const physObj = new PhysicsBodyRenderObject(state, this);
+        this._addGameRenderObject(physObj);
+        break;
+      }
+      // Do nothing
+      default :{
+        console.error(`Invalid type ${state.type}`);
+      }
     }
   }
   
@@ -137,3 +152,14 @@ export class GameRenderer {
   }
   
 }
+
+
+/**
+ * Called when a new renderer object is added to the renderer
+ * @group View
+ * @event
+ */
+export class OnRendererExitEvent extends GameEvent {
+  name = "onRendererExit";
+}
+

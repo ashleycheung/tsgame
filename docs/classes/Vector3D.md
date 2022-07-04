@@ -46,7 +46,7 @@ Represents a 3 dimensional Vector
 
 #### Defined in
 
-[physics/vector3d.ts:10](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/vector3d.ts#L10)
+[physics/vector3d.ts:10](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/vector3d.ts#L10)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[physics/vector3d.ts:11](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/vector3d.ts#L11)
+[physics/vector3d.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/vector3d.ts#L11)
 
 ___
 
@@ -66,7 +66,7 @@ ___
 
 #### Defined in
 
-[physics/vector3d.ts:12](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/vector3d.ts#L12)
+[physics/vector3d.ts:12](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/vector3d.ts#L12)
 
 ## Constructors
 

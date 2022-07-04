@@ -23,6 +23,23 @@ the physics engine is abstracted away
 - [type](PhysicsBody.md#type)
 - [offset](PhysicsBody.md#offset)
 
+### Methods
+
+- [cleanup](PhysicsBody.md#cleanup)
+- [addToGroup](PhysicsBody.md#addtogroup)
+- [removeFromGroup](PhysicsBody.md#removefromgroup)
+- [isInGroup](PhysicsBody.md#isingroup)
+- [root](PhysicsBody.md#root)
+- [addChild](PhysicsBody.md#addchild)
+- [removeChild](PhysicsBody.md#removechild)
+- [step](PhysicsBody.md#step)
+- [getObjectState](PhysicsBody.md#getobjectstate)
+- [translate](PhysicsBody.md#translate)
+- [\_step](PhysicsBody.md#_step)
+- [storeLastState](PhysicsBody.md#storelaststate)
+- [getState](PhysicsBody.md#getstate)
+- [getUpdate](PhysicsBody.md#getupdate)
+
 ### Accessors
 
 - [id](PhysicsBody.md#id)
@@ -38,22 +55,6 @@ the physics engine is abstracted away
 - [collisionCategory](PhysicsBody.md#collisioncategory)
 - [collisionMask](PhysicsBody.md#collisionmask)
 - [isSensor](PhysicsBody.md#issensor)
-
-### Methods
-
-- [addToGroup](PhysicsBody.md#addtogroup)
-- [removeFromGroup](PhysicsBody.md#removefromgroup)
-- [isInGroup](PhysicsBody.md#isingroup)
-- [root](PhysicsBody.md#root)
-- [addChild](PhysicsBody.md#addchild)
-- [removeChild](PhysicsBody.md#removechild)
-- [step](PhysicsBody.md#step)
-- [getObjectState](PhysicsBody.md#getobjectstate)
-- [translate](PhysicsBody.md#translate)
-- [\_step](PhysicsBody.md#_step)
-- [storeLastState](PhysicsBody.md#storelaststate)
-- [getState](PhysicsBody.md#getstate)
-- [getUpdate](PhysicsBody.md#getupdate)
 
 ### Constructors
 
@@ -71,7 +72,7 @@ the physics engine is abstracted away
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -88,7 +89,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -98,7 +99,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L16)
+[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L16)
 
 ___
 
@@ -112,7 +113,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L18)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L18)
 
 ___
 
@@ -122,285 +123,26 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/cc6eba3/src/physics/physicsBody.ts#L22)
-
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-StatefulObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-StatefulObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-StatefulObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-StatefulObject.groups
-
-___
-
-### position
-
-• `get` **position**(): [`Vector2D`](Vector2D.md)
-
-Position is 0 by default
-
-#### Returns
-
-[`Vector2D`](Vector2D.md)
-
-• `set` **position**(`p`): `void`
-
-Position is 0 by default
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `p` | [`Vector2D`](Vector2D.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### angle
-
-• `get` **angle**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **angle**(`a`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `a` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### friction
-
-• `get` **friction**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **friction**(`f`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `f` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### airResistance
-
-• `get` **airResistance**(): `number`
-
-#### Returns
-
-`number`
-
-• `set` **airResistance**(`ar`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `ar` | `number` |
-
-#### Returns
-
-`void`
-
-___
-
-### velocity
-
-• `get` **velocity**(): [`Vector2D`](Vector2D.md)
-
-#### Returns
-
-[`Vector2D`](Vector2D.md)
-
-• `set` **velocity**(`p`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `p` | [`Vector2D`](Vector2D.md) |
-
-#### Returns
-
-`void`
-
-___
-
-### static
-
-• `get` **static**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-• `set` **static**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `boolean` |
-
-#### Returns
-
-`void`
-
-___
-
-### collisionCategory
-
-• `get` **collisionCategory**(): `Set`<`number`\>
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Returns
-
-`Set`<`number`\>
-
-• `set` **collisionCategory**(`v`): `void`
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `Set`<`number`\> |
-
-#### Returns
-
-`void`
-
-___
-
-### collisionMask
-
-• `get` **collisionMask**(): `Set`<`number`\>
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Returns
-
-`Set`<`number`\>
-
-• `set` **collisionMask**(`v`): `void`
-
-https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `Set`<`number`\> |
-
-#### Returns
-
-`void`
-
-___
-
-### isSensor
-
-• `get` **isSensor**(): `boolean`
-
-#### Returns
-
-`boolean`
-
-• `set` **isSensor**(`v`): `void`
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `v` | `boolean` |
-
-#### Returns
-
-`void`
+[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L22)
 
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[cleanup](StatefulObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -723,6 +465,282 @@ or if there is no update
 #### Inherited from
 
 [StatefulObject](StatefulObject.md).[getUpdate](StatefulObject.md#getupdate)
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+StatefulObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+StatefulObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+StatefulObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+StatefulObject.groups
+
+___
+
+### position
+
+• `get` **position**(): [`Vector2D`](Vector2D.md)
+
+Position is 0 by default
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+• `set` **position**(`p`): `void`
+
+Position is 0 by default
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `p` | [`Vector2D`](Vector2D.md) |
+
+#### Returns
+
+`void`
+
+___
+
+### angle
+
+• `get` **angle**(): `number`
+
+#### Returns
+
+`number`
+
+• `set` **angle**(`a`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `a` | `number` |
+
+#### Returns
+
+`void`
+
+___
+
+### friction
+
+• `get` **friction**(): `number`
+
+#### Returns
+
+`number`
+
+• `set` **friction**(`f`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `f` | `number` |
+
+#### Returns
+
+`void`
+
+___
+
+### airResistance
+
+• `get` **airResistance**(): `number`
+
+#### Returns
+
+`number`
+
+• `set` **airResistance**(`ar`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `ar` | `number` |
+
+#### Returns
+
+`void`
+
+___
+
+### velocity
+
+• `get` **velocity**(): [`Vector2D`](Vector2D.md)
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+• `set` **velocity**(`p`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `p` | [`Vector2D`](Vector2D.md) |
+
+#### Returns
+
+`void`
+
+___
+
+### static
+
+• `get` **static**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+• `set` **static**(`v`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | `boolean` |
+
+#### Returns
+
+`void`
+
+___
+
+### collisionCategory
+
+• `get` **collisionCategory**(): `Set`<`number`\>
+
+https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
+
+#### Returns
+
+`Set`<`number`\>
+
+• `set` **collisionCategory**(`v`): `void`
+
+https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | `Set`<`number`\> |
+
+#### Returns
+
+`void`
+
+___
+
+### collisionMask
+
+• `get` **collisionMask**(): `Set`<`number`\>
+
+https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
+
+#### Returns
+
+`Set`<`number`\>
+
+• `set` **collisionMask**(`v`): `void`
+
+https://brm.io/matter-js/docs/classes/Body.html#property_collisionFilter.category
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | `Set`<`number`\> |
+
+#### Returns
+
+`void`
+
+___
+
+### isSensor
+
+• `get` **isSensor**(): `boolean`
+
+#### Returns
+
+`boolean`
+
+• `set` **isSensor**(`v`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `v` | `boolean` |
+
+#### Returns
+
+`void`
 
 ## Constructors
 

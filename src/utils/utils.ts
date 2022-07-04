@@ -94,6 +94,8 @@ export const debugRenderState = (state: GameRenderState, elem: HTMLElement): voi
   elem.style.top = "5%";
   elem.style.backgroundColor = "white"
   elem.style.opacity = "0.6"
+  elem.style.maxHeight = "50%";
+  elem.style.overflow = "auto";
 }
 
 
@@ -120,4 +122,34 @@ export const getObjectUpdates = <T>(obj1: T, obj2: T): Partial<T> => {
     }
   }
   return diff;
+}
+
+
+/**
+ * Given an object and its partial updates
+ * return an updated version of the object with all
+ * its values updated
+ * @param obj 
+ * @param updates 
+ * @returns 
+ */
+export const applyObjectUpdates = <T>(obj: T, updates: Partial<T>): T => {
+  const out: any = {};
+  // Loop through each of the properties
+  for (const prop of Object.keys(obj)) {
+    const objValue = (obj as any)[prop];
+    const updateValue = (updates as any)[prop];
+    // If both of them are objects
+    // update them recursively
+    if (typeof objValue === "object" && typeof updateValue === "object") {
+      out[prop] = applyObjectUpdates(objValue, updateValue);
+    } else if (updateValue !== undefined) {
+      // Use updated value
+      out[prop] = updateValue;
+    } else {
+      // Use old value
+      out[prop] = objValue;
+    }
+  }
+  return out;
 }

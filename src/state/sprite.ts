@@ -38,7 +38,7 @@ export class Sprite extends StatefulObject<SpriteState> {
     If the sprite is a child of a physics body
     the position is relative to the physics body
   */
-  private _localPosition: Vector2D = Vector2D.zero();
+  private _offset: Vector2D = Vector2D.zero();
   
   constructor (texturePath: string) {
     super();
@@ -49,17 +49,17 @@ export class Sprite extends StatefulObject<SpriteState> {
   
   get position (): Vector2D {
     if (this.parent !== null && this.parent instanceof PhysicsBody) {
-      return this.parent.position.add(this._localPosition);
+      return this.parent.position.add(this._offset);
     }
-    return this._localPosition;
+    return this._offset;
   }
   
-  get localPosition (): Vector2D {
-    return this._localPosition;
+  get offset (): Vector2D {
+    return this._offset;
   }
   
-  set localPosition (v: Vector2D) {
-    this._localPosition = v;
+  set offset (v: Vector2D) {
+    this._offset = v;
   }
   
   getObjectState(): SpriteState {

@@ -46,9 +46,16 @@ export class GameObject {
       for (const c of this._children) {
         game.removeGameObject(c)
       }
-      // Remove id
-      this._id = null;
     })
+  }
+  
+  /**
+   * Fully cleans up the object.
+   * Nothing should be run after this
+   */
+  cleanup(): void {
+    this.game = null;
+    this._id = null;
   }
   
   /**
