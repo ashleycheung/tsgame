@@ -17,16 +17,9 @@ A class that acts as a timer
 - [event](Timer.md#event)
 - [game](Timer.md#game)
 
-### Accessors
-
-- [id](Timer.md#id)
-- [parent](Timer.md#parent)
-- [children](Timer.md#children)
-- [groups](Timer.md#groups)
-- [active](Timer.md#active)
-
 ### Methods
 
+- [cleanup](Timer.md#cleanup)
 - [addToGroup](Timer.md#addtogroup)
 - [removeFromGroup](Timer.md#removefromgroup)
 - [isInGroup](Timer.md#isingroup)
@@ -36,6 +29,14 @@ A class that acts as a timer
 - [step](Timer.md#step)
 - [start](Timer.md#start)
 - [\_step](Timer.md#_step)
+
+### Accessors
+
+- [id](Timer.md#id)
+- [parent](Timer.md#parent)
+- [children](Timer.md#children)
+- [groups](Timer.md#groups)
+- [active](Timer.md#active)
 
 ### Constructors
 
@@ -53,7 +54,7 @@ A class that acts as a timer
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -70,85 +71,26 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
-
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-GameObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-GameObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-GameObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-GameObject.groups
-
-___
-
-### active
-
-• `get` **active**(): `boolean`
-
-#### Returns
-
-`boolean`
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[cleanup](GameObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -401,6 +343,82 @@ class MyObject extends GameObject {
 #### Overrides
 
 [GameObject](GameObject.md).[_step](GameObject.md#_step)
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+GameObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+GameObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+GameObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+GameObject.groups
+
+___
+
+### active
+
+• `get` **active**(): `boolean`
+
+#### Returns
+
+`boolean`
 
 ## Constructors
 

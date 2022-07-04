@@ -32,6 +32,7 @@ Represents a game instance
 - [removeGameObject](Game.md#removegameobject)
 - [queueRemoveGameObject](Game.md#queueremovegameobject)
 - [getGameObjectsInGroup](Game.md#getgameobjectsingroup)
+- [runOnNextStep](Game.md#runonnextstep)
 - [step](Game.md#step)
 - [getAllGameObjects](Game.md#getallgameobjects)
 
@@ -49,7 +50,7 @@ Represents a game instance
 
 #### Defined in
 
-[engine/game.ts:30](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L30)
+[engine/game.ts:30](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/game.ts#L30)
 
 ___
 
@@ -59,7 +60,7 @@ ___
 
 #### Defined in
 
-[engine/game.ts:32](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L32)
+[engine/game.ts:32](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/game.ts#L32)
 
 ___
 
@@ -69,7 +70,7 @@ ___
 
 #### Defined in
 
-[engine/game.ts:34](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/game.ts#L34)
+[engine/game.ts:34](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/game.ts#L34)
 
 ## Methods
 
@@ -190,6 +191,24 @@ console.log(game.getGameObjectsInGroup("player"));
 #### Returns
 
 [`GameObject`](GameObject.md)[]
+
+___
+
+### runOnNextStep
+
+▸ **runOnNextStep**(`callback`): `void`
+
+Runs a method after the setup of the next game step
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `callback` | () => `void` |
+
+#### Returns
+
+`void`
 
 ___
 

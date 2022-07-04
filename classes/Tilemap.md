@@ -17,15 +17,9 @@ Represents a tilemap
 - [event](Tilemap.md#event)
 - [game](Tilemap.md#game)
 
-### Accessors
-
-- [id](Tilemap.md#id)
-- [parent](Tilemap.md#parent)
-- [children](Tilemap.md#children)
-- [groups](Tilemap.md#groups)
-
 ### Methods
 
+- [cleanup](Tilemap.md#cleanup)
 - [addToGroup](Tilemap.md#addtogroup)
 - [removeFromGroup](Tilemap.md#removefromgroup)
 - [isInGroup](Tilemap.md#isingroup)
@@ -35,6 +29,13 @@ Represents a tilemap
 - [step](Tilemap.md#step)
 - [\_step](Tilemap.md#_step)
 - [size](Tilemap.md#size)
+
+### Accessors
+
+- [id](Tilemap.md#id)
+- [parent](Tilemap.md#parent)
+- [children](Tilemap.md#children)
+- [groups](Tilemap.md#groups)
 
 ### Constructors
 
@@ -52,7 +53,7 @@ Represents a tilemap
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -69,75 +70,26 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
-
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-GameObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-GameObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-GameObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-GameObject.groups
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[cleanup](GameObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -404,6 +356,72 @@ tilemap.size();
 
 [`Vector2D`](Vector2D.md)
 
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+GameObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+GameObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+GameObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+GameObject.groups
+
 ## Constructors
 
 ### constructor
@@ -419,7 +437,7 @@ Creates an empty tilemap of the given size
 | `cells` | `number`[][] | `undefined` | x represents the width, y represents the height |
 | `cellSize` | [`Vector2D`](Vector2D.md) | `undefined` | the size of a cell in the tilemap |
 | `origin` | [`Vector2D`](Vector2D.md) | `undefined` | the position of the top left corner of the tilemap |
-| `code` | [`TilemapCode`](../modules.md#tilemapcode) | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
+| `code` | [`TilemapCode`](../interfaces/TilemapCode.md) | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
 
 #### Overrides
 

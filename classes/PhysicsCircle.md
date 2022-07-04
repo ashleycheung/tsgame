@@ -40,7 +40,7 @@ Creates a circle physics shape
 
 #### Defined in
 
-[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L11)
+[physics/physicsShape.ts:11](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsShape.ts#L11)
 
 ## Constructors
 
@@ -72,13 +72,13 @@ PhysicsShape.constructor
 
 ### getState
 
-▸ **getState**(): [`ShapeState`](../modules.md#shapestate)<{ `radius`: `number`  }\>
+▸ **getState**(): [`ShapeState`](../interfaces/ShapeState.md)<{ `radius`: `number`  }\>
 
 Gets the shape state for the renderer debug
 
 #### Returns
 
-[`ShapeState`](../modules.md#shapestate)<{ `radius`: `number`  }\>
+[`ShapeState`](../interfaces/ShapeState.md)<{ `radius`: `number`  }\>
 
 #### Overrides
 

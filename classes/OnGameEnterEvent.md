@@ -36,7 +36,7 @@ Event name
 
 #### Defined in
 
-[engine/gameObject.ts:254](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L254)
+[engine/gameObject.ts:261](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L261)
 
 ___
 
@@ -46,7 +46,7 @@ ___
 
 #### Defined in
 
-[engine/gameObject.ts:256](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L256)
+[engine/gameObject.ts:263](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L263)
 
 ___
 
@@ -56,7 +56,7 @@ ___
 
 #### Defined in
 
-[engine/gameObject.ts:258](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L258)
+[engine/gameObject.ts:265](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L265)
 
 ## Constructors
 

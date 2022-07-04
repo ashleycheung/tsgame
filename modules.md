@@ -9,6 +9,7 @@
 - [EventManager](classes/EventManager.md)
 - [Game](classes/Game.md)
 - [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [GameStepStartEvent](classes/GameStepStartEvent.md)
 - [GameStepEndEvent](classes/GameStepEndEvent.md)
 - [GameObject](classes/GameObject.md)
 - [OnGameEnterEvent](classes/OnGameEnterEvent.md)
@@ -21,19 +22,23 @@
 
 - [GameEvent](classes/GameEvent.md)
 - [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
+- [GameStepStartEvent](classes/GameStepStartEvent.md)
 - [GameStepEndEvent](classes/GameStepEndEvent.md)
 - [OnGameEnterEvent](classes/OnGameEnterEvent.md)
 - [OnGameExitEvent](classes/OnGameExitEvent.md)
 - [TimerEndEvent](classes/TimerEndEvent.md)
 - [CollisionStartEvent](classes/CollisionStartEvent.md)
 - [CollisionEndEvent](classes/CollisionEndEvent.md)
+- [OnRendererExitEvent](classes/OnRendererExitEvent.md)
 
-### Type Aliases
+### Interfaces
 
-- [TilemapCode](modules.md#tilemapcode)
-- [TileMapCellCode](modules.md#tilemapcellcode)
-- [PhysicsBodyState](modules.md#physicsbodystate)
-- [ShapeState](modules.md#shapestate)
+- [TilemapCode](interfaces/TilemapCode.md)
+- [TileMapCellCode](interfaces/TileMapCellCode.md)
+- [PhysicsBodyState](interfaces/PhysicsBodyState.md)
+- [ShapeState](interfaces/ShapeState.md)
+- [Asset](interfaces/Asset.md)
+- [SpriteSheetAsset](interfaces/SpriteSheetAsset.md)
 
 ### Classes
 
@@ -43,6 +48,7 @@
 - [Vector3D](classes/Vector3D.md)
 - [Controller](classes/Controller.md)
 - [PhysicsRender](classes/PhysicsRender.md)
+- [AssetLoader](classes/AssetLoader.md)
 - [GameRenderer](classes/GameRenderer.md)
 
 ### Physics
@@ -56,14 +62,14 @@
 
 ### State
 
-- [SpriteState](modules.md#spritestate)
+- [SpriteState](interfaces/SpriteState.md)
 - [Sprite](classes/Sprite.md)
 - [StatefulObject](classes/StatefulObject.md)
-- [StatefulObjectState](modules.md#statefulobjectstate)
-- [StatefulObjectUpdate](modules.md#statefulobjectupdate)
+- [StatefulObjectState](interfaces/StatefulObjectState.md)
+- [StatefulObjectUpdate](interfaces/StatefulObjectUpdate.md)
 - [StatefulObjectManager](classes/StatefulObjectManager.md)
-- [GameRenderState](modules.md#gamerenderstate)
-- [GameRenderUpdate](modules.md#gamerenderupdate)
+- [GameRenderState](interfaces/GameRenderState.md)
+- [GameRenderUpdate](interfaces/GameRenderUpdate.md)
 
 ### Functions
 
@@ -73,231 +79,11 @@
 - [toFixed](modules.md#tofixed)
 - [debugRenderState](modules.md#debugrenderstate)
 - [getObjectUpdates](modules.md#getobjectupdates)
+- [applyObjectUpdates](modules.md#applyobjectupdates)
 
-## Type Aliases
+### View
 
-### TilemapCode
-
-Ƭ **TilemapCode**: `Object`
-
-Maps the tilemap cells to its
-code id
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `empty` | [`TileMapCellCode`](modules.md#tilemapcellcode) |
-| `wall` | [`TileMapCellCode`](modules.md#tilemapcellcode) |
-
-#### Defined in
-
-[engine/tilemap.ts:167](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/tilemap.ts#L167)
-
-___
-
-### TileMapCellCode
-
-Ƭ **TileMapCellCode**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `code` | `number` |
-| `collision` | `number`[] |
-
-#### Defined in
-
-[engine/tilemap.ts:172](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/tilemap.ts#L172)
-
-___
-
-### PhysicsBodyState
-
-Ƭ **PhysicsBodyState**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `position` | [`Vector2D`](classes/Vector2D.md) |
-| `shape` | [`ShapeState`](modules.md#shapestate)<`any`\> |
-
-#### Defined in
-
-[physics/physicsBody.ts:195](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsBody.ts#L195)
-
-___
-
-### ShapeState
-
-Ƭ **ShapeState**<`T`\>: `Object`
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `shape` | `string` | Circle, Rectangle, etc |
-| `properties` | `T` | - |
-
-#### Defined in
-
-[physics/physicsShape.ts:109](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/physics/physicsShape.ts#L109)
-
-## State
-
-### SpriteState
-
-Ƭ **SpriteState**: `Object`
-
-The state of a sprite
-a sprite should be able to be created
-from just the sprite state
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `textureName` | `string` | The alias name for the texture. The path for this texture is managed by the client |
-| `position` | [`Vector2D`](classes/Vector2D.md) | - |
-
-#### Defined in
-
-[state/sprite.ts:12](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L12)
-
-___
-
-• **Sprite**: `Object`
-
-Represents a 2d sprite
-
-#### Defined in
-
-[state/sprite.ts:29](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/sprite.ts#L29)
-
-• `Abstract` **StatefulObject**<`T`\>: `Object`
-
-An object that has a state needed by the renderer to render
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Defined in
-
-[state/statefulObject.ts:10](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L10)
-
-### StatefulObjectState
-
-Ƭ **StatefulObjectState**<`T`\>: `Object`
-
-Represents the whole state of the object
-needed for the renderer to render from scratch
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `id` | `string` | The game object id |
-| `type` | `string` | The type of the game object |
-| `state` | `T` | The actual state |
-
-#### Defined in
-
-[state/statefulObject.ts:102](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L102)
-
-___
-
-### StatefulObjectUpdate
-
-Ƭ **StatefulObjectUpdate**<`T`\>: `Object`
-
-Represents an update to a object
-needed for the renderer to update
-an already existing object with known
-render state
-
-#### Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `id` | `string` | The game object id |
-| `update` | `Partial`<`T`\> | The updates to the game object |
-
-#### Defined in
-
-[state/statefulObject.ts:125](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L125)
-
-___
-
-• **StatefulObjectManager**: `Object`
-
-Responsible for managing all the 
-render states in a game
-
-#### Defined in
-
-[state/statefulObjectManager.ts:12](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L12)
-
-### GameRenderState
-
-Ƭ **GameRenderState**: `Object`
-
-Contains all the render states
-of all the objects in the game
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `objects` | [`StatefulObjectState`](modules.md#statefulobjectstate)<`any`\>[] |
-
-#### Defined in
-
-[state/statefulObjectManager.ts:149](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L149)
-
-___
-
-### GameRenderUpdate
-
-Ƭ **GameRenderUpdate**: `Object`
-
-An object that contains all the
-renderer needs to update state
-
-#### Type declaration
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `debug` | [`StatefulObjectState`](modules.md#statefulobjectstate)<`any`\>[] | - |
-| `newObjects` | [`StatefulObjectState`](modules.md#statefulobjectstate)<`any`\>[] | All the new objects added and their states |
-| `updates` | [`StatefulObjectUpdate`](modules.md#statefulobjectupdate)<`any`\>[] | All the updates to previously known objects. Note: Objects with no updates will not be added here |
-| `removedObjects` | `string`[] | The id's of all the state objects removed |
-
-#### Defined in
-
-[state/statefulObjectManager.ts:159](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObjectManager.ts#L159)
+- [OnRendererExitEvent](classes/OnRendererExitEvent.md)
 
 ## Functions
 
@@ -374,7 +160,7 @@ ___
 
 | Name | Type |
 | :------ | :------ |
-| `state` | [`GameRenderState`](modules.md#gamerenderstate) |
+| `state` | [`GameRenderState`](interfaces/GameRenderState.md) |
 | `elem` | `HTMLElement` |
 
 #### Returns
@@ -403,3 +189,26 @@ ___
 #### Returns
 
 `Partial`<`T`\>
+
+___
+
+### applyObjectUpdates
+
+▸ **applyObjectUpdates**<`T`\>(`obj`, `updates`): `T`
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `obj` | `T` |
+| `updates` | `Partial`<`T`\> |
+
+#### Returns
+
+`T`

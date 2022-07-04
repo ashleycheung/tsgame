@@ -28,15 +28,9 @@ An object that has a state needed by the renderer to render
 - [game](StatefulObject.md#game)
 - [type](StatefulObject.md#type)
 
-### Accessors
-
-- [id](StatefulObject.md#id)
-- [parent](StatefulObject.md#parent)
-- [children](StatefulObject.md#children)
-- [groups](StatefulObject.md#groups)
-
 ### Methods
 
+- [cleanup](StatefulObject.md#cleanup)
 - [addToGroup](StatefulObject.md#addtogroup)
 - [removeFromGroup](StatefulObject.md#removefromgroup)
 - [isInGroup](StatefulObject.md#isingroup)
@@ -49,6 +43,13 @@ An object that has a state needed by the renderer to render
 - [getObjectState](StatefulObject.md#getobjectstate)
 - [getState](StatefulObject.md#getstate)
 - [getUpdate](StatefulObject.md#getupdate)
+
+### Accessors
+
+- [id](StatefulObject.md#id)
+- [parent](StatefulObject.md#parent)
+- [children](StatefulObject.md#children)
+- [groups](StatefulObject.md#groups)
 
 ### Constructors
 
@@ -66,7 +67,7 @@ An object that has a state needed by the renderer to render
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -83,7 +84,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -93,75 +94,26 @@ ___
 
 #### Defined in
 
-[state/statefulObject.ts:15](https://github.com/ashleycheung/tsgame/blob/46dfc92/src/state/statefulObject.ts#L15)
-
-## Accessors
-
-### id
-
-• `get` **id**(): ``null`` \| `string`
-
-Returns the unique id of the game object
-This will be null if the game object is not
-in the game
-
-#### Returns
-
-``null`` \| `string`
-
-#### Inherited from
-
-GameObject.id
-
-___
-
-### parent
-
-• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
-
-Gets the immediate parent of this game object
-
-#### Returns
-
-``null`` \| [`GameObject`](GameObject.md)
-
-#### Inherited from
-
-GameObject.parent
-
-___
-
-### children
-
-• `get` **children**(): [`GameObject`](GameObject.md)[]
-
-Returns all the children of this game object
-
-#### Returns
-
-[`GameObject`](GameObject.md)[]
-
-#### Inherited from
-
-GameObject.children
-
-___
-
-### groups
-
-• `get` **groups**(): `string`[]
-
-Returns all the groups this game object is in.
-
-#### Returns
-
-`string`[]
-
-#### Inherited from
-
-GameObject.groups
+[state/statefulObject.ts:15](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L15)
 
 ## Methods
+
+### cleanup
+
+▸ **cleanup**(): `void`
+
+Fully cleans up the object.
+Nothing should be run after this
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[GameObject](GameObject.md).[cleanup](GameObject.md#cleanup)
+
+___
 
 ### addToGroup
 
@@ -427,7 +379,7 @@ ___
 
 ### getState
 
-▸ **getState**(): ``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<`T`\>
 
 Gets the whole state the object
 Returns null when the object isn't
@@ -435,13 +387,13 @@ in the game
 
 #### Returns
 
-``null`` \| [`StatefulObjectState`](../modules.md#statefulobjectstate)<`T`\>
+``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<`T`\>
 
 ___
 
 ### getUpdate
 
-▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<`T`\>
 
 Gets all the updates to the state
 since the last getUpdate call AND
@@ -451,7 +403,73 @@ or if there is no update
 
 #### Returns
 
-``null`` \| [`StatefulObjectUpdate`](../modules.md#statefulobjectupdate)<`T`\>
+``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<`T`\>
+
+## Accessors
+
+### id
+
+• `get` **id**(): ``null`` \| `string`
+
+Returns the unique id of the game object
+This will be null if the game object is not
+in the game
+
+#### Returns
+
+``null`` \| `string`
+
+#### Inherited from
+
+GameObject.id
+
+___
+
+### parent
+
+• `get` **parent**(): ``null`` \| [`GameObject`](GameObject.md)
+
+Gets the immediate parent of this game object
+
+#### Returns
+
+``null`` \| [`GameObject`](GameObject.md)
+
+#### Inherited from
+
+GameObject.parent
+
+___
+
+### children
+
+• `get` **children**(): [`GameObject`](GameObject.md)[]
+
+Returns all the children of this game object
+
+#### Returns
+
+[`GameObject`](GameObject.md)[]
+
+#### Inherited from
+
+GameObject.children
+
+___
+
+### groups
+
+• `get` **groups**(): `string`[]
+
+Returns all the groups this game object is in.
+
+#### Returns
+
+`string`[]
+
+#### Inherited from
+
+GameObject.groups
 
 ## Constructors
 

@@ -4,16 +4,29 @@
 
 ## Table of contents
 
+### Properties
+
+- [loader](GameRenderer.md#loader)
+
 ### Constructors
 
 - [constructor](GameRenderer.md#constructor)
 
 ### Methods
 
-- [load](GameRenderer.md#load)
 - [setState](GameRenderer.md#setstate)
 - [update](GameRenderer.md#update)
 - [render](GameRenderer.md#render)
+
+## Properties
+
+### loader
+
+• `Readonly` **loader**: [`AssetLoader`](AssetLoader.md)
+
+#### Defined in
+
+[view/renderer.ts:19](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/renderer.ts#L19)
 
 ## Constructors
 
@@ -29,24 +42,6 @@
 
 ## Methods
 
-### load
-
-▸ **load**(`assets`): `Promise`<`void`\>
-
-Loads an array of assets
-
-#### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `assets` | [name: string, path: string][] |
-
-#### Returns
-
-`Promise`<`void`\>
-
-___
-
 ### setState
 
 ▸ **setState**(`gameState`): `void`
@@ -57,7 +52,7 @@ Sets the game state of the renderer
 
 | Name | Type |
 | :------ | :------ |
-| `gameState` | [`GameRenderState`](../modules.md#gamerenderstate) |
+| `gameState` | [`GameRenderState`](../interfaces/GameRenderState.md) |
 
 #### Returns
 
@@ -75,7 +70,7 @@ Updates the game state of the renderer
 
 | Name | Type |
 | :------ | :------ |
-| `gameUpdate` | [`GameRenderUpdate`](../modules.md#gamerenderupdate) |
+| `gameUpdate` | [`GameRenderUpdate`](../interfaces/GameRenderUpdate.md) |
 
 #### Returns
 
@@ -85,9 +80,15 @@ ___
 
 ### render
 
-▸ **render**(): `void`
+▸ **render**(`delta`): `void`
 
 Renders the stage
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `delta` | `number` | time passed since last render |
 
 #### Returns
 
