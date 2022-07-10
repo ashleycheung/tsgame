@@ -30,7 +30,7 @@ The game object id
 
 #### Defined in
 
-[state/statefulObject.ts:129](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L129)
+[state/statefulObject.ts:134](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L134)
 
 ___
 
@@ -42,4 +42,4 @@ The updates to the game object
 
 #### Defined in
 
-[state/statefulObject.ts:133](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L133)
+[state/statefulObject.ts:138](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L138)

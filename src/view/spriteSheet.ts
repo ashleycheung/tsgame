@@ -3,6 +3,19 @@ import * as PIXI from 'pixi.js';
 import { SpriteSheetAsset } from "./assets";
 
 
+/**
+ * Given a sprite sheet name and the frame number
+ * return its name as a texture
+ * @param name 
+ * @param frameNum 
+ * @returns 
+ */
+export const getSpriteSheetFrameName = (
+  name: string, frameNum: number
+): string => {
+  return `${name}_${frameNum}`
+}
+
 
 /**
  * Creates the required sprite sheet data to load for pixijs
@@ -20,7 +33,7 @@ export const generateSpriteSheetData = (
   frames: Vector2D,
   imgSize: Vector2D,
   scale: number,
-  animations: SpriteSheetAsset["animations"]
+  animations: SpriteSheetAsset["animations"] | undefined = undefined
 ): PIXI.ISpritesheetData => {
   const data: PIXI.ISpritesheetData = {
     frames: {},
@@ -36,19 +49,13 @@ export const generateSpriteSheetData = (
     imgSize.y / frames.y
   )
   
-  
-  // Returns the frame name
-  const getFrameName = (frameNum: number): string => {
-    return `${name}_${frameNum}`
-  }
-  
   // For each row create the frames
   for (let y = 0; y < frames.y; y++) {
     // For each cell in each row
     for (let x = 0; x < frames.x; x++) {
       const frameNum = y * frames.x + x;
       
-      data.frames[getFrameName(frameNum)] = {
+      data.frames[getSpriteSheetFrameName(name, frameNum)] = {
         frame: {
           x: x * frameSize.x,
           y: y * frameSize.y,
@@ -61,18 +68,22 @@ export const generateSpriteSheetData = (
           x: 0,
           y: 0
         },
+        // This is how big each frame is
         sourceSize: {
-          w: imgSize.x,
-          h: imgSize.y
+          w: frameSize.x,
+          h: frameSize.y
         }
       }
     }
   }
   
   // Load the animations
-  for (const animName of Object.keys(animations)) {
-    data.animations![animName] = (animations[animName])
-                                  .map(i => getFrameName(i))
+  // If exists
+  if (animations !== undefined) {
+    for (const animName of Object.keys(animations)) {
+      data.animations![animName] = (animations[animName])
+                                    .map(i => getSpriteSheetFrameName(name, i))
+    }
   }
   
   return data;

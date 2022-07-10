@@ -2,7 +2,7 @@
 
 # Class: OnRendererExitEvent
 
-Called when a new renderer object is added to the renderer
+Called when a new renderer object is removed from the renderer
 
 ## Hierarchy
 
@@ -44,4 +44,4 @@ Event name
 
 #### Defined in
 
-[view/renderer.ts:145](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/renderer.ts#L145)
+[view/renderer.ts:193](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/renderer.ts#L193)

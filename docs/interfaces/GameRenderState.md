@@ -19,4 +19,4 @@ of all the objects in the game
 
 #### Defined in
 
-[state/statefulObjectManager.ts:156](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObjectManager.ts#L156)
+[state/statefulObjectManager.ts:156](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObjectManager.ts#L156)

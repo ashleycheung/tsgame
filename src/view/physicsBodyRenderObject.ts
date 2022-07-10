@@ -9,13 +9,21 @@ import { applyObjectUpdates } from "../utils/utils";
 
 export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> {
   
+  private _color: number;
+  
+  
   protected constructor(
     state: StatefulObjectState<PhysicsBodyState>,
-    renderer: GameRenderer) 
+    renderer: GameRenderer,
+    color: number
+  ) 
   {
     super(state, renderer, new PIXI.Graphics());
-
-    this.setState(state);
+    
+    this._color = color;
+    
+    // Set to top
+    this.getPixiContainer().zIndex = 999;
     
     /**
       Need to manually destroy due to memory leak issue
@@ -26,19 +34,38 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
     })
   }
   
+  
+  /**
+   * Creates a Physics render object
+   * @param state 
+   * @param renderer 
+   * @param color 
+   * @returns 
+   */
   static create (
     state: StatefulObjectState<PhysicsBodyState>,
-    renderer: GameRenderer
+    renderer: GameRenderer,
+    color: number = 0x0000ff
   ): PhysicsBodyRenderObject {
-    const obj = new PhysicsBodyRenderObject(state, renderer);
+    const obj = new PhysicsBodyRenderObject(state, renderer, color);
     obj.setState(state);
     return obj;
   }
   
+  
+  /**
+   * Returns a graphics object
+   * @returns 
+   */
   override getPixiContainer(): PIXI.Graphics {
     return super.getPixiContainer() as PIXI.Graphics;
   }
   
+  
+  /**
+   * Sets state
+   * @param state 
+   */
   _setState(state: StatefulObjectState<PhysicsBodyState>): void {
     
     const graphics = this.getPixiContainer();
@@ -50,7 +77,7 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
     
     // Color
     const alpha = 0.6;
-    graphics.beginFill(0x0000ff, alpha);
+    graphics.beginFill(this._color, alpha);
     
     // Create the shape
     this._drawShape(state.state.shape);
@@ -101,6 +128,11 @@ export class PhysicsBodyRenderObject extends GameRenderObject<PhysicsBodyState> 
     }
   }
   
+  
+  /**
+   * Updates
+   * @param update 
+   */
   _update(update: StatefulObjectUpdate<PhysicsBodyState>): void {    
     // Graphics object must be redrawn each time so set state again
     const newState = applyObjectUpdates(this._state, update.update);

@@ -20,7 +20,7 @@ code id
 
 #### Defined in
 
-[engine/tilemap.ts:168](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/tilemap.ts#L168)
+engine/tileMap.ts:210
 
 ___
 
@@ -30,4 +30,4 @@ ___
 
 #### Defined in
 
-[engine/tilemap.ts:169](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/tilemap.ts#L169)
+engine/tileMap.ts:211

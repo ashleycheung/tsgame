@@ -32,6 +32,13 @@ export abstract class GameRenderObject<T> {
   
   readonly event: EventManager = new EventManager();
   
+  /**
+   * @remarks - Dont set state or update in the constructor
+   * do it via a factory method in the class
+   * @param state 
+   * @param renderer 
+   * @param pixiContainer 
+   */
   protected constructor(
     state: StatefulObjectState<T>,
     renderer: GameRenderer,

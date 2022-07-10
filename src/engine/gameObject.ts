@@ -82,6 +82,20 @@ export class GameObject {
   }
   
   /**
+   * Searches ancestor game objects recursively until 
+   * a target satisfies the is target. Does not count itself
+   * @param isTarget 
+   */
+  findAncestor (isTarget: (target: GameObject) => boolean): GameObject | null {
+    if (this.parent === null) {
+      return null;
+    } else if (isTarget(this.parent)) {
+      return this.parent;
+    }
+    return this.parent.findAncestor(isTarget);
+  }
+  
+  /**
    * Adds this game object to a group
    * 
    * ```typescript
@@ -185,6 +199,7 @@ export class GameObject {
     if (this.game !== null) {
       this.game.addGameObject(child)
     }
+    child.event.callEvent(new OnAddedAsChildEvent(this));
   }
   
   /**
@@ -215,6 +230,7 @@ export class GameObject {
     if (this.game !== null) {
       this.game.removeGameObject(child);
     }
+    child.event.callEvent(new OnRemovedFromParentEvent(this));
   }
   
   /**
@@ -253,7 +269,6 @@ export class GameObject {
 
 /**
  * Called when entering the game
- * @group Engine
  * @event
  *
  */
@@ -289,10 +304,9 @@ export class OnGameEnterEvent extends GameEvent {
  * Called when exiting the game
  * @remarks - The game property and id property will still be valid
  * when this event is called. It is only set to null after this event
- * @group Engine
  * @event
  */
- export class OnGameExitEvent extends GameEvent {
+export class OnGameExitEvent extends GameEvent {
   name = "onGameExit"
   
   game: Game;
@@ -316,4 +330,34 @@ export class OnGameEnterEvent extends GameEvent {
     this.game = game;
   }
   
+}
+
+
+/**
+ * Emitted when the game object is added as a child
+ */
+export class OnAddedAsChildEvent extends GameEvent {
+  name = "onAddedAsChild"
+  
+  parent: GameObject;
+  
+  constructor (parent: GameObject) {
+    super();
+    this.parent = parent;
+  }
+}
+
+
+/**
+ * Emitted when the game object is removed from the parent
+ */
+export class OnRemovedFromParentEvent extends GameEvent {
+  name = "onRemovedFromParent"
+  
+  parent: GameObject;
+  
+  constructor (parent: GameObject) {
+    super();
+    this.parent = parent;
+  }
 }

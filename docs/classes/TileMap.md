@@ -1,45 +1,50 @@
-[tsgame](../README.md) / [Exports](../modules.md) / Tilemap
+[tsgame](../README.md) / [Exports](../modules.md) / TileMap
 
-# Class: Tilemap
+# Class: TileMap
 
 Represents a tilemap
 
 ## Hierarchy
 
-- [`GameObject`](GameObject.md)
+- [`StatefulObject`](StatefulObject.md)<[`TileMapState`](../interfaces/TileMapState.md)\>
 
-  ↳ **`Tilemap`**
+  ↳ **`TileMap`**
 
 ## Table of contents
 
 ### Properties
 
-- [event](Tilemap.md#event)
-- [game](Tilemap.md#game)
+- [event](TileMap.md#event)
+- [game](TileMap.md#game)
+- [type](TileMap.md#type)
 
 ### Methods
 
-- [cleanup](Tilemap.md#cleanup)
-- [addToGroup](Tilemap.md#addtogroup)
-- [removeFromGroup](Tilemap.md#removefromgroup)
-- [isInGroup](Tilemap.md#isingroup)
-- [root](Tilemap.md#root)
-- [addChild](Tilemap.md#addchild)
-- [removeChild](Tilemap.md#removechild)
-- [step](Tilemap.md#step)
-- [\_step](Tilemap.md#_step)
-- [size](Tilemap.md#size)
+- [cleanup](TileMap.md#cleanup)
+- [addToGroup](TileMap.md#addtogroup)
+- [removeFromGroup](TileMap.md#removefromgroup)
+- [isInGroup](TileMap.md#isingroup)
+- [root](TileMap.md#root)
+- [addChild](TileMap.md#addchild)
+- [removeChild](TileMap.md#removechild)
+- [step](TileMap.md#step)
+- [\_step](TileMap.md#_step)
+- [size](TileMap.md#size)
+- [getUpdate](TileMap.md#getupdate)
+- [getObjectState](TileMap.md#getobjectstate)
+- [storeLastState](TileMap.md#storelaststate)
+- [getState](TileMap.md#getstate)
 
 ### Accessors
 
-- [id](Tilemap.md#id)
-- [parent](Tilemap.md#parent)
-- [children](Tilemap.md#children)
-- [groups](Tilemap.md#groups)
+- [id](TileMap.md#id)
+- [parent](TileMap.md#parent)
+- [children](TileMap.md#children)
+- [groups](TileMap.md#groups)
 
 ### Constructors
 
-- [constructor](Tilemap.md#constructor)
+- [constructor](TileMap.md#constructor)
 
 ## Properties
 
@@ -49,11 +54,11 @@ Represents a tilemap
 
 #### Inherited from
 
-[GameObject](GameObject.md).[event](GameObject.md#event)
+[StatefulObject](StatefulObject.md).[event](StatefulObject.md#event)
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -66,11 +71,25 @@ This is set to null if the game object is not in a game
 
 #### Inherited from
 
-[GameObject](GameObject.md).[game](GameObject.md#game)
+[StatefulObject](StatefulObject.md).[game](StatefulObject.md#game)
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
+
+___
+
+### type
+
+• `Readonly` **type**: `string` = `"TileMap"`
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[type](StatefulObject.md#type)
+
+#### Defined in
+
+engine/tileMap.ts:52
 
 ## Methods
 
@@ -87,7 +106,7 @@ Nothing should be run after this
 
 #### Inherited from
 
-[GameObject](GameObject.md).[cleanup](GameObject.md#cleanup)
+[StatefulObject](StatefulObject.md).[cleanup](StatefulObject.md#cleanup)
 
 ___
 
@@ -120,7 +139,7 @@ console.log(game.getGameObjectsInGroup("player"));
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addToGroup](GameObject.md#addtogroup)
+[StatefulObject](StatefulObject.md).[addToGroup](StatefulObject.md#addtogroup)
 
 ___
 
@@ -142,7 +161,7 @@ Removes this game object from a group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeFromGroup](GameObject.md#removefromgroup)
+[StatefulObject](StatefulObject.md).[removeFromGroup](StatefulObject.md#removefromgroup)
 
 ___
 
@@ -165,7 +184,7 @@ a part of the given group
 
 #### Inherited from
 
-[GameObject](GameObject.md).[isInGroup](GameObject.md#isingroup)
+[StatefulObject](StatefulObject.md).[isInGroup](StatefulObject.md#isingroup)
 
 ___
 
@@ -193,7 +212,7 @@ console.log(child.root());
 
 #### Inherited from
 
-[GameObject](GameObject.md).[root](GameObject.md#root)
+[StatefulObject](StatefulObject.md).[root](StatefulObject.md#root)
 
 ___
 
@@ -230,7 +249,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[addChild](GameObject.md#addchild)
+[StatefulObject](StatefulObject.md).[addChild](StatefulObject.md#addchild)
 
 ___
 
@@ -267,7 +286,7 @@ game.removeGameObject(parent);
 
 #### Inherited from
 
-[GameObject](GameObject.md).[removeChild](GameObject.md#removechild)
+[StatefulObject](StatefulObject.md).[removeChild](StatefulObject.md#removechild)
 
 ___
 
@@ -293,7 +312,7 @@ the _step method
 
 #### Inherited from
 
-[GameObject](GameObject.md).[step](GameObject.md#step)
+[StatefulObject](StatefulObject.md).[step](StatefulObject.md#step)
 
 ___
 
@@ -325,7 +344,7 @@ class MyObject extends GameObject {
 
 #### Inherited from
 
-[GameObject](GameObject.md).[_step](GameObject.md#_step)
+[StatefulObject](StatefulObject.md).[_step](StatefulObject.md#_step)
 
 ___
 
@@ -356,6 +375,76 @@ tilemap.size();
 
 [`Vector2D`](Vector2D.md)
 
+___
+
+### getUpdate
+
+▸ **getUpdate**(): ``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`TileMapState`](../interfaces/TileMapState.md)\>
+
+Gets all the updates to the state
+since the last getUpdate call AND
+the last game step.
+Returns null if the object isn't in the game
+or if there is no update
+
+#### Returns
+
+``null`` \| [`StatefulObjectUpdate`](../interfaces/StatefulObjectUpdate.md)<[`TileMapState`](../interfaces/TileMapState.md)\>
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[getUpdate](StatefulObject.md#getupdate)
+
+___
+
+### getObjectState
+
+▸ **getObjectState**(): [`TileMapState`](../interfaces/TileMapState.md)
+
+Returns the state object of the given state
+
+#### Returns
+
+[`TileMapState`](../interfaces/TileMapState.md)
+
+#### Overrides
+
+[StatefulObject](StatefulObject.md).[getObjectState](StatefulObject.md#getobjectstate)
+
+___
+
+### storeLastState
+
+▸ `Protected` **storeLastState**(): `void`
+
+Stores the current state
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[storeLastState](StatefulObject.md#storelaststate)
+
+___
+
+### getState
+
+▸ **getState**(): ``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`TileMapState`](../interfaces/TileMapState.md)\>
+
+Gets the whole state the object
+Returns null when the object isn't
+in the game
+
+#### Returns
+
+``null`` \| [`StatefulObjectState`](../interfaces/StatefulObjectState.md)<[`TileMapState`](../interfaces/TileMapState.md)\>
+
+#### Inherited from
+
+[StatefulObject](StatefulObject.md).[getState](StatefulObject.md#getstate)
+
 ## Accessors
 
 ### id
@@ -372,7 +461,7 @@ in the game
 
 #### Inherited from
 
-GameObject.id
+StatefulObject.id
 
 ___
 
@@ -388,7 +477,7 @@ Gets the immediate parent of this game object
 
 #### Inherited from
 
-GameObject.parent
+StatefulObject.parent
 
 ___
 
@@ -404,7 +493,7 @@ Returns all the children of this game object
 
 #### Inherited from
 
-GameObject.children
+StatefulObject.children
 
 ___
 
@@ -420,25 +509,25 @@ Returns all the groups this game object is in.
 
 #### Inherited from
 
-GameObject.groups
+StatefulObject.groups
 
 ## Constructors
 
 ### constructor
 
-• **new Tilemap**(`cells`, `cellSize`, `origin`, `code?`)
+• **new TileMap**(`cells`, `cellSize`, `origin`, `code`)
 
 Creates an empty tilemap of the given size
 
 #### Parameters
 
-| Name | Type | Default value | Description |
-| :------ | :------ | :------ | :------ |
-| `cells` | `number`[][] | `undefined` | x represents the width, y represents the height |
-| `cellSize` | [`Vector2D`](Vector2D.md) | `undefined` | the size of a cell in the tilemap |
-| `origin` | [`Vector2D`](Vector2D.md) | `undefined` | the position of the top left corner of the tilemap |
-| `code` | [`TilemapCode`](../interfaces/TilemapCode.md) | `defaultCode` | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `cells` | `number`[][] | x represents the width, y represents the height |
+| `cellSize` | [`Vector2D`](Vector2D.md) | the size of a cell in the tilemap |
+| `origin` | [`Vector2D`](Vector2D.md) | the position of the top left corner of the tilemap |
+| `code` | [`TilemapCode`](../interfaces/TilemapCode.md) | ```typescript // Creates a 5x5 tilemap with walls around const tilemap = new Tilemap(   [     [1,1,1,1,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,0,0,0,1],     [1,1,1,1,1],   ],   new Vector2D(100, 100),   Vector2D.zero() ) game.addGameObject(tilemap); ``` |
 
 #### Overrides
 
-[GameObject](GameObject.md).[constructor](GameObject.md#constructor)
+[StatefulObject](StatefulObject.md).[constructor](StatefulObject.md#constructor)

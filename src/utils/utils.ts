@@ -96,8 +96,21 @@ export const debugRenderState = (state: GameRenderState, elem: HTMLElement): voi
   elem.style.opacity = "0.6"
   elem.style.maxHeight = "50%";
   elem.style.overflow = "auto";
+  elem.style.userSelect = "none";
 }
 
+
+export const arraysAreEqual = (arr1: Array<any>, arr2: Array<any>): boolean => {
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return false;
+    }
+  }
+  return true;
+}
 
 /**
  * Return all the updates in object2 compared to obj1
@@ -111,8 +124,34 @@ export const getObjectUpdates = <T>(obj1: T, obj2: T): Partial<T> => {
   for (const prop of Object.keys(obj1)) {
     const value1 = (obj1 as any)[prop];
     const value2 = (obj2 as any)[prop];
-    // Recursively compare if object
-    if (typeof value1 === "object" && typeof value2 === "object") {
+    // If they are arrays
+    // insert the whole array if there is any difference
+    if (value1 instanceof Array && value2 instanceof Array) {
+      // If different length then there must
+      // be an update
+      // so insert whole new array
+      if (value1.length !== value2.length) {
+        (diff as any)[prop] = value2;
+      } else {
+        // Otherwise check every value
+        for (let i = 0; i < value1.length; i++) {
+          const item1 = value1[i];
+          const item2 = value2[i];
+          // Recursively check the items are different
+          const diff = getObjectUpdates(
+            { item: item1 },
+            { item: item2 }
+          )
+          // Check if there is an update
+          // An say the whole array has changed
+          if (Object.keys(diff).length !== 0) {
+            (diff as any)[prop] = value2;
+          }
+        }
+      }
+      
+    } else if (typeof value1 === "object" && typeof value2 === "object") {
+      // Recursively compare if object
       const updates = getObjectUpdates(value1, value2);
       if (Object.keys(updates).length !== 0) {
         (diff as any)[prop] = updates;
@@ -141,7 +180,10 @@ export const applyObjectUpdates = <T>(obj: T, updates: Partial<T>): T => {
     const updateValue = (updates as any)[prop];
     // If both of them are objects
     // update them recursively
-    if (typeof objValue === "object" && typeof updateValue === "object") {
+    if (Array.isArray(updateValue)) {
+      // If array just replace the whole thing
+      out[prop] = updateValue;
+    } if (typeof objValue === "object" && typeof updateValue === "object") {
       out[prop] = applyObjectUpdates(objValue, updateValue);
     } else if (updateValue !== undefined) {
       // Use updated value

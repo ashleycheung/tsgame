@@ -72,7 +72,7 @@ the physics engine is abstracted away
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -89,7 +89,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L16)
+[physics/physicsBody.ts:16](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L16)
 
 ___
 
@@ -113,7 +113,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L18)
+[physics/physicsBody.ts:18](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L18)
 
 ___
 
@@ -123,7 +123,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L22)
+[physics/physicsBody.ts:22](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L22)
 
 ## Methods
 

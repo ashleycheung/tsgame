@@ -52,6 +52,8 @@ export class AnimatedSprite extends Sprite {
       textureName: state.textureName,
       position: state.position,
       scale: state.scale,
+      anchor: state.anchor,
+      angle: state.angle,
       animation: this.animation,
       loop: this.loop,
       playing: this._playing,

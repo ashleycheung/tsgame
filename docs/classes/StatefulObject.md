@@ -16,6 +16,8 @@ An object that has a state needed by the renderer to render
 
   ↳ **`StatefulObject`**
 
+  ↳↳ [`TileMap`](TileMap.md)
+
   ↳↳ [`PhysicsBody`](PhysicsBody.md)
 
   ↳↳ [`Sprite`](Sprite.md)
@@ -67,7 +69,7 @@ An object that has a state needed by the renderer to render
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -84,7 +86,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -94,7 +96,7 @@ ___
 
 #### Defined in
 
-[state/statefulObject.ts:15](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L15)
+[state/statefulObject.ts:15](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L15)
 
 ## Methods
 

@@ -1,7 +1,7 @@
 export * from "./engine/event";
 export * from "./engine/game";
 export * from "./engine/gameObject";
-export * from "./engine/tilemap";
+export * from "./engine/tileMap";
 export * from "./engine/timer";
 export * from "./physics/matrix2x2";
 export * from "./physics/matrix3x3";
@@ -18,3 +18,4 @@ export * from "./view/renderer";
 export * from "./state/statefulObject";
 export * from "./state/statefulObjectManager";
 export * from "./state/sprite";
+export * from "./view/fpsTracker";

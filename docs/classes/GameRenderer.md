@@ -7,6 +7,7 @@
 ### Properties
 
 - [loader](GameRenderer.md#loader)
+- [fps](GameRenderer.md#fps)
 
 ### Constructors
 
@@ -18,6 +19,12 @@
 - [update](GameRenderer.md#update)
 - [render](GameRenderer.md#render)
 
+### Accessors
+
+- [position](GameRenderer.md#position)
+- [width](GameRenderer.md#width)
+- [height](GameRenderer.md#height)
+
 ## Properties
 
 ### loader
@@ -26,7 +33,17 @@
 
 #### Defined in
 
-[view/renderer.ts:19](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/renderer.ts#L19)
+[view/renderer.ts:22](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/renderer.ts#L22)
+
+___
+
+### fps
+
+• `Readonly` **fps**: [`FPSTracker`](FPSTracker.md)
+
+#### Defined in
+
+[view/renderer.ts:24](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/renderer.ts#L24)
 
 ## Constructors
 
@@ -93,3 +110,45 @@ Renders the stage
 #### Returns
 
 `void`
+
+## Accessors
+
+### position
+
+• `get` **position**(): [`Vector2D`](Vector2D.md)
+
+#### Returns
+
+[`Vector2D`](Vector2D.md)
+
+• `set` **position**(`p`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `p` | [`Vector2D`](Vector2D.md) |
+
+#### Returns
+
+`void`
+
+___
+
+### width
+
+• `get` **width**(): `number`
+
+#### Returns
+
+`number`
+
+___
+
+### height
+
+• `get` **height**(): `number`
+
+#### Returns
+
+`number`

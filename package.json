@@ -9,7 +9,8 @@
     "start": "nodemon --ext 'ts' --watch ./src --exec 'yarn build'",
     "predeploy": "yarn run build",
     "deploy": "gh-pages -d docs",
-    "build": "tsc && typedoc --options typedoc.json"
+    "build": "tsc && typedoc --options typedoc.json",
+    "test": "jest"
   },
   "dependencies": {
     "matter-js": "^0.18.0",
@@ -17,9 +18,12 @@
     "pixi.js": "^6.4.2"
   },
   "devDependencies": {
+    "@types/jest": "^28.1.4",
     "@types/matter-js": "^0.17.7",
     "gh-pages": "^4.0.0",
+    "jest": "^28.1.2",
     "nodemon": "^2.0.18",
+    "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
     "typedoc": "^0.23.2",
     "typedoc-plugin-markdown": "^3.13.0",

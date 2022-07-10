@@ -5,6 +5,8 @@
   "exclude": ["src/index.ts"],
   "plugin": ["typedoc-plugin-markdown"],
   "excludePrivate": true,
+  "categorizeByGroup": true,
   "githubPages": false,
-  "excludeInternal": true
+  "excludeInternal": true,
+  "media": "assets/"
 }

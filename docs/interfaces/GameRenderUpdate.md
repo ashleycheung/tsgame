@@ -22,7 +22,7 @@ renderer needs to update state
 
 #### Defined in
 
-[state/statefulObjectManager.ts:167](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObjectManager.ts#L167)
+[state/statefulObjectManager.ts:167](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObjectManager.ts#L167)
 
 ___
 
@@ -34,7 +34,7 @@ All the new objects added and their states
 
 #### Defined in
 
-[state/statefulObjectManager.ts:172](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObjectManager.ts#L172)
+[state/statefulObjectManager.ts:172](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObjectManager.ts#L172)
 
 ___
 
@@ -48,7 +48,7 @@ added here
 
 #### Defined in
 
-[state/statefulObjectManager.ts:179](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObjectManager.ts#L179)
+[state/statefulObjectManager.ts:179](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObjectManager.ts#L179)
 
 ___
 
@@ -60,4 +60,4 @@ The id's of all the state objects removed
 
 #### Defined in
 
-[state/statefulObjectManager.ts:184](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObjectManager.ts#L184)
+[state/statefulObjectManager.ts:184](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObjectManager.ts#L184)

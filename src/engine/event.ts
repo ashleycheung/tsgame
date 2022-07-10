@@ -11,7 +11,6 @@
  *    console.log("Collision occured")
  *  })
  * ```
- * @group Engine 
  */
 export class EventManager {
   

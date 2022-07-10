@@ -18,6 +18,8 @@ Represents a 2d sprite
 - [game](Sprite.md#game)
 - [type](Sprite.md#type)
 - [scale](Sprite.md#scale)
+- [anchor](Sprite.md#anchor)
+- [angle](Sprite.md#angle)
 
 ### Methods
 
@@ -60,7 +62,7 @@ Represents a 2d sprite
 
 #### Defined in
 
-[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L9)
+[engine/gameObject.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L9)
 
 ___
 
@@ -77,7 +79,7 @@ This is set to null if the game object is not in a game
 
 #### Defined in
 
-[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/gameObject.ts#L25)
+[engine/gameObject.ts:25](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/engine/gameObject.ts#L25)
 
 ___
 
@@ -91,7 +93,7 @@ ___
 
 #### Defined in
 
-[state/sprite.ts:35](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/sprite.ts#L35)
+[state/sprite.ts:44](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/sprite.ts#L44)
 
 ___
 
@@ -101,7 +103,27 @@ ___
 
 #### Defined in
 
-[state/sprite.ts:37](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/sprite.ts#L37)
+[state/sprite.ts:46](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/sprite.ts#L46)
+
+___
+
+### anchor
+
+• **anchor**: [`Vector2D`](Vector2D.md)
+
+#### Defined in
+
+[state/sprite.ts:48](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/sprite.ts#L48)
+
+___
+
+### angle
+
+• **angle**: `number` = `0`
+
+#### Defined in
+
+[state/sprite.ts:50](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/sprite.ts#L50)
 
 ## Methods
 

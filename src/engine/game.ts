@@ -41,6 +41,8 @@ export class Game {
   */
   private _nextStepQueue: Array<() => void> = [];
   
+  private _lastStepTime: number = 0;
+  
   /**
    * Adds a game object to the game
    *
@@ -260,13 +262,34 @@ export class Game {
     return Array.from(this._gameObjects.values())
   }
   
+  /**
+   * Starts a game to run at a given FPS
+   */
+  start (fps: number): void {
+    this._lastStepTime = performance.now();
+    
+    const timePerStep = 1000 / fps;
+    
+    const gameLoop = () => {
+      const currTime = performance.now();
+      const delta = currTime - this._lastStepTime;
+      this._lastStepTime = currTime;
+      
+      // Process the game
+      this.step(delta);
+      // Set timeout to time subtract the already
+      // included delta
+      setTimeout(gameLoop, Math.max(timePerStep - delta, 0));
+    }
+    gameLoop();
+  }
+  
 }
 
 
 /**
  * This is called after the physics step
  * in the game loop
- * @group Engine
  * @event
  */
 export class PostPhysicsStepEvent extends GameEvent {
@@ -275,7 +298,6 @@ export class PostPhysicsStepEvent extends GameEvent {
 
 /**
  * Called at the start of each game step
- * @group Engine
  * @event
  */
 export class GameStepStartEvent extends GameEvent {
@@ -284,7 +306,6 @@ export class GameStepStartEvent extends GameEvent {
 
 /**
  * This is called at the end of each game step
- * @group Engine
  * @event
  */
 export class GameStepEndEvent extends GameEvent {

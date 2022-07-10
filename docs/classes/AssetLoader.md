@@ -13,6 +13,7 @@
 - [load](AssetLoader.md#load)
 - [getSpriteTexture](AssetLoader.md#getspritetexture)
 - [getSpriteSheet](AssetLoader.md#getspritesheet)
+- [getTileSetTile](AssetLoader.md#gettilesettile)
 
 ## Constructors
 
@@ -79,3 +80,26 @@ Gets a given sprite sheet
 #### Returns
 
 `undefined` \| `Spritesheet`
+
+___
+
+### getTileSetTile
+
+▸ **getTileSetTile**(`name`, `tileNumber`): `undefined` \| `Texture`<`Resource`\>
+
+Given the name of a tileset
+the number of neighbours the tile has
+and the configuration number based off the
+seemlessMap part of the tileSetAsset
+return the texture of that particular tile
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `tileNumber` | `number` |
+
+#### Returns
+
+`undefined` \| `Texture`<`Resource`\>

@@ -1,15 +1,38 @@
 import { PhysicsBody } from "../physics/physicsBody";
 import { PhysicsRectangle } from "../physics/physicsShape";
 import { Vector2D } from "../physics/vector2d";
+import { StatefulObject, StatefulObjectUpdate } from "../state/statefulObject";
 import { rotate2DArray } from "../utils/utils";
 import { GameEvent } from "./event";
-import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "./gameObject";
+import { OnGameEnterEvent, OnGameExitEvent } from "./gameObject";
+
+
+/**
+ * Represents the state of the tilemap
+ */
+export interface TileMapState {
+  // 2d array representing the cells
+  // inside the tilemap
+  // the first dimension is the x axis
+  // the second dimension is the y axis
+  // ie: _cells[x][y]
+  cells: Array<Array<number>>,
+  
+  // The size of each cell relative to the world
+  cellSize: Vector2D,
+  
+  // The position of (0,0) in the tile map relative
+  // to the world
+  origin: Vector2D,
+  
+  code: TilemapCode
+}
 
 /**
  * Represents a tilemap
  * @group Engine
  */
-export class Tilemap extends GameObject {
+export class TileMap extends StatefulObject<TileMapState> {
   
   // 2d array representing the cells
   // inside the tilemap
@@ -26,8 +49,7 @@ export class Tilemap extends GameObject {
   
   private _code: TilemapCode;
   
-  // Number is equal to y * width + x
-  private _posToCell: Map<number, PhysicsBody> = new Map();
+  readonly type: string = "TileMap";
   
   /**
    * Creates an empty tilemap of the given size
@@ -58,7 +80,7 @@ export class Tilemap extends GameObject {
     cells: Array<Array<number>>,
     cellSize: Vector2D,
     origin: Vector2D,
-    code: TilemapCode = defaultCode
+    code: TilemapCode
   ) {
     super();
     if (cells.length === 0 || cells[0].length === 0) {
@@ -75,6 +97,8 @@ export class Tilemap extends GameObject {
     
     // Create the bodies
     this._createBodies();
+    
+    this.storeLastState();
   }
   
   /**
@@ -102,6 +126,22 @@ export class Tilemap extends GameObject {
     return new Vector2D(this._cells.length, this._cells[0].length);
   }
   
+  
+  override getUpdate(): StatefulObjectUpdate<TileMapState> | null {
+    return null
+  }
+  
+  
+  getObjectState(): TileMapState {
+    return {
+      cells: this._cells,
+      cellSize: this._cellSize,
+      origin: this._origin,
+      code: this._code
+    }
+  }
+  
+  
   private _onGameEnter = (e: GameEvent) => {
     const game = (e as OnGameEnterEvent).game
       
@@ -110,6 +150,7 @@ export class Tilemap extends GameObject {
     }
   }
   
+  
   private _onGameExit = (e: GameEvent) => {
     const game = (e as OnGameExitEvent).game
     
@@ -117,6 +158,7 @@ export class Tilemap extends GameObject {
       game.removeGameObject(b)
     }
   }
+  
   
   private _createBodies (): void {
     // Loop through the cells
@@ -172,16 +214,6 @@ export interface TilemapCode {
 export interface TileMapCellCode {
   code: number,
   // The collision layers to collide with
-  collision: Array<number>
-}
-
-const defaultCode: TilemapCode = {
-  empty: {
-    code: 0,
-    collision: []
-  },
-  wall: {
-    code: 1,
-    collision: [0, 1]
-  },
+  collision: Array<number>,
+  textureName: string | null,
 }

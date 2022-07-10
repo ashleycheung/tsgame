@@ -25,7 +25,7 @@ Circle, Rectangle, etc
 
 #### Defined in
 
-[physics/physicsShape.ts:113](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsShape.ts#L113)
+[physics/physicsShape.ts:113](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsShape.ts#L113)
 
 ___
 
@@ -35,4 +35,4 @@ ___
 
 #### Defined in
 
-[physics/physicsShape.ts:114](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsShape.ts#L114)
+[physics/physicsShape.ts:114](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsShape.ts#L114)

@@ -8,6 +8,8 @@
 
   ↳ **`SpriteSheetAsset`**
 
+  ↳↳ [`TileSetAsset`](TileSetAsset.md)
+
 ## Table of contents
 
 ### Properties
@@ -30,7 +32,7 @@
 
 #### Defined in
 
-[view/assets.ts:6](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/assets.ts#L6)
+[view/assets.ts:7](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/assets.ts#L7)
 
 ___
 
@@ -44,13 +46,13 @@ ___
 
 #### Defined in
 
-[view/assets.ts:7](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/assets.ts#L7)
+[view/assets.ts:8](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/assets.ts#L8)
 
 ___
 
 ### type
 
-• **type**: ``"Sprite"`` \| ``"SpriteSheet"``
+• **type**: ``"Sprite"`` \| ``"SpriteSheet"`` \| ``"TileSet"``
 
 #### Inherited from
 
@@ -58,7 +60,7 @@ ___
 
 #### Defined in
 
-[view/assets.ts:8](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/assets.ts#L8)
+[view/assets.ts:9](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/assets.ts#L9)
 
 ___
 
@@ -74,13 +76,13 @@ ___
 
 #### Defined in
 
-[view/assets.ts:13](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/assets.ts#L13)
+[view/assets.ts:14](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/assets.ts#L14)
 
 ___
 
 ### animations
 
-• **animations**: `Object`
+• `Optional` **animations**: `Object`
 
 #### Index signature
 
@@ -88,4 +90,4 @@ ___
 
 #### Defined in
 
-[view/assets.ts:16](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/view/assets.ts#L16)
+[view/assets.ts:17](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/view/assets.ts#L17)

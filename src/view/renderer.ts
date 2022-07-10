@@ -1,12 +1,15 @@
 import * as PIXI from 'pixi.js';
 import { GameEvent } from '../engine/event';
+import { Vector2D } from '../physics/vector2d';
 import { StatefulObjectState } from '../state/statefulObject';
 import { GameRenderState, GameRenderUpdate } from '../state/statefulObjectManager';
 import { AnimatedSpriteRenderObject } from './animatedSpriteRenderObject';
 import { AssetLoader } from './assets';
+import { FPSTracker } from './fpsTracker';
 import { GameRenderObject } from './gameRenderObject';
 import { PhysicsBodyRenderObject } from './physicsBodyRenderObject';
 import { SpriteRenderObject } from './spriteRenderObject';
+import { TileMapRenderObject } from './tileMapRenderObject';
 
 
 export class GameRenderer {
@@ -17,6 +20,8 @@ export class GameRenderer {
   readonly _pixiApp: PIXI.Application;
   
   readonly loader: AssetLoader;
+  
+  readonly fps: FPSTracker = new FPSTracker();
   
   /**
     Stores game render objects
@@ -29,6 +34,7 @@ export class GameRenderer {
       width: canvas.width,
       height: canvas.height
     });
+    this._pixiApp.stage.sortableChildren = true;
     this.loader = new AssetLoader(PIXI.Loader.shared);
   }
   
@@ -45,6 +51,24 @@ export class GameRenderer {
     gameState.objects.forEach(this._createGameObject);
   }
   
+  get position(): Vector2D {
+    const pos = this._pixiApp.stage.position;
+    return new Vector2D(pos.x, pos.y);
+  }
+  
+  set position(p : Vector2D) {
+    this._pixiApp.stage.position.x = p.x;
+    this._pixiApp.stage.position.y = p.y;
+  }
+  
+  get width(): number {
+    return this._pixiApp.renderer.width;
+  }
+  
+  get height(): number {
+    return this._pixiApp.renderer.height;
+  }
+  
   /**
    * Adds a game render object to the renderer and stage
    * @param o 
@@ -58,6 +82,7 @@ export class GameRenderer {
     this._gameRenderObjects.set(o.id, o);
     // Add to pixi stage
     o.addToStage(this._pixiApp.stage);
+    o.event.callEvent(new OnRendererEnterEvent());
   }
   
   /**
@@ -87,12 +112,17 @@ export class GameRenderer {
         break;
       }
       case "PhysicsBody": {
-        const obj = PhysicsBodyRenderObject.create(state, this);
-        this._addGameRenderObject(obj);
+        // const obj = PhysicsBodyRenderObject.create(state, this);
+        // this._addGameRenderObject(obj);
         break;
       }
       case "AnimatedSprite": {
         const obj = AnimatedSpriteRenderObject.create(state, this);
+        this._addGameRenderObject(obj);
+        break;
+      }
+      case "TileMap": {
+        const obj = TileMapRenderObject.create(state, this);
         this._addGameRenderObject(obj);
         break;
       }
@@ -130,7 +160,16 @@ export class GameRenderer {
    */
   render (delta: number): void {
     this._gameRenderObjects.forEach(o => o.render(delta));
+    // Sort the children by y
+    this._pixiApp.stage.children.sort((a, b) => {
+      if (a.position.y > b.position.y) {
+        return 1;
+      }
+      return -1;
+    })
     this._pixiApp.render();
+    // Update tracker
+    this.fps.step();
   }
   
 }
@@ -138,6 +177,15 @@ export class GameRenderer {
 
 /**
  * Called when a new renderer object is added to the renderer
+ * @group View
+ * @event
+ */
+export class OnRendererEnterEvent extends GameEvent {
+  name = "onRendererEnter";
+}
+
+/**
+ * Called when a new renderer object is removed from the renderer
  * @group View
  * @event
  */

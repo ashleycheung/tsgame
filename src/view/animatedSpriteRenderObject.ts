@@ -9,6 +9,12 @@ export class AnimatedSpriteRenderObject extends SpriteRenderObject {
   
   private _animationPlayer: AnimationPlayer;
   
+  
+  /**
+   * Loads sprite sheet into animation player
+   * @param state 
+   * @param renderer 
+   */
   protected constructor (
     state: StatefulObjectState<AnimatedSpriteState>,
     renderer: GameRenderer
@@ -23,11 +29,15 @@ export class AnimatedSpriteRenderObject extends SpriteRenderObject {
     
     this._animationPlayer = new AnimationPlayer(
       spriteSheet.animations, state.state.animation);
-    
-    // Set state
-    this.setState(state);
   }
   
+  
+  /**
+   * Creates a Animated sprite render object
+   * @param state 
+   * @param renderer 
+   * @returns 
+   */
   static create(
     state: StatefulObjectState<AnimatedSpriteState>,
     renderer: GameRenderer
@@ -37,6 +47,11 @@ export class AnimatedSpriteRenderObject extends SpriteRenderObject {
     return obj
   }
   
+  
+  /**
+   * Sets the state
+   * @param state 
+   */
   override _setState(state: StatefulObjectState<AnimatedSpriteState>): void {
     super._setState(state);
     
@@ -47,6 +62,11 @@ export class AnimatedSpriteRenderObject extends SpriteRenderObject {
     })
   }
   
+  
+  /**
+   * Updates the object
+   * @param update 
+   */
   override _update(update: StatefulObjectUpdate<AnimatedSpriteState>): void {
     super._update(update);
     
@@ -93,6 +113,10 @@ export class AnimatedSpriteRenderObject extends SpriteRenderObject {
   }
   
   
+  /**
+   * Renders the object
+   * @param delta 
+   */
   override render(delta: number): void {
     // Update sprite texture
     this.getPixiContainer().texture = this._animationPlayer.render(delta);

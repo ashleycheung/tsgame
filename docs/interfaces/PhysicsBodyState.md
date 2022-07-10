@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[physics/physicsBody.ts:197](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L197)
+[physics/physicsBody.ts:197](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L197)
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:198](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L198)
+[physics/physicsBody.ts:198](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L198)
 
 ___
 
@@ -38,4 +38,4 @@ ___
 
 #### Defined in
 
-[physics/physicsBody.ts:199](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/physics/physicsBody.ts#L199)
+[physics/physicsBody.ts:199](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/physics/physicsBody.ts#L199)

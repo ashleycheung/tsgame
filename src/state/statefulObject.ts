@@ -1,5 +1,5 @@
 import { GameEvent } from "../engine/event";
-import { GameObject, OnGameEnterEvent, OnGameExitEvent } from "../engine/gameObject";
+import { GameObject, OnAddedAsChildEvent, OnGameEnterEvent, OnGameExitEvent } from "../engine/gameObject";
 import { getObjectUpdates } from "../utils/utils";
 
 
@@ -12,6 +12,10 @@ export abstract class StatefulObject<T> extends GameObject {
   // Last state since update
   private _lastState: T | null = null;
   
+  private _stateParent: StatefulObject<any> | null = null;
+  
+  private _stateChildren: Set<StatefulObject<any>> = new Set();
+  
   readonly abstract type: string;
   
   constructor () {
@@ -19,15 +23,42 @@ export abstract class StatefulObject<T> extends GameObject {
     // Add self on enter
     this.event.addEventlistener("onGameEnter", (e: GameEvent) => {
       const game = (e as OnGameEnterEvent).game;
-      game.gameStateManager.addRenderState(this);
+      game.gameStateManager.addStatefulObject(this);
     })
     
     // Remove self on leave
     this.event.addEventlistener("onGameExit", (e: GameEvent) => {
       const game = (e as OnGameExitEvent).game;
-      game.gameStateManager.removeRenderState(this);
+      game.gameStateManager.removeStatefulObject(this);
     })
     
+    // Find state parent and add as child
+    this.event.addEventlistener("onAddedAsChild", () => {
+      this._stateParent = this.findAncestor(
+        (target) => target instanceof StatefulObject) as StatefulObject<any>
+      this._stateParent?.addStateChild(this);
+    })
+    
+    // Remove from state parent
+    this.event.addEventlistener("onRemoveFromChild", () => {
+      this._stateParent?.removeStateChild(this);
+    })
+  }
+  
+  /**
+   * Called by the a child stateful object to add to parent
+   * @param stateChild 
+   */
+  private addStateChild(stateChild: StatefulObject<any>): void {
+    this._stateChildren.add(stateChild);
+  }
+  
+  /**
+   * Removes a child stateful object
+   * @param stateChild 
+   */
+  private removeStateChild(stateChild: StatefulObject<any>): void {
+    this._stateChildren.add(stateChild);
   }
   
   /**
@@ -70,7 +101,12 @@ export abstract class StatefulObject<T> extends GameObject {
     if (this.id === null) {
       return null
     } else if (this._lastState === null) {
-      throw new Error(`Last state has not been stored. Have you called storeLastState() yet?`)
+      throw new Error(`
+        Last state has not been stored.
+        Have you called storeLastState() yet?
+        This needs to be called in the constructor
+        of all subclasses of a StatefulObject
+      `)
     }
     // Find all the updates in the state
     const updates = getObjectUpdates<T>(this._lastState, this.getObjectState());
@@ -111,7 +147,7 @@ export interface StatefulObjectState<T> {
   /**
   * The actual state
   */
-  state: T
+  state: T,
 }
 
 

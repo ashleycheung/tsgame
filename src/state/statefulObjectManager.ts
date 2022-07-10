@@ -34,34 +34,34 @@ export class StatefulObjectManager {
    * @internal
    * Adds a render state object
    * this should be only called by the render state itself
-   * @param renderStateObj 
+   * @param statefulObj 
    */
-  addRenderState (renderStateObj: StatefulObject<any>): void {
-    this._renderStateObjects.add(renderStateObj);
-    this._newStateObjects.add(renderStateObj);
+  addStatefulObject (statefulObj: StatefulObject<any>): void {
+    this._renderStateObjects.add(statefulObj);
+    this._newStateObjects.add(statefulObj);
   }
   
   /**
    * @internal
    * Removes a render state object
    * this should only be called by the render state object
-   * @param renderStateObj 
+   * @param statefulObj 
    */
-  removeRenderState (renderStateObj: StatefulObject<any>): void {
-    this._renderStateObjects.delete(renderStateObj);
+  removeStatefulObject (statefulObj: StatefulObject<any>): void {
+    this._renderStateObjects.delete(statefulObj);
     
-    if (renderStateObj.id === null) {
+    if (statefulObj.id === null) {
       throw new Error(`Rendeobject id is null. This is a bug in the game loop`);
     }
     
     // Add to removed objects id
     // Note: the id wont be set to null as it is readonly
-    this._removedStateObjectIds.add(renderStateObj.id);
+    this._removedStateObjectIds.add(statefulObj.id);
     
     // Remove from new state objects
     // to deal with the edge case of inserting and
     // removing
-    this._newStateObjects.delete(renderStateObj);
+    this._newStateObjects.delete(statefulObj);
   }
   
   /**

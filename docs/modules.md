@@ -4,19 +4,18 @@
 
 ## Table of contents
 
-### Engine
+### Classes
 
 - [EventManager](classes/EventManager.md)
-- [Game](classes/Game.md)
-- [PostPhysicsStepEvent](classes/PostPhysicsStepEvent.md)
-- [GameStepStartEvent](classes/GameStepStartEvent.md)
-- [GameStepEndEvent](classes/GameStepEndEvent.md)
-- [GameObject](classes/GameObject.md)
-- [OnGameEnterEvent](classes/OnGameEnterEvent.md)
-- [OnGameExitEvent](classes/OnGameExitEvent.md)
-- [Tilemap](classes/Tilemap.md)
-- [TilemapWallCell](classes/TilemapWallCell.md)
-- [Timer](classes/Timer.md)
+- [Matrix2x2](classes/Matrix2x2.md)
+- [Matrix3x3](classes/Matrix3x3.md)
+- [Matrix4x4](classes/Matrix4x4.md)
+- [Vector3D](classes/Vector3D.md)
+- [Controller](classes/Controller.md)
+- [PhysicsRender](classes/PhysicsRender.md)
+- [AssetLoader](classes/AssetLoader.md)
+- [FPSTracker](classes/FPSTracker.md)
+- [GameRenderer](classes/GameRenderer.md)
 
 ### Events
 
@@ -29,27 +28,27 @@
 - [TimerEndEvent](classes/TimerEndEvent.md)
 - [CollisionStartEvent](classes/CollisionStartEvent.md)
 - [CollisionEndEvent](classes/CollisionEndEvent.md)
+- [OnRendererEnterEvent](classes/OnRendererEnterEvent.md)
 - [OnRendererExitEvent](classes/OnRendererExitEvent.md)
+
+### Engine
+
+- [Game](classes/Game.md)
+- [GameObject](classes/GameObject.md)
+- [TileMap](classes/TileMap.md)
+- [TilemapWallCell](classes/TilemapWallCell.md)
+- [Timer](classes/Timer.md)
 
 ### Interfaces
 
+- [TileMapState](interfaces/TileMapState.md)
 - [TilemapCode](interfaces/TilemapCode.md)
 - [TileMapCellCode](interfaces/TileMapCellCode.md)
 - [PhysicsBodyState](interfaces/PhysicsBodyState.md)
 - [ShapeState](interfaces/ShapeState.md)
 - [Asset](interfaces/Asset.md)
 - [SpriteSheetAsset](interfaces/SpriteSheetAsset.md)
-
-### Classes
-
-- [Matrix2x2](classes/Matrix2x2.md)
-- [Matrix3x3](classes/Matrix3x3.md)
-- [Matrix4x4](classes/Matrix4x4.md)
-- [Vector3D](classes/Vector3D.md)
-- [Controller](classes/Controller.md)
-- [PhysicsRender](classes/PhysicsRender.md)
-- [AssetLoader](classes/AssetLoader.md)
-- [GameRenderer](classes/GameRenderer.md)
+- [TileSetAsset](interfaces/TileSetAsset.md)
 
 ### Physics
 
@@ -78,11 +77,13 @@
 - [rotate2DArray](modules.md#rotate2darray)
 - [toFixed](modules.md#tofixed)
 - [debugRenderState](modules.md#debugrenderstate)
+- [arraysAreEqual](modules.md#arraysareequal)
 - [getObjectUpdates](modules.md#getobjectupdates)
 - [applyObjectUpdates](modules.md#applyobjectupdates)
 
 ### View
 
+- [OnRendererEnterEvent](classes/OnRendererEnterEvent.md)
 - [OnRendererExitEvent](classes/OnRendererExitEvent.md)
 
 ## Functions
@@ -166,6 +167,23 @@ ___
 #### Returns
 
 `void`
+
+___
+
+### arraysAreEqual
+
+▸ **arraysAreEqual**(`arr1`, `arr2`): `boolean`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `arr1` | `any`[] |
+| `arr2` | `any`[] |
+
+#### Returns
+
+`boolean`
 
 ___
 

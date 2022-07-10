@@ -29,7 +29,7 @@ The game object id
 
 #### Defined in
 
-[state/statefulObject.ts:106](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L106)
+[state/statefulObject.ts:111](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L111)
 
 ___
 
@@ -41,7 +41,7 @@ The type of the game object
 
 #### Defined in
 
-[state/statefulObject.ts:110](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L110)
+[state/statefulObject.ts:115](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L115)
 
 ___
 
@@ -53,4 +53,4 @@ The actual state
 
 #### Defined in
 
-[state/statefulObject.ts:114](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/state/statefulObject.ts#L114)
+[state/statefulObject.ts:119](https://github.com/ashleycheung/tsgame/blob/0573a5b/src/state/statefulObject.ts#L119)

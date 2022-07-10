@@ -19,7 +19,16 @@ export interface SpriteState {
   
   position: Vector2D,
   
+  /**
+   * The default is (0,0), this means the sprite's origin is the top left.
+   * Setting the anchor to (0.5,0.5) means the sprite's origin is centered.
+   * Setting the anchor to (1,1) would mean the sprite's origin point will be the bottom right corner.
+   */
+  anchor: Vector2D,
+  
   scale: Vector2D,
+  
+  angle: number,
 }
 
 
@@ -35,6 +44,10 @@ export class Sprite extends StatefulObject<SpriteState> {
   type = "Sprite"
   
   scale: Vector2D = new Vector2D(1, 1);
+  
+  anchor: Vector2D = new Vector2D(0, 0)
+  
+  angle: number = 0;
   
   /**
     The position of the sprite relative to the origin
@@ -70,7 +83,9 @@ export class Sprite extends StatefulObject<SpriteState> {
     return {
       textureName: this._textureName,
       position: this.position,
-      scale: this.scale
+      scale: this.scale,
+      anchor: this.anchor,
+      angle: this.angle
     }
   }
   

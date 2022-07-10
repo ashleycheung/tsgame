@@ -8,6 +8,7 @@
 
 - [code](TileMapCellCode.md#code)
 - [collision](TileMapCellCode.md#collision)
+- [textureName](TileMapCellCode.md#texturename)
 
 ## Properties
 
@@ -17,7 +18,7 @@
 
 #### Defined in
 
-[engine/tilemap.ts:173](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/tilemap.ts#L173)
+engine/tileMap.ts:215
 
 ___
 
@@ -27,4 +28,14 @@ ___
 
 #### Defined in
 
-[engine/tilemap.ts:175](https://github.com/ashleycheung/tsgame/blob/dbeac6a/src/engine/tilemap.ts#L175)
+engine/tileMap.ts:217
+
+___
+
+### textureName
+
+• **textureName**: ``null`` \| `string`
+
+#### Defined in
+
+engine/tileMap.ts:218
